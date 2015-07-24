@@ -1,0 +1,114 @@
+# processing file 'adhoc_rmdir_root-int.trace' ...
+        @type trace
+
+        # Try to remove the root directory by various names
+
+     5: rmdir "/"
+        Tau
+        EBUSY
+     6: rmdir "//"
+        Tau
+        EBUSY
+     7: rmdir "///"
+        Tau
+        EBUSY
+
+     9: rmdir "/."
+        Tau
+        EINVAL
+    10: rmdir "/.."
+        Tau
+        ENOTEMPTY
+    11: rmdir "//."
+        Tau
+        EINVAL
+    12: rmdir "//.."
+        Tau
+        ENOTEMPTY
+    13: rmdir "///."
+        Tau
+        EINVAL
+    14: rmdir "///.."
+        Tau
+        ENOTEMPTY
+
+    16: rmdir "/./"
+        Tau
+        EINVAL
+    17: rmdir "/.//"
+        Tau
+        EINVAL
+    18: rmdir "/.///"
+        Tau
+        EINVAL
+    19: rmdir "/../"
+        Tau
+        ENOTEMPTY
+    20: rmdir "/..//"
+        Tau
+        ENOTEMPTY
+    21: rmdir "/..///"
+        Tau
+        ENOTEMPTY
+
+    23: rmdir ".."
+        Tau
+        ENOTEMPTY
+    24: rmdir "../"
+        Tau
+        ENOTEMPTY
+    25: rmdir "..//"
+        Tau
+        ENOTEMPTY
+    26: rmdir "..///"
+        Tau
+        ENOTEMPTY
+
+    28: rmdir "."
+        Tau
+        EINVAL
+    29: rmdir "./"
+        Tau
+        EINVAL
+    30: rmdir ".//"
+        Tau
+        EINVAL
+    31: rmdir ".///"
+        Tau
+        EINVAL
+
+    33: rmdir "../."
+        Tau
+        EINVAL
+    34: rmdir "..//."
+        Tau
+        EINVAL
+    35: rmdir "..///."
+        Tau
+        EINVAL
+
+    37: rmdir "../.."
+        Tau
+        ENOTEMPTY
+    38: rmdir "..//.."
+        Tau
+        ENOTEMPTY
+    39: rmdir "..///.."
+        Tau
+        ENOTEMPTY
+
+    41: rmdir "../../"
+        Tau
+        ENOTEMPTY
+    42: rmdir "../..//"
+        Tau
+        ENOTEMPTY
+    43: rmdir "../..///"
+        Tau
+        ENOTEMPTY
+
+    45: rmdir ""
+        Tau
+        ENOENT
+
+

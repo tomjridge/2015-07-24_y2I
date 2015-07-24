@@ -1,0 +1,4 @@
+< id -u -n
+< id -g -n
+5432 creating agent 5433
+5432 stopping agent 5433

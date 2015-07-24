@@ -1,0 +1,4 @@
+< id -u -n
+< id -g -n
+3306 creating agent 3312
+3306 stopping agent 3312

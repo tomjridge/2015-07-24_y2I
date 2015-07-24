@@ -1,0 +1,365 @@
+# processing file 'adhoc_symlink_eloop-int.trace' ...
+        @type trace
+        # adhoc_symlink_eloop
+
+        # Note: ELOOP counters may differ depending on the entry point. This
+        # script only tests the counter used for the stat syscall.
+
+     7: symlink "/0" "/1"
+        Tau
+        RV_none
+     8: stat "/1"
+        Tau
+        ENOENT
+
+    10: symlink "/1" "/2"
+        Tau
+        RV_none
+    11: stat "/2"
+        Tau
+        ENOENT
+
+    13: symlink "/2" "/3"
+        Tau
+        RV_none
+    14: stat "/3"
+        Tau
+        ENOENT
+
+    16: symlink "/3" "/4"
+        Tau
+        RV_none
+    17: stat "/4"
+        Tau
+        ENOENT
+
+    19: symlink "/4" "/5"
+        Tau
+        RV_none
+    20: stat "/5"
+        Tau
+        ENOENT
+
+    22: symlink "/5" "/6"
+        Tau
+        RV_none
+    23: stat "/6"
+        Tau
+        ENOENT
+
+    25: symlink "/6" "/7"
+        Tau
+        RV_none
+    26: stat "/7"
+        Tau
+        ENOENT
+
+    28: symlink "/7" "/8"
+        Tau
+        RV_none
+    29: stat "/8"
+        Tau
+        ENOENT
+
+    31: symlink "/8" "/9"
+        Tau
+        RV_none
+    32: stat "/9"
+        Tau
+        ENOENT
+
+    34: symlink "/9" "/10"
+        Tau
+        RV_none
+    35: stat "/10"
+        Tau
+        ENOENT
+
+    37: symlink "/10" "/11"
+        Tau
+        RV_none
+    38: stat "/11"
+        Tau
+        ENOENT
+
+    40: symlink "/11" "/12"
+        Tau
+        RV_none
+    41: stat "/12"
+        Tau
+        ENOENT
+
+    43: symlink "/12" "/13"
+        Tau
+        RV_none
+    44: stat "/13"
+        Tau
+        ENOENT
+
+    46: symlink "/13" "/14"
+        Tau
+        RV_none
+    47: stat "/14"
+        Tau
+        ENOENT
+
+    49: symlink "/14" "/15"
+        Tau
+        RV_none
+    50: stat "/15"
+        Tau
+        ENOENT
+
+    52: symlink "/15" "/16"
+        Tau
+        RV_none
+    53: stat "/16"
+        Tau
+        ENOENT
+
+    55: symlink "/16" "/17"
+        Tau
+        RV_none
+    56: stat "/17"
+        Tau
+        ENOENT
+
+    58: symlink "/17" "/18"
+        Tau
+        RV_none
+    59: stat "/18"
+        Tau
+        ENOENT
+
+    61: symlink "/18" "/19"
+        Tau
+        RV_none
+    62: stat "/19"
+        Tau
+        ENOENT
+
+    64: symlink "/19" "/20"
+        Tau
+        RV_none
+    65: stat "/20"
+        Tau
+        ENOENT
+
+    67: symlink "/20" "/21"
+        Tau
+        RV_none
+    68: stat "/21"
+        Tau
+        ENOENT
+
+    70: symlink "/21" "/22"
+        Tau
+        RV_none
+    71: stat "/22"
+        Tau
+        ENOENT
+
+    73: symlink "/22" "/23"
+        Tau
+        RV_none
+    74: stat "/23"
+        Tau
+        ENOENT
+
+    76: symlink "/23" "/24"
+        Tau
+        RV_none
+    77: stat "/24"
+        Tau
+        ENOENT
+
+    79: symlink "/24" "/25"
+        Tau
+        RV_none
+    80: stat "/25"
+        Tau
+        ENOENT
+
+    82: symlink "/25" "/26"
+        Tau
+        RV_none
+    83: stat "/26"
+        Tau
+        ENOENT
+
+    85: symlink "/26" "/27"
+        Tau
+        RV_none
+    86: stat "/27"
+        Tau
+        ENOENT
+
+    88: symlink "/27" "/28"
+        Tau
+        RV_none
+    89: stat "/28"
+        Tau
+        ENOENT
+
+    91: symlink "/28" "/29"
+        Tau
+        RV_none
+    92: stat "/29"
+        Tau
+        ENOENT
+
+    94: symlink "/29" "/30"
+        Tau
+        RV_none
+    95: stat "/30"
+        Tau
+        ENOENT
+
+    97: symlink "/30" "/31"
+        Tau
+        RV_none
+    98: stat "/31"
+        Tau
+        ENOENT
+
+   100: symlink "/31" "/32"
+        Tau
+        RV_none
+   101: stat "/32"
+        Tau
+        ENOENT
+
+   103: symlink "/32" "/33"
+        Tau
+        RV_none
+   104: stat "/33"
+        Tau
+        ENOENT
+
+   106: symlink "/33" "/34"
+        Tau
+        RV_none
+   107: stat "/34"
+        Tau
+        ENOENT
+
+   109: symlink "/34" "/35"
+        Tau
+        RV_none
+   110: stat "/35"
+        Tau
+        ENOENT
+
+   112: symlink "/35" "/36"
+        Tau
+        RV_none
+   113: stat "/36"
+        Tau
+        ENOENT
+
+   115: symlink "/36" "/37"
+        Tau
+        RV_none
+   116: stat "/37"
+        Tau
+        ENOENT
+
+   118: symlink "/37" "/38"
+        Tau
+        RV_none
+   119: stat "/38"
+        Tau
+        ENOENT
+
+   121: symlink "/38" "/39"
+        Tau
+        RV_none
+   122: stat "/39"
+        Tau
+        ENOENT
+
+   124: symlink "/39" "/40"
+        Tau
+        RV_none
+   125: stat "/40"
+        Tau
+        ENOENT
+
+   127: symlink "/40" "/41"
+        Tau
+        RV_none
+   128: stat "/41"
+        Tau
+        ELOOP
+
+   130: symlink "/41" "/42"
+        Tau
+        RV_none
+   131: stat "/42"
+        Tau
+        ELOOP
+
+   133: symlink "/42" "/43"
+        Tau
+        RV_none
+   134: stat "/43"
+        Tau
+        ELOOP
+
+   136: symlink "/43" "/44"
+        Tau
+        RV_none
+   137: stat "/44"
+        Tau
+        ELOOP
+
+   139: symlink "/44" "/45"
+        Tau
+        RV_none
+   140: stat "/45"
+        Tau
+        ELOOP
+
+   142: symlink "/45" "/46"
+        Tau
+        RV_none
+   143: stat "/46"
+        Tau
+        ELOOP
+
+   145: symlink "/46" "/47"
+        Tau
+        RV_none
+   146: stat "/47"
+        Tau
+        ELOOP
+
+   148: symlink "/47" "/48"
+        Tau
+        RV_none
+   149: stat "/48"
+        Tau
+        ELOOP
+
+   151: symlink "/48" "/49"
+        Tau
+        RV_none
+   152: stat "/49"
+        Tau
+        ELOOP
+
+   154: symlink "/49" "/50"
+        Tau
+        RV_none
+   155: stat "/50"
+        Tau
+        ELOOP
+
+   157: symlink "/50" "/51"
+        Tau
+        RV_none
+   158: stat "/51"
+        Tau
+        ELOOP
+
+

@@ -1,0 +1,133 @@
+# processing file 'adhoc_symlink_cycles-int.trace' ...
+        @type trace
+        # adhoc_symlink_cycles
+
+        # cyclic links can be created, but raise ELOOP when followed
+     5: symlink "/1" "/2"
+        Tau
+        RV_none
+     6: symlink "/2" "/1"
+        Tau
+        RV_none
+     7: chdir "/1"
+        Tau
+        ELOOP
+     8: dump-result "/"
+           "/"|D|13
+           "/1"|L|"/2"
+           "/2"|L|"/1"
+        end dump-result
+     9: unlink "/1"
+        Tau
+        RV_none
+    10: unlink "/2"
+        Tau
+        RV_none
+
+        # self-cycles are still cycles
+    13: symlink "/1" "/2"
+        Tau
+        RV_none
+    14: link "/2" "/1"
+        Tau
+        RV_none
+    15: chdir "/2"
+        Tau
+        ELOOP
+    16: dump-result "/"
+           "/"|D|13
+           "/1"|L|"/1"
+           "/2"|L|"/1"
+        end dump-result
+    17: unlink "/1"
+        Tau
+        RV_none
+    18: unlink "/2"
+        Tau
+        RV_none
+
+        # introductory slides don't matter for ELOOP
+    21: symlink "/1" "/slide_1"
+        Tau
+        RV_none
+    22: symlink "/slide_1" "/slide_2"
+        Tau
+        RV_none
+    23: symlink "/slide_2" "/slide_3"
+        Tau
+        RV_none
+    24: symlink "/2" "/1"
+        Tau
+        RV_none
+    25: symlink "/1" "/2"
+        Tau
+        RV_none
+    26: chdir "/slide_3"
+        Tau
+        ELOOP
+    27: unlink "/1"
+        Tau
+        RV_none
+    28: unlink "/2"
+        Tau
+        RV_none
+    29: unlink "/slide_1"
+        Tau
+        RV_none
+    30: unlink "/slide_2"
+        Tau
+        RV_none
+    31: unlink "/slide_3"
+        Tau
+        RV_none
+    32: dump-result "/"
+           "/"|D|13
+        end dump-result
+
+        # directory loops are fine
+    35: mkdir "/mua" 0o777
+        Tau
+        RV_none
+    36: symlink "../mua" "mua/ha"
+        Tau
+        RV_none
+    37: chdir "mua/ha/ha/ha"
+        Tau
+        RV_none
+
+        # ... even multiplicative ones...
+    40: symlink "../mua/ha/ha/ha" "he"
+        Tau
+        RV_none
+    41: chdir "he/he/he"
+        Tau
+        RV_none
+    42: symlink "../mua/he/he/he" "ho"
+        Tau
+        RV_none
+    43: chdir "ho/ho/ho"
+        Tau
+        RV_none
+
+        # ... but symlinks with directory loops are not
+    46: symlink "ho/ho/ho/eloop" "eloop"
+        Tau
+        RV_none
+    47: chdir "eloop"
+        Tau
+        ELOOP
+
+    49: chdir ".."
+        Tau
+        RV_none
+
+    51: dump-result "."
+           "."|D|13
+           "./mua"|D|17
+           "./mua/eloop"|L|"ho/ho/ho/eloop"
+           "./mua/ha"|L|"../mua"
+           "./mua/he"|L|"../mua/ha/ha/ha"
+           "./mua/ho"|L|"../mua/he/he/he"
+        end dump-result
+
+

@@ -1,0 +1,63 @@
+# processing file 'exec_adhoc_link_count_dir-int.trace' ...
+        # processing file 'adhoc_link_count_dir-int.trace' ...
+        @type trace
+
+        #################################################
+        # Test link count of directories after link
+        #################################################
+
+        # a new created directory should have link count 2
+
+    10: mkdir "dir" 0o700
+    11: Tau
+    12: RV_none
+    13: stat "dir"
+    14: Tau
+    15: RV_stat { st_dev=1792; st_ino=32641; st_kind=S_IFDIR; st_perm=0o700; st_nlink=2; st_uid=0; st_gid=0; st_rdev=0; st_size=4096; }
+
+        # after linking the directory, both nodes should have link count 3
+
+    19: link "dir" "dir_hl"
+    20: Tau
+    21: EPERM
+    22: stat "dir"
+    23: Tau
+    24: RV_stat { st_dev=1792; st_ino=32641; st_kind=S_IFDIR; st_perm=0o700; st_nlink=2; st_uid=0; st_gid=0; st_rdev=0; st_size=4096; }
+    25: stat "dir_hl"
+    26: Tau
+    27: ENOENT
+
+        # keep linking the directory should keep increasing the link count
+
+    31: link "dir_hl" "dir_hl1"
+    32: Tau
+    33: ENOENT
+    34: stat "dir"
+    35: Tau
+    36: RV_stat { st_dev=1792; st_ino=32641; st_kind=S_IFDIR; st_perm=0o700; st_nlink=2; st_uid=0; st_gid=0; st_rdev=0; st_size=4096; }
+    37: stat "dir_hl"
+    38: Tau
+    39: ENOENT
+    40: stat "dir_hl1"
+    41: Tau
+    42: ENOENT
+
+    44: link "dir_hl1" "dir_hl2"
+    45: Tau
+    46: ENOENT
+    47: stat "dir"
+    48: Tau
+    49: RV_stat { st_dev=1792; st_ino=32641; st_kind=S_IFDIR; st_perm=0o700; st_nlink=2; st_uid=0; st_gid=0; st_rdev=0; st_size=4096; }
+    50: stat "dir_hl"
+    51: Tau
+    52: ENOENT
+    53: stat "dir_hl1"
+    54: Tau
+    55: ENOENT
+    56: stat "dir_hl2"
+    57: Tau
+    58: ENOENT
+
+
+
+# trace accepted

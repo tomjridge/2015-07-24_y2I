@@ -1,0 +1,60 @@
+# processing file 'adhoc_link_count_dir-int.trace' ...
+        @type trace
+
+        #################################################
+        # Test link count of directories after link
+        #################################################
+
+        # a new created directory should have link count 2
+
+     9: mkdir "dir" 0o700
+        Tau
+        RV_none
+    10: stat "dir"
+        Tau
+        RV_stat { st_dev=1792; st_ino=32641; st_kind=S_IFDIR; st_perm=0o700; st_nlink=2; st_uid=0; st_gid=0; st_rdev=0; st_size=4096; }
+
+        # after linking the directory, both nodes should have link count 3
+
+    14: link "dir" "dir_hl"
+        Tau
+        EPERM
+    15: stat "dir"
+        Tau
+        RV_stat { st_dev=1792; st_ino=32641; st_kind=S_IFDIR; st_perm=0o700; st_nlink=2; st_uid=0; st_gid=0; st_rdev=0; st_size=4096; }
+    16: stat "dir_hl"
+        Tau
+        ENOENT
+
+        # keep linking the directory should keep increasing the link count
+
+    20: link "dir_hl" "dir_hl1"
+        Tau
+        ENOENT
+    21: stat "dir"
+        Tau
+        RV_stat { st_dev=1792; st_ino=32641; st_kind=S_IFDIR; st_perm=0o700; st_nlink=2; st_uid=0; st_gid=0; st_rdev=0; st_size=4096; }
+    22: stat "dir_hl"
+        Tau
+        ENOENT
+    23: stat "dir_hl1"
+        Tau
+        ENOENT
+
+    25: link "dir_hl1" "dir_hl2"
+        Tau
+        ENOENT
+    26: stat "dir"
+        Tau
+        RV_stat { st_dev=1792; st_ino=32641; st_kind=S_IFDIR; st_perm=0o700; st_nlink=2; st_uid=0; st_gid=0; st_rdev=0; st_size=4096; }
+    27: stat "dir_hl"
+        Tau
+        ENOENT
+    28: stat "dir_hl1"
+        Tau
+        ENOENT
+    29: stat "dir_hl2"
+        Tau
+        ENOENT
+
+

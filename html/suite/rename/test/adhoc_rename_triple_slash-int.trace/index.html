@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>rename / adhoc_rename_triple_slash-int.trace</title>
+<style type="text/css">
+tr.summary { margin-top: 0.3em; margin-bottom: 0.3em }
+th.row { text-align: left }
+th.wide { border-left: 1px solid black; border-right: 1px solid black }
+td.num { text-align: right }
+td.good, th.good { color: green }
+td.bad, th.bad { color: red; font-weight: bold }
+td.warn, th.warn { color: orange; font-weight: bold }
+td.fail, th.fail { color: violet; font-weight: bold }
+tr.check td.good, tr.check td.bad, tr.check td.warn, tr.check td.fail {
+  text-align: center;
+}
+td.error { border: 2px solid red }
+td.line { vertical-align: top; text-align: right; padding-right: 1em }
+td.line:target { background-color: yellow }
+td.comment { color: gray }
+td.meta { color: green }
+td.dump table { margin: 1em; color: brown }
+td.return.label, td.process.label { padding-bottom: 1em }
+span.checked { font-size: 80% }
+td.terminated, td.diverged { border: 2px solid red }
+td.terminated { font-weight: bold; font-size: 150% }
+td.envelope { border: 2px solid green }
+div.stat table { margin-left: 1em }
+strong.fail { font-size: 120%; color: violet; }
+div.footer { font-size: 70%; color: gray; padding-top: 3em; text-align: right; }
+</style>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+</head>
+<body>
+<a href="../../index.html">Up</a><br/>
+
+  
+    <h3>Traces</h3>
+    
+  <h4>linux[3.13.0-29-generic][system[GNU C Library (GNU libc) stable release version 2.21, by Roland McGrath et al.]][ext4_loop[mke2fs 1.42.9 (4-Feb-2014)]]@[2015-07-24T13:23:26Z./nix/store/fxisrpncjn4cxxwnq2lvilriqx63s9k9-fs_test]</h4>
+  <div style="margin-bottom: 0.5em; margin-left: 1em">
+    <table>
+    <tr><th style="text-align: left">Checked Trace</th><td></td><td></td><td></td></tr>
+    <tr>
+    <th class="good">linux_spec@[/nix/store/fxisrpncjn4cxxwnq2lvilriqx63s9k9-fs_test]</th>
+    <td><a href="../../../../../ext4_loop/rename/results/check_exec_adhoc_rename_triple_slash-int.trace.sexp">sexp</a></td>
+    <td><a href="../../../../../ext4_loop/rename/results/check_exec_adhoc_rename_triple_slash-int.trace">stdout</a></td>
+    <td><a href="../../../../../ext4_loop/rename/results/check_exec_adhoc_rename_triple_slash-int.trace.err">stderr</a></td>
+  </tr>
+    </table>
+    
+    <table><tr><th>Traced Execution</th>
+      <td><a href="../../../../../ext4_loop/rename/results/exec_adhoc_rename_triple_slash-int.trace">stdout</a></td>
+      <td><a href="../../../../../ext4_loop/rename/results/exec_adhoc_rename_triple_slash-int.trace.err">stderr</a></td>
+    </tr></table>
+    
+    <table><tr><th>Script</th>
+      <td><a href="../../../../../ext4_loop/rename/adhoc_rename_triple_slash-int.trace">script</a></td>
+    </tr></table>
+  
+  
+  </div>
+
+    <h3>Combined Trace</h3>
+    <table>
+    <tr>
+    <td class="line" id="1"><a href="#1">1</a></td>
+    <td class="comment">#  processing file 'adhoc_rename_triple_slash-int.trace' ...</td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="2"><a href="#2">2</a></td>
+    <td class="meta">@type trace</td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="3"><a href="#3">3</a></td>
+    <td><br/></td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="4"><a href="#4">4</a></td>
+    <td class="comment"># ################################</td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="5"><a href="#5">5</a></td>
+    <td class="comment">#  Test triple slash with a rename</td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="6"><a href="#6">6</a></td>
+    <td class="comment"># ################################</td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="7"><a href="#7">7</a></td>
+    <td><br/></td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="8"><a href="#8">8</a></td>
+    <td class="comment">#  Test1</td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="9"><a href="#9">9</a></td>
+    <td class="call label">mkdir &quot;////ciao&quot; 0o775</td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="10"><a href="#10">10</a></td>
+    <td class="tau label">Tau</td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="11"><a href="#11">11</a></td>
+    <td class="return label">RV_none</td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="12"><a href="#12">12</a></td>
+    <td class="call label">rename &quot;///ciao&quot; &quot;mydir&quot;</td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="13"><a href="#13">13</a></td>
+    <td class="tau label">Tau</td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="14"><a href="#14">14</a></td>
+    <td class="return label">RV_none</td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="15"><a href="#15">15</a></td>
+    <td><br/></td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="16"><a href="#16">16</a></td>
+    <td class="comment">#  Test2</td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="17"><a href="#17">17</a></td>
+    <td class="call label">rename &quot;////&quot; &quot;mydir&quot;</td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="18"><a href="#18">18</a></td>
+    <td class="tau label">Tau</td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="19"><a href="#19">19</a></td>
+    <td class="return label">EBUSY</td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="20"><a href="#20">20</a></td>
+    <td><br/></td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="21"><a href="#21">21</a></td>
+    <td class="comment">#  Test3</td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="22"><a href="#22">22</a></td>
+    <td class="call label">rename &quot;///&quot; &quot;mydir&quot;</td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="23"><a href="#23">23</a></td>
+    <td class="tau label">Tau</td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="24"><a href="#24">24</a></td>
+    <td class="return label">EBUSY</td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="25"><a href="#25">25</a></td>
+    <td><br/></td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="26"><a href="#26">26</a></td>
+    
+    <td class="dump">dump-result /
+    <table>
+    <tr>
+      <td>/</td>
+      <td>D</td>
+      <td>32641</td>
+      <td></td>
+      <td></td>
+    </tr><tr>
+      <td>/mydir</td>
+      <td>D</td>
+      <td>32642</td>
+      <td></td>
+      <td></td>
+    </tr>
+    </table></td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="27"><a href="#27">27</a></td>
+    <td><br/></td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="28"><a href="#28">28</a></td>
+    <td><br/></td>
+    </tr>
+  </table>
+  
+  
+<div class="footer">
+  Generated by <em>fs_test html</em> <strong>/nix/store/fxisrpncjn4cxxwnq2lvilriqx63s9k9-fs_test</strong>
+</div>
+</body>
+</html>

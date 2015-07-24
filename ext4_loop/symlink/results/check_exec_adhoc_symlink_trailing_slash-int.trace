@@ -1,0 +1,140 @@
+# processing file 'exec_adhoc_symlink_trailing_slash-int.trace' ...
+        # processing file 'adhoc_symlink_trailing_slash-int.trace' ...
+        @type trace
+        # adhoc_symlink_trailing_slash
+
+     5: mkdir "/dir_bk9" 0o777
+     6: Tau
+     7: RV_none
+
+     9: open "/dir_bk9/f1.txt" [O_CREAT;O_RDWR] 0o666
+    10: Tau
+    11: RV_num(3)
+    12: write! (FD 3) "content of /dir_bk9/f1.txt" 26
+    13: Tau
+    14: RV_num(26)
+    15: close (FD 3)
+    16: Tau
+    17: RV_none
+
+    19: open "/dir_bk9/f2.txt" [O_CREAT;O_RDWR] 0o666
+    20: Tau
+    21: RV_num(3)
+    22: write! (FD 3) "content of /dir_bk9/f2.txt" 26
+    23: Tau
+    24: RV_num(26)
+    25: close (FD 3)
+    26: Tau
+    27: RV_none
+
+        # symlink contains no trailing slash
+    30: symlink "f1.txt" "/dir_bk9/sl_f1.txt"
+    31: Tau
+    32: RV_none
+    33: stat "/dir_bk9/sl_f1.txt"
+    34: Tau
+    35: RV_stat { st_dev=1792; st_ino=13; st_kind=S_IFREG; st_perm=0o644; st_nlink=1; st_uid=0; st_gid=0; st_rdev=0; st_size=26; }
+    36: stat "/dir_bk9/sl_f1.txt/"
+    37: Tau
+    38: ENOTDIR
+    39: lstat "/dir_bk9/sl_f1.txt"
+    40: Tau
+    41: RV_stat { st_dev=1792; st_ino=18; st_kind=S_IFLNK; st_perm=0o777; st_nlink=1; st_uid=0; st_gid=0; st_rdev=0; st_size=6; }
+    42: lstat "/dir_bk9/sl_f1.txt/"
+    43: Tau
+    44: ENOTDIR
+
+        # symlink contains trailing slash
+    47: symlink "f1.txt/" "/dir_bk9/sl_f1_a.txt"
+    48: Tau
+    49: RV_none
+    50: stat "/dir_bk9/sl_f1_a.txt"
+    51: Tau
+    52: ENOTDIR
+    53: stat "/dir_bk9/sl_f1_a.txt/"
+    54: Tau
+    55: ENOTDIR
+    56: lstat "/dir_bk9/sl_f1_a.txt"
+    57: Tau
+    58: RV_stat { st_dev=1792; st_ino=19; st_kind=S_IFLNK; st_perm=0o777; st_nlink=1; st_uid=0; st_gid=0; st_rdev=0; st_size=7; }
+    59: lstat "/dir_bk9/sl_f1_a.txt/"
+    60: Tau
+    61: ENOTDIR
+
+        # symlink contains relative path to another symlink
+    64: symlink "sl_f1.txt" "/dir_bk9/sl_f1_b.txt"
+    65: Tau
+    66: RV_none
+    67: stat "/dir_bk9/sl_f1_b.txt"
+    68: Tau
+    69: RV_stat { st_dev=1792; st_ino=13; st_kind=S_IFREG; st_perm=0o644; st_nlink=1; st_uid=0; st_gid=0; st_rdev=0; st_size=26; }
+    70: stat "/dir_bk9/sl_f1_b.txt/"
+    71: Tau
+    72: ENOTDIR
+    73: lstat "/dir_bk9/sl_f1_b.txt"
+    74: Tau
+    75: RV_stat { st_dev=1792; st_ino=20; st_kind=S_IFLNK; st_perm=0o777; st_nlink=1; st_uid=0; st_gid=0; st_rdev=0; st_size=9; }
+    76: lstat "/dir_bk9/sl_f1_b.txt/"
+    77: Tau
+    78: ENOTDIR
+
+        # symlink contains relative path with trailing slash to another symlink 
+    81: symlink "sl_f1.txt/" "/dir_bk9/sl_f1_c.txt"
+    82: Tau
+    83: RV_none
+    84: stat "/dir_bk9/sl_f1_c.txt"
+    85: Tau
+    86: ENOTDIR
+    87: stat "/dir_bk9/sl_f1_c.txt/"
+    88: Tau
+    89: ENOTDIR
+    90: lstat "/dir_bk9/sl_f1_c.txt"
+    91: Tau
+    92: RV_stat { st_dev=1792; st_ino=21; st_kind=S_IFLNK; st_perm=0o777; st_nlink=1; st_uid=0; st_gid=0; st_rdev=0; st_size=10; }
+    93: lstat "/dir_bk9/sl_f1_c.txt/"
+    94: Tau
+    95: ENOTDIR
+
+        # creation through symlinks
+
+    99: symlink "not_there" "/sl_nt.txt"
+   100: Tau
+   101: RV_none
+   102: open_close "/sl_nt.txt/" [O_CREAT;O_RDWR] 0o666
+   103: Tau
+   104: EISDIR
+   105: open_close "/sl_nt.txt" [O_CREAT;O_RDWR] 0o666
+   106: Tau
+   107: RV_none
+
+   109: symlink "/dir_bk9" "/dir_sl"
+   110: Tau
+   111: RV_none
+
+   113: chdir "/dir_sl"
+   114: Tau
+   115: RV_none
+   116: chdir "/dir_sl/"
+   117: Tau
+   118: RV_none
+   119: open_close "f1.txt" [O_RDONLY]
+   120: Tau
+   121: RV_none
+
+   123: dump-result "/"
+           "/"|D|17
+           "/dir_sl"|L|"/dir_bk9"
+           "/not_there"|F|23|0|"da39a3ee5e6b4b0d3255bfef95601890afd80709"
+           "/sl_nt.txt"|L|"not_there"
+           "/dir_bk9"|D|32641
+           "/dir_bk9/f1.txt"|F|13|26|"495f17ad6b08a2344c90d83405f98b8c35e061d8"
+           "/dir_bk9/f2.txt"|F|16|26|"f3573105d2818205be1f4d7472b0e69dde03768c"
+           "/dir_bk9/sl_f1.txt"|L|"f1.txt"
+           "/dir_bk9/sl_f1_a.txt"|L|"f1.txt/"
+           "/dir_bk9/sl_f1_b.txt"|L|"sl_f1.txt"
+           "/dir_bk9/sl_f1_c.txt"|L|"sl_f1.txt/"
+        end dump-result
+
+
+
+# trace accepted

@@ -1,0 +1,148 @@
+# processing file 'adhoc_file_descriptor_change_tests-int.trace' ...
+        @type trace
+        # Tests for a file underlying a file-descriptor
+        # being modified while the descriptor is open
+
+        # create a file with some content
+     6: open "f1.txt" [O_CREAT;O_RDWR] 0o644
+        Tau
+        RV_num(3)
+     7: write! (FD 3) "0123456789" 10
+        Tau
+        RV_num(10)
+
+     9: open "f1.txt" [O_RDONLY]
+        Tau
+        RV_num(4)
+        # check we are at the beginning
+    11: read! (FD 4) 100
+        Tau
+        RV_bytes("0123456789")
+
+        # check lseek to FD 4 does not affect FD 3
+    14: lseek (FD 4) 0 SEEK_SET
+        Tau
+        RV_num(0)
+    15: write! (FD 3) "AB" 2
+        Tau
+        RV_num(2)
+
+        # but content is present in both
+    18: pread! (FD 3) 100 0
+        Tau
+        RV_bytes("0123456789AB")
+    19: pread! (FD 4) 100 0
+        Tau
+        RV_bytes("0123456789AB")
+
+    21: close (FD 3)
+        Tau
+        RV_none
+    22: close (FD 4)
+        Tau
+        RV_none
+
+
+
+        # open f1, then delete it
+    27: open "f1.txt" [O_RDWR]
+        Tau
+        RV_num(3)
+    28: open "f1.txt" [O_RDONLY]
+        Tau
+        RV_num(4)
+    29: unlink "f1.txt"
+        Tau
+        RV_none
+    30: pread! (FD 3) 100 0
+        Tau
+        RV_bytes("0123456789AB")
+    31: pread! (FD 4) 100 0
+        Tau
+        RV_bytes("0123456789AB")
+
+    33: open_close "f1.txt" [O_RDONLY]
+        Tau
+        ENOENT
+
+    35: open "f1.txt" [O_EXCL;O_CREAT;O_RDWR] 0o644
+        Tau
+        RV_num(5)
+    36: read! (FD 5) 100
+        Tau
+        RV_bytes("")
+    37: write! (FD 5) "can't stop, won't stop" 22
+        Tau
+        RV_num(22)
+    38: close (FD 5)
+        Tau
+        RV_none
+
+    40: pwrite! (FD 3) "___" 3 3
+        Tau
+        RV_num(3)
+
+    42: close (FD 3)
+        Tau
+        RV_none
+
+    44: pread! (FD 4) 100 0
+        Tau
+        RV_bytes("012___6789AB")
+    45: close (FD 4)
+        Tau
+        RV_none
+
+    47: open "f1.txt" [O_RDONLY] 0o644
+        Tau
+        RV_num(3)
+    48: read! (FD 3) 100
+        Tau
+        RV_bytes("can't stop, won't stop")
+    49: close (FD 3)
+        Tau
+        RV_none
+
+    51: unlink "f1.txt"
+        Tau
+        RV_none
+
+        # open f1, then rename it
+    54: open "f1.txt" [O_CREAT;O_RDWR] 0o644
+        Tau
+        RV_num(3)
+    55: write! (FD 3) "0123456789" 10
+        Tau
+        RV_num(10)
+    56: close (FD 3)
+        Tau
+        RV_none
+
+    58: open "f1.txt" [O_RDONLY]
+        Tau
+        RV_num(3)
+    59: rename "f1.txt" "f2.txt"
+        Tau
+        RV_none
+    60: pread! (FD 3) 100 0
+        Tau
+        RV_bytes("0123456789")
+
+    62: open_close "f1.txt" [O_RDONLY]
+        Tau
+        ENOENT
+    63: open "f2.txt" [O_RDONLY]
+        Tau
+        RV_num(4)
+    64: pread! (FD 4) 100 0
+        Tau
+        RV_bytes("0123456789")
+    65: close (FD 4)
+        Tau
+        RV_none
+    66: close (FD 3)
+        Tau
+        RV_none
+
+
+

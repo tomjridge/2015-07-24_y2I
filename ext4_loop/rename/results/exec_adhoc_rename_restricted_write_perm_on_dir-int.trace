@@ -1,0 +1,57 @@
+# processing file 'adhoc_rename_restricted_write_perm_on_dir-int.trace' ...
+        @type trace
+
+
+        #####################################
+
+        # Test restricted delete permissions rsrc
+
+        #####################################
+
+
+    11: Pid 2 -> create (User_id 1) (Group_id 0)
+
+    13: chmod "/" 0o1777
+        Tau
+        RV_none
+
+    15: Pid 2 -> mkdir "/empty_dir1" 0o1777
+        Tau
+        Pid 2 <- RV_none
+
+    17: Pid 1 -> chown "/empty_dir1" (User_id 2) (Group_id 0)
+        Tau
+        Pid 1 <- RV_none
+
+    19: Pid 2 -> rename "/empty_dir1" "/mydir"
+        Tau
+        Pid 2 <- EPERM
+
+
+        #####################################
+
+        # Test restricted delete permissions parent dir of rdst
+
+        #####################################
+
+
+    29: Pid 1 -> open_close "/f.txt" [O_RDONLY;O_CREAT] 0o666
+        Tau
+        Pid 1 <- RV_none
+
+    31: Pid 2 -> mkdir "/empty_dir2" 0o777
+        Tau
+        Pid 2 <- RV_none
+
+    33: Pid 2 -> rename "/f.txt" "/empty_dir1"
+        Tau
+        Pid 2 <- EPERM
+
+    35: dump-result "/"
+           "/"|D|32644
+           "/f.txt"|F|13|0|"da39a3ee5e6b4b0d3255bfef95601890afd80709"
+           "/empty_dir1"|D|65286
+           "/empty_dir2"|D|32641
+        end dump-result
+
+

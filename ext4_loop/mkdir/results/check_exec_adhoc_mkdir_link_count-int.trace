@@ -1,0 +1,67 @@
+# processing file 'exec_adhoc_mkdir_link_count-int.trace' ...
+        # processing file 'adhoc_mkdir_link_count-int.trace' ...
+        @type trace
+
+        ###########################################
+        # Test link count of files after mkdir
+        ###########################################
+
+        # root should have link count 1
+     9: stat "/"
+    10: Tau
+    11: RV_stat { st_dev=1792; st_ino=32644; st_kind=S_IFDIR; st_perm=0o777; st_nlink=2; st_uid=0; st_gid=0; st_rdev=0; st_size=4096; }
+# 
+# Fatal error:     11: RV_stat { st_dev=1792; st_ino=32644; st_kind=S_IFDIR; st_perm=0o777; st_nlink=2; st_uid=0; st_gid=0; st_rdev=0; st_size=4096; }
+#    no result states
+# 
+# Error: 
+#    !!! EXCEPT CHECKLIB DOES NOT AGREE !!!
+# 
+# Error: 
+#    The spec permitted:
+# RV_stat { st_dev=2049; st_ino=0; st_kind=S_IFDIR; st_perm=0o777; st_nlink=1; st_uid=0; st_gid=0; st_rdev=0; st_size=9999; }
+# 
+# Error:     11: RV_stat { st_dev=1792; st_ino=32644; st_kind=S_IFDIR; st_perm=0o777; st_nlink=2; st_uid=0; st_gid=0; st_rdev=0; st_size=4096; }
+#    unexpected results: RV_stat { st_dev=1792; st_ino=32644; st_kind=S_IFDIR; st_perm=0o777; st_nlink=2; st_uid=0; st_gid=0; st_rdev=0; st_size=4096; }
+#    allowed are only: RV_stat { st_dev=2049; st_ino=0; st_kind=S_IFDIR; st_perm=0o777; st_nlink=1; st_uid=0; st_gid=0; st_rdev=0; st_size=9999; }
+#    continuing execution with RV_stat { st_dev=2049; st_ino=0; st_kind=S_IFDIR; st_perm=0o777; st_nlink=1; st_uid=0; st_gid=0; st_rdev=0; st_size=9999; }
+
+        # a new dir should have link count 2
+
+    15: mkdir "/dir1" 0o777
+    16: Tau
+    17: RV_none
+    18: stat "/dir1"
+    19: Tau
+    20: RV_stat { st_dev=1792; st_ino=65281; st_kind=S_IFDIR; st_perm=0o755; st_nlink=2; st_uid=0; st_gid=0; st_rdev=0; st_size=4096; }
+
+        # adding a subdir should increase the link count of the dir
+
+    24: mkdir "/dir1/subdir1" 0o777
+    25: Tau
+    26: RV_none
+    27: stat "/dir1"
+    28: Tau
+    29: RV_stat { st_dev=1792; st_ino=65281; st_kind=S_IFDIR; st_perm=0o755; st_nlink=3; st_uid=0; st_gid=0; st_rdev=0; st_size=4096; }
+    30: stat "/dir1/subdir1"
+    31: Tau
+    32: RV_stat { st_dev=1792; st_ino=65282; st_kind=S_IFDIR; st_perm=0o755; st_nlink=2; st_uid=0; st_gid=0; st_rdev=0; st_size=4096; }
+
+        # adding a subsubdir should leave the link count unaltered of the dir
+
+    36: mkdir "/dir1/subdir1/subsbudir1" 0o777
+    37: Tau
+    38: RV_none
+    39: stat "/dir1"
+    40: Tau
+    41: RV_stat { st_dev=1792; st_ino=65281; st_kind=S_IFDIR; st_perm=0o755; st_nlink=3; st_uid=0; st_gid=0; st_rdev=0; st_size=4096; }
+    42: stat "/dir1/subdir1"
+    43: Tau
+    44: RV_stat { st_dev=1792; st_ino=65282; st_kind=S_IFDIR; st_perm=0o755; st_nlink=3; st_uid=0; st_gid=0; st_rdev=0; st_size=4096; }
+    45: stat "/dir1/subdir1/subsbudir1"
+    46: Tau
+    47: RV_stat { st_dev=1792; st_ino=65283; st_kind=S_IFDIR; st_perm=0o755; st_nlink=2; st_uid=0; st_gid=0; st_rdev=0; st_size=4096; }
+
+
+
+# trace not accepted

@@ -1,0 +1,435 @@
+
+Fatal error:     18: EINVAL
+   no result states
+
+Error: 
+   !!! EXCEPT CHECKLIB DOES NOT AGREE !!!
+
+Error: 
+   The spec permitted:
+EBUSY
+
+Error:     18: EINVAL
+   unexpected results: EINVAL
+   allowed are only: EBUSY
+   continuing execution with EBUSY
+
+Fatal error:     21: ENOTEMPTY
+   no result states
+
+Error: 
+   !!! EXCEPT CHECKLIB DOES NOT AGREE !!!
+
+Error: 
+   The spec permitted:
+EBUSY
+
+Error:     21: ENOTEMPTY
+   unexpected results: ENOTEMPTY
+   allowed are only: EBUSY
+   continuing execution with EBUSY
+
+Fatal error:     24: EINVAL
+   no result states
+
+Error: 
+   !!! EXCEPT CHECKLIB DOES NOT AGREE !!!
+
+Error: 
+   The spec permitted:
+EBUSY
+
+Error:     24: EINVAL
+   unexpected results: EINVAL
+   allowed are only: EBUSY
+   continuing execution with EBUSY
+
+Fatal error:     27: ENOTEMPTY
+   no result states
+
+Error: 
+   !!! EXCEPT CHECKLIB DOES NOT AGREE !!!
+
+Error: 
+   The spec permitted:
+EBUSY
+
+Error:     27: ENOTEMPTY
+   unexpected results: ENOTEMPTY
+   allowed are only: EBUSY
+   continuing execution with EBUSY
+
+Fatal error:     30: EINVAL
+   no result states
+
+Error: 
+   !!! EXCEPT CHECKLIB DOES NOT AGREE !!!
+
+Error: 
+   The spec permitted:
+EBUSY
+
+Error:     30: EINVAL
+   unexpected results: EINVAL
+   allowed are only: EBUSY
+   continuing execution with EBUSY
+
+Fatal error:     33: ENOTEMPTY
+   no result states
+
+Error: 
+   !!! EXCEPT CHECKLIB DOES NOT AGREE !!!
+
+Error: 
+   The spec permitted:
+EBUSY
+
+Error:     33: ENOTEMPTY
+   unexpected results: ENOTEMPTY
+   allowed are only: EBUSY
+   continuing execution with EBUSY
+
+Fatal error:     37: EINVAL
+   no result states
+
+Error: 
+   !!! EXCEPT CHECKLIB DOES NOT AGREE !!!
+
+Error: 
+   The spec permitted:
+EBUSY
+
+Error:     37: EINVAL
+   unexpected results: EINVAL
+   allowed are only: EBUSY
+   continuing execution with EBUSY
+
+Fatal error:     40: EINVAL
+   no result states
+
+Error: 
+   !!! EXCEPT CHECKLIB DOES NOT AGREE !!!
+
+Error: 
+   The spec permitted:
+EBUSY
+
+Error:     40: EINVAL
+   unexpected results: EINVAL
+   allowed are only: EBUSY
+   continuing execution with EBUSY
+
+Fatal error:     43: EINVAL
+   no result states
+
+Error: 
+   !!! EXCEPT CHECKLIB DOES NOT AGREE !!!
+
+Error: 
+   The spec permitted:
+EBUSY
+
+Error:     43: EINVAL
+   unexpected results: EINVAL
+   allowed are only: EBUSY
+   continuing execution with EBUSY
+
+Fatal error:     46: ENOTEMPTY
+   no result states
+
+Error: 
+   !!! EXCEPT CHECKLIB DOES NOT AGREE !!!
+
+Error: 
+   The spec permitted:
+EBUSY
+
+Error:     46: ENOTEMPTY
+   unexpected results: ENOTEMPTY
+   allowed are only: EBUSY
+   continuing execution with EBUSY
+
+Fatal error:     49: ENOTEMPTY
+   no result states
+
+Error: 
+   !!! EXCEPT CHECKLIB DOES NOT AGREE !!!
+
+Error: 
+   The spec permitted:
+EBUSY
+
+Error:     49: ENOTEMPTY
+   unexpected results: ENOTEMPTY
+   allowed are only: EBUSY
+   continuing execution with EBUSY
+
+Fatal error:     52: ENOTEMPTY
+   no result states
+
+Error: 
+   !!! EXCEPT CHECKLIB DOES NOT AGREE !!!
+
+Error: 
+   The spec permitted:
+EBUSY
+
+Error:     52: ENOTEMPTY
+   unexpected results: ENOTEMPTY
+   allowed are only: EBUSY
+   continuing execution with EBUSY
+
+Fatal error:     56: ENOTEMPTY
+   no result states
+
+Error: 
+   !!! EXCEPT CHECKLIB DOES NOT AGREE !!!
+
+Error: 
+   The spec permitted:
+EBUSY
+
+Error:     56: ENOTEMPTY
+   unexpected results: ENOTEMPTY
+   allowed are only: EBUSY
+   continuing execution with EBUSY
+
+Fatal error:     59: ENOTEMPTY
+   no result states
+
+Error: 
+   !!! EXCEPT CHECKLIB DOES NOT AGREE !!!
+
+Error: 
+   The spec permitted:
+EBUSY
+
+Error:     59: ENOTEMPTY
+   unexpected results: ENOTEMPTY
+   allowed are only: EBUSY
+   continuing execution with EBUSY
+
+Fatal error:     62: ENOTEMPTY
+   no result states
+
+Error: 
+   !!! EXCEPT CHECKLIB DOES NOT AGREE !!!
+
+Error: 
+   The spec permitted:
+EBUSY
+
+Error:     62: ENOTEMPTY
+   unexpected results: ENOTEMPTY
+   allowed are only: EBUSY
+   continuing execution with EBUSY
+
+Fatal error:     65: ENOTEMPTY
+   no result states
+
+Error: 
+   !!! EXCEPT CHECKLIB DOES NOT AGREE !!!
+
+Error: 
+   The spec permitted:
+EBUSY
+
+Error:     65: ENOTEMPTY
+   unexpected results: ENOTEMPTY
+   allowed are only: EBUSY
+   continuing execution with EBUSY
+
+Fatal error:     69: EINVAL
+   no result states
+
+Error: 
+   !!! EXCEPT CHECKLIB DOES NOT AGREE !!!
+
+Error: 
+   The spec permitted:
+EBUSY
+
+Error:     69: EINVAL
+   unexpected results: EINVAL
+   allowed are only: EBUSY
+   continuing execution with EBUSY
+
+Fatal error:     72: EINVAL
+   no result states
+
+Error: 
+   !!! EXCEPT CHECKLIB DOES NOT AGREE !!!
+
+Error: 
+   The spec permitted:
+EBUSY
+
+Error:     72: EINVAL
+   unexpected results: EINVAL
+   allowed are only: EBUSY
+   continuing execution with EBUSY
+
+Fatal error:     75: EINVAL
+   no result states
+
+Error: 
+   !!! EXCEPT CHECKLIB DOES NOT AGREE !!!
+
+Error: 
+   The spec permitted:
+EBUSY
+
+Error:     75: EINVAL
+   unexpected results: EINVAL
+   allowed are only: EBUSY
+   continuing execution with EBUSY
+
+Fatal error:     78: EINVAL
+   no result states
+
+Error: 
+   !!! EXCEPT CHECKLIB DOES NOT AGREE !!!
+
+Error: 
+   The spec permitted:
+EBUSY
+
+Error:     78: EINVAL
+   unexpected results: EINVAL
+   allowed are only: EBUSY
+   continuing execution with EBUSY
+
+Fatal error:     82: EINVAL
+   no result states
+
+Error: 
+   !!! EXCEPT CHECKLIB DOES NOT AGREE !!!
+
+Error: 
+   The spec permitted:
+EBUSY
+
+Error:     82: EINVAL
+   unexpected results: EINVAL
+   allowed are only: EBUSY
+   continuing execution with EBUSY
+
+Fatal error:     85: EINVAL
+   no result states
+
+Error: 
+   !!! EXCEPT CHECKLIB DOES NOT AGREE !!!
+
+Error: 
+   The spec permitted:
+EBUSY
+
+Error:     85: EINVAL
+   unexpected results: EINVAL
+   allowed are only: EBUSY
+   continuing execution with EBUSY
+
+Fatal error:     88: EINVAL
+   no result states
+
+Error: 
+   !!! EXCEPT CHECKLIB DOES NOT AGREE !!!
+
+Error: 
+   The spec permitted:
+EBUSY
+
+Error:     88: EINVAL
+   unexpected results: EINVAL
+   allowed are only: EBUSY
+   continuing execution with EBUSY
+
+Fatal error:     92: ENOTEMPTY
+   no result states
+
+Error: 
+   !!! EXCEPT CHECKLIB DOES NOT AGREE !!!
+
+Error: 
+   The spec permitted:
+EBUSY
+
+Error:     92: ENOTEMPTY
+   unexpected results: ENOTEMPTY
+   allowed are only: EBUSY
+   continuing execution with EBUSY
+
+Fatal error:     95: ENOTEMPTY
+   no result states
+
+Error: 
+   !!! EXCEPT CHECKLIB DOES NOT AGREE !!!
+
+Error: 
+   The spec permitted:
+EBUSY
+
+Error:     95: ENOTEMPTY
+   unexpected results: ENOTEMPTY
+   allowed are only: EBUSY
+   continuing execution with EBUSY
+
+Fatal error:     98: ENOTEMPTY
+   no result states
+
+Error: 
+   !!! EXCEPT CHECKLIB DOES NOT AGREE !!!
+
+Error: 
+   The spec permitted:
+EBUSY
+
+Error:     98: ENOTEMPTY
+   unexpected results: ENOTEMPTY
+   allowed are only: EBUSY
+   continuing execution with EBUSY
+
+Fatal error:    102: ENOTEMPTY
+   no result states
+
+Error: 
+   !!! EXCEPT CHECKLIB DOES NOT AGREE !!!
+
+Error: 
+   The spec permitted:
+EBUSY
+
+Error:    102: ENOTEMPTY
+   unexpected results: ENOTEMPTY
+   allowed are only: EBUSY
+   continuing execution with EBUSY
+
+Fatal error:    105: ENOTEMPTY
+   no result states
+
+Error: 
+   !!! EXCEPT CHECKLIB DOES NOT AGREE !!!
+
+Error: 
+   The spec permitted:
+EBUSY
+
+Error:    105: ENOTEMPTY
+   unexpected results: ENOTEMPTY
+   allowed are only: EBUSY
+   continuing execution with EBUSY
+
+Fatal error:    108: ENOTEMPTY
+   no result states
+
+Error: 
+   !!! EXCEPT CHECKLIB DOES NOT AGREE !!!
+
+Error: 
+   The spec permitted:
+EBUSY
+
+Error:    108: ENOTEMPTY
+   unexpected results: ENOTEMPTY
+   allowed are only: EBUSY
+   continuing execution with EBUSY

@@ -1,0 +1,16 @@
+< id -u -n
+< id -g -n
+< uname -s
++ mkdir "-p" "/tmp/fs_test"
+$ Acquired lock /tmp/fs_test/pw.lock
+? useradd "-s" "/bin/false" "fs_user_0"
+$ Released lock /tmp/fs_test/pw.lock
+3389 creating agent 4120
+3389 creating agent 4121
+$ Acquired lock /tmp/fs_test/pw.lock
+? useradd "-s" "/bin/false" "fs_user_1"
+$ Released lock /tmp/fs_test/pw.lock
+3389 stopping agent 4121
+3389 stopping agent 4120
++ userdel "fs_user_0"
++ userdel "fs_user_1"

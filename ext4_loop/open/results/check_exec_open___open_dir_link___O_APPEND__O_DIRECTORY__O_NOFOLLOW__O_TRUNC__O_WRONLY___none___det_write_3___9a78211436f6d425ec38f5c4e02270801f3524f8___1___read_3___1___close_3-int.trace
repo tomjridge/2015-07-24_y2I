@@ -1,0 +1,65 @@
+# processing file 'exec_open___open_dir_link___O_APPEND__O_DIRECTORY__O_NOFOLLOW__O_TRUNC__O_WRONLY___none___det_write_3___9a78211436f6d425ec38f5c4e02270801f3524f8___1___read_3___1___close_3-int.trace' ...
+        # processing file 'open___open_dir_link___O_APPEND__O_DIRECTORY__O_NOFOLLOW__O_TRUNC__O_WRONLY___none___det_write_3___9a78211436f6d425ec38f5c4e02270801f3524f8___1___read_3___1___close_3-int.trace' ...
+        @type trace
+        #####################################
+        # Test open___open_dir_link___O_APPEND__O_DIRECTORY__O_NOFOLLOW__O_TRUNC__O_WRONLY___none___det_write_3___9a78211436f6d425ec38f5c4e02270801f3524f8___1___read_3___1___close_3
+        #####################################
+     6: mkdir "empty_dir" 0o777
+     7: Tau
+     8: RV_none
+     9: mkdir "nonempty_dir" 0o777
+    10: Tau
+    11: RV_none
+    12: open_close "nonempty_dir/f1.txt" [O_CREAT;O_WRONLY] 0o666
+    13: Tau
+    14: RV_none
+    15: open "nonempty_dir/f2.txt" [O_CREAT;O_WRONLY] 0o666
+    16: Tau
+    17: RV_num(3)
+    18: write! (FD 3) "Lorem ipsum dolor sit amet, co" 30
+    19: Tau
+    20: RV_num(30)
+    21: close (FD 3)
+    22: Tau
+    23: RV_none
+    24: symlink "nonempty_dir/f2.txt" "f3_sl.txt"
+    25: Tau
+    26: RV_none
+    27: symlink "broken" "broken_sl"
+    28: Tau
+    29: RV_none
+    30: link "nonempty_dir/f4.txt" "f4_link.txt"
+    31: Tau
+    32: ENOENT
+    33: link "nonempty_dir" "dir_link"
+    34: Tau
+    35: EPERM
+
+    37: open "dir_link" [O_TRUNC;O_NOFOLLOW;O_DIRECTORY;O_APPEND;O_WRONLY]
+    38: Tau
+    39: ENOENT
+    40: write! (FD 3) "@" 1
+    41: Tau
+    42: EBADF
+    43: read (FD 3) 1
+    44: Tau
+    45: EBADF
+    46: close (FD 3)
+    47: Tau
+    48: EBADF
+
+    50: dump-result "/"
+           "/"|D|32641
+           "/broken_sl"|L|"broken"
+           "/f3_sl.txt"|L|"nonempty_dir/f2.txt"
+           "/empty_dir"|D|65281
+           "/nonempty_dir"|D|65282
+           "/nonempty_dir/f1.txt"|F|20|0|"da39a3ee5e6b4b0d3255bfef95601890afd80709"
+           "/nonempty_dir/f2.txt"|F|21|30|"e88ee12dedd1a9c6d9e9e5dea1a43e510dede7d5"
+        end dump-result
+
+
+
+
+
+# trace accepted

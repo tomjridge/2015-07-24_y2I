@@ -1,0 +1,64 @@
+# processing file 'exec_perm_other_open_007-int.trace' ...
+        # processing file 'perm_other_open_007-int.trace' ...
+        @type trace
+        #####################################
+        # Test perm_other_open_007
+        #####################################
+
+     7: Pid 2 -> create (User_id 1) (Group_id 1)
+     8: add_user_to_group (User_id 1) (Group_id 1)
+     9: Tau
+    10: RV_none
+    11: Pid 2 -> umask 0o000
+    12: Tau
+    13: Pid 2 <- RV_file_perm(0o022)
+
+    15: Pid 3 -> create (User_id 2) (Group_id 2)
+    16: add_user_to_group (User_id 2) (Group_id 2)
+    17: Tau
+    18: RV_none
+    19: Pid 3 -> umask 0o000
+    20: Tau
+    21: Pid 3 <- RV_file_perm(0o022)
+
+    23: Pid 2 -> mkdir "/d" 0o755
+    24: Tau
+    25: Pid 2 <- RV_none
+    26: Pid 2 -> open_close "/d/f" [O_CREAT;O_RDWR] 0o007
+    27: Tau
+    28: Pid 2 <- RV_none
+    29: Pid 2 -> chown "/d/f" (User_id 1) (Group_id 1)
+    30: Tau
+    31: Pid 2 <- RV_none
+
+    33: Pid 3 -> open_close "/d/f" [O_RDONLY]
+    34: Tau
+    35: Pid 3 <- RV_none
+    36: Pid 3 -> open_close "/d/f" [O_WRONLY]
+    37: Tau
+    38: Pid 3 <- RV_none
+    39: Pid 3 -> open_close "/d/f" [O_RDWR]
+    40: Tau
+    41: Pid 3 <- RV_none
+    42: Pid 3 -> open_close "/d/f" [O_RDONLY;O_TRUNC]
+    43: Tau
+    44: Pid 3 <- RV_none
+    45: Pid 3 -> open_close "/d/f" [O_TRUNC;O_WRONLY]
+    46: Tau
+    47: Pid 3 <- RV_none
+    48: Pid 3 -> open_close "/d/f" [O_RDONLY;O_APPEND]
+    49: Tau
+    50: Pid 3 <- RV_none
+    51: Pid 3 -> open_close "/d/f" [O_APPEND;O_WRONLY]
+    52: Tau
+    53: Pid 3 <- RV_none
+
+    55: dump-result "/"
+           "/"|D|32641
+           "/d"|D|32644
+           "/d/f"|F|14|0|"da39a3ee5e6b4b0d3255bfef95601890afd80709"
+        end dump-result
+
+
+
+# trace accepted

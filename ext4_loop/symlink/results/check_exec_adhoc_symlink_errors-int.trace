@@ -1,0 +1,61 @@
+# processing file 'exec_adhoc_symlink_errors-int.trace' ...
+        # processing file 'adhoc_symlink_errors-int.trace' ...
+        @type trace
+        # adhoc_symlink_errors
+
+     5: mkdir "/dir" 0o777
+     6: Tau
+     7: RV_none
+
+     9: symlink "/dir" ""
+    10: Tau
+    11: ENOENT
+    12: readlink ""
+    13: Tau
+    14: ENOENT
+
+    16: symlink "/dir" "."
+    17: Tau
+    18: EEXIST
+    19: readlink "."
+    20: Tau
+    21: EINVAL
+
+    23: symlink "/dir" ".."
+    24: Tau
+    25: EEXIST
+    26: readlink ".."
+    27: Tau
+    28: EINVAL
+
+    30: symlink "/dir" "./."
+    31: Tau
+    32: EEXIST
+    33: readlink "./."
+    34: Tau
+    35: EINVAL
+
+    37: symlink "/dir" "/"
+    38: Tau
+    39: EEXIST
+    40: readlink "/"
+    41: Tau
+    42: EINVAL
+
+        # the new link name must not end with a slash
+    45: symlink "xyz" "/slink_1"
+    46: Tau
+    47: RV_none
+    48: symlink "xyz" "/slink_2/"
+    49: Tau
+    50: ENOENT
+
+    52: dump-result "/"
+           "/"|D|32641
+           "/slink_1"|L|"xyz"
+           "/dir"|D|32642
+        end dump-result
+
+
+
+# trace accepted

@@ -1,0 +1,50 @@
+< id -u -n
+< id -g -n
+< uname -s
++ mkdir "-p" "/tmp/fs_test"
+$ Acquired lock /tmp/fs_test/pw.lock
+? groupadd "fs_group_0"
+$ Released lock /tmp/fs_test/pw.lock
+$ Acquired lock /tmp/fs_test/pw.lock
+? useradd "-s" "/bin/false" "fs_user_0"
+$ Released lock /tmp/fs_test/pw.lock
++ adduser "fs_user_0" "fs_group_0"
+Adding user `fs_user_0' to group `fs_group_0' ...
+Adding user fs_user_0 to group fs_group_0
+Done.
+31705 creating agent 32021
+$ Acquired lock /tmp/fs_test/pw.lock
+? groupadd "fs_group_1"
+$ Released lock /tmp/fs_test/pw.lock
+$ Acquired lock /tmp/fs_test/pw.lock
+? useradd "-s" "/bin/false" "fs_user_1"
+useradd: user 'fs_user_1' already exists
+? useradd "-s" "/bin/false" "fs_user_2"
+useradd: user 'fs_user_2' already exists
+? useradd "-s" "/bin/false" "fs_user_3"
+useradd: user 'fs_user_3' already exists
+? useradd "-s" "/bin/false" "fs_user_4"
+useradd: user 'fs_user_4' already exists
+? useradd "-s" "/bin/false" "fs_user_5"
+useradd: user 'fs_user_5' already exists
+? useradd "-s" "/bin/false" "fs_user_6"
+useradd: user 'fs_user_6' already exists
+? useradd "-s" "/bin/false" "fs_user_7"
+useradd: user 'fs_user_7' already exists
+? useradd "-s" "/bin/false" "fs_user_8"
+$ Released lock /tmp/fs_test/pw.lock
++ adduser "fs_user_8" "fs_group_1"
+Adding user `fs_user_8' to group `fs_group_1' ...
+Adding user fs_user_8 to group fs_group_1
+Done.
++ adduser "fs_user_8" "fs_group_0"
+Adding user `fs_user_8' to group `fs_group_0' ...
+Adding user fs_user_8 to group fs_group_0
+Done.
+31705 creating agent 32527
+31705 stopping agent 32527
+31705 stopping agent 32021
+? groupdel "fs_group_0"
+? groupdel "fs_group_1"
++ userdel "fs_user_0"
++ userdel "fs_user_8"

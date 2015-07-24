@@ -1,0 +1,176 @@
+# processing file 'adhoc_rmdir_cwd-int.trace' ...
+        @type trace
+
+        # Try to operate in a directory which has been removed
+
+     5: Pid 2 -> create (User_id 0) (Group_id 0)
+
+     7: opendir "/"
+        Tau
+        RV_num(1)
+     8: readdir (DH 1)
+        Tau
+        RV_bytes(".")
+     9: readdir (DH 1)
+        Tau
+        RV_bytes("..")
+    10: readdir (DH 1)
+        Tau
+        RV_none
+    11: closedir (DH 1)
+        Tau
+        RV_none
+
+    13: mkdir "/dmz" 0o777
+        Tau
+        RV_none
+
+    15: chdir "/dmz"
+        Tau
+        RV_none
+
+    17: stat "."
+        Tau
+        RV_stat { st_dev=1792; st_ino=32652; st_kind=S_IFDIR; st_perm=0o755; st_nlink=2; st_uid=0; st_gid=0; st_rdev=0; st_size=4096; }
+
+    19: mkdir "subdir" 0o600
+        Tau
+        RV_none
+
+    21: stat "."
+        Tau
+        RV_stat { st_dev=1792; st_ino=32652; st_kind=S_IFDIR; st_perm=0o755; st_nlink=3; st_uid=0; st_gid=0; st_rdev=0; st_size=4096; }
+
+    23: opendir "."
+        Tau
+        RV_num(1)
+    24: readdir (DH 1)
+        Tau
+        RV_bytes("subdir")
+    25: readdir (DH 1)
+        Tau
+        RV_bytes(".")
+    26: readdir (DH 1)
+        Tau
+        RV_bytes("..")
+    27: readdir (DH 1)
+        Tau
+        RV_none
+    28: closedir (DH 1)
+        Tau
+        RV_none
+
+    30: opendir "."
+        Tau
+        RV_num(1)
+
+    32: Pid 2 -> rmdir "/dmz/subdir"
+        Tau
+        Pid 2 <- RV_none
+    33: Pid 2 -> rmdir "/dmz"
+        Tau
+        Pid 2 <- RV_none
+
+    35: stat "."
+        Tau
+        RV_stat { st_dev=1792; st_ino=32652; st_kind=S_IFDIR; st_perm=0o755; st_nlink=0; st_uid=0; st_gid=0; st_rdev=0; st_size=0; }
+
+    37: readdir (DH 1)
+        Tau
+        RV_none
+    38: readdir (DH 1)
+        Tau
+        RV_none
+    39: readdir (DH 1)
+        Tau
+        RV_none
+    40: readdir (DH 1)
+        Tau
+        RV_none
+    41: readdir (DH 1)
+        Tau
+        RV_none
+    42: rewinddir (DH 1)
+        Tau
+        RV_none
+    43: readdir (DH 1)
+        Tau
+        RV_none
+    44: readdir (DH 1)
+        Tau
+        RV_none
+    45: readdir (DH 1)
+        Tau
+        RV_none
+    46: readdir (DH 1)
+        Tau
+        RV_none
+    47: closedir (DH 1)
+        Tau
+        RV_none
+
+    49: opendir "."
+        Tau
+        RV_num(1)
+    50: readdir (DH 1)
+        Tau
+        RV_none
+    51: readdir (DH 1)
+        Tau
+        RV_none
+    52: readdir (DH 1)
+        Tau
+        RV_none
+    53: readdir (DH 1)
+        Tau
+        RV_none
+    54: closedir (DH 1)
+        Tau
+        RV_none
+
+    56: open_close "bar" [O_RDONLY;O_CREAT] 0o600
+        Tau
+        ENOENT
+
+    58: mkdir "subdir" 0o700
+        Tau
+        ENOENT
+
+    60: stat "."
+        Tau
+        RV_stat { st_dev=1792; st_ino=32652; st_kind=S_IFDIR; st_perm=0o755; st_nlink=0; st_uid=0; st_gid=0; st_rdev=0; st_size=0; }
+
+    62: dump-result "."
+           "."|D|32
+        end dump-result
+
+    64: Pid 2 -> mkdir "/dmz" 0o777
+        Tau
+        Pid 2 <- RV_none
+    65: Pid 2 -> mkdir "/dmz/newdir" 0o777
+        Tau
+        Pid 2 <- RV_none
+
+    67: stat "."
+        Tau
+        RV_stat { st_dev=1792; st_ino=32652; st_kind=S_IFDIR; st_perm=0o755; st_nlink=0; st_uid=0; st_gid=0; st_rdev=0; st_size=0; }
+
+    69: stat "../dmz"
+        Tau
+        RV_stat { st_dev=1792; st_ino=32644; st_kind=S_IFDIR; st_perm=0o755; st_nlink=3; st_uid=0; st_gid=0; st_rdev=0; st_size=4096; }
+
+    71: stat "/dmz"
+        Tau
+        RV_stat { st_dev=1792; st_ino=32644; st_kind=S_IFDIR; st_perm=0o755; st_nlink=3; st_uid=0; st_gid=0; st_rdev=0; st_size=4096; }
+
+    73: Pid 2 -> stat "/dmz"
+        Tau
+        Pid 2 <- RV_stat { st_dev=1792; st_ino=32644; st_kind=S_IFDIR; st_perm=0o755; st_nlink=3; st_uid=0; st_gid=0; st_rdev=0; st_size=4096; }
+
+    75: dump-result "/"
+           "/"|D|32
+           "/dmz"|D|32644
+           "/dmz/newdir"|D|32645
+        end dump-result
+
+

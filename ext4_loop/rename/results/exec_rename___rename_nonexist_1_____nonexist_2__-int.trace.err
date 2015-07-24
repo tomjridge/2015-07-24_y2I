@@ -1,0 +1,4 @@
+< id -u -n
+< id -g -n
+9090 creating agent 9092
+9090 stopping agent 9092

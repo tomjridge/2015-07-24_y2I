@@ -1,0 +1,113 @@
+# processing file 'exec_adhoc_rmdir_cwd-int.trace' ...
+        # processing file 'adhoc_rmdir_cwd-int.trace' ...
+        @type trace
+
+        # Try to operate in a directory which has been removed
+
+     6: Pid 2 -> create (User_id 0) (Group_id 0)
+
+     8: opendir "/"
+     9: Tau
+    10: RV_num(1)
+    11: readdir (DH 1)
+    12: Tau
+    13: RV_bytes(".")
+    14: readdir (DH 1)
+    15: Tau
+    16: RV_bytes("..")
+    17: readdir (DH 1)
+    18: Tau
+    19: RV_none
+    20: closedir (DH 1)
+    21: Tau
+    22: RV_none
+
+    24: mkdir "/dmz" 0o777
+    25: Tau
+    26: RV_none
+
+    28: chdir "/dmz"
+    29: Tau
+    30: RV_none
+
+    32: stat "."
+    33: Tau
+    34: RV_stat { st_dev=1792; st_ino=32652; st_kind=S_IFDIR; st_perm=0o755; st_nlink=2; st_uid=0; st_gid=0; st_rdev=0; st_size=4096; }
+
+    36: mkdir "subdir" 0o600
+    37: Tau
+    38: RV_none
+
+    40: stat "."
+    41: Tau
+    42: RV_stat { st_dev=1792; st_ino=32652; st_kind=S_IFDIR; st_perm=0o755; st_nlink=3; st_uid=0; st_gid=0; st_rdev=0; st_size=4096; }
+
+    44: opendir "."
+    45: Tau
+    46: RV_num(1)
+    47: readdir (DH 1)
+    48: Tau
+    49: RV_bytes("subdir")
+    50: readdir (DH 1)
+    51: Tau
+    52: RV_bytes(".")
+    53: readdir (DH 1)
+    54: Tau
+    55: RV_bytes("..")
+    56: readdir (DH 1)
+    57: Tau
+    58: RV_none
+    59: closedir (DH 1)
+    60: Tau
+    61: RV_none
+
+    63: opendir "."
+    64: Tau
+    65: RV_num(1)
+
+    67: Pid 2 -> rmdir "/dmz/subdir"
+    68: Tau
+    69: Pid 2 <- RV_none
+    70: Pid 2 -> rmdir "/dmz"
+    71: Tau
+    72: Pid 2 <- RV_none
+
+    74: stat "."
+    75: Tau
+    76: RV_stat { st_dev=1792; st_ino=32652; st_kind=S_IFDIR; st_perm=0o755; st_nlink=0; st_uid=0; st_gid=0; st_rdev=0; st_size=0; }
+# 
+# Fatal error:     76: RV_stat { st_dev=1792; st_ino=32652; st_kind=S_IFDIR; st_perm=0o755; st_nlink=0; st_uid=0; st_gid=0; st_rdev=0; st_size=0; }
+#    no result states
+# 
+# Error: 
+#    !!! EXCEPT CHECKLIB DOES NOT AGREE !!!
+# 
+# Error: 
+#    The spec permitted:
+# RV_stat { st_dev=2049; st_ino=1; st_kind=S_IFDIR; st_perm=0o755; st_nlink=1; st_uid=0; st_gid=0; st_rdev=0; st_size=9999; }
+# 
+# Error:     76: RV_stat { st_dev=1792; st_ino=32652; st_kind=S_IFDIR; st_perm=0o755; st_nlink=0; st_uid=0; st_gid=0; st_rdev=0; st_size=0; }
+#    unexpected results: RV_stat { st_dev=1792; st_ino=32652; st_kind=S_IFDIR; st_perm=0o755; st_nlink=0; st_uid=0; st_gid=0; st_rdev=0; st_size=0; }
+#    allowed are only: RV_stat { st_dev=2049; st_ino=1; st_kind=S_IFDIR; st_perm=0o755; st_nlink=1; st_uid=0; st_gid=0; st_rdev=0; st_size=9999; }
+#    continuing execution with RV_stat { st_dev=2049; st_ino=1; st_kind=S_IFDIR; st_perm=0o755; st_nlink=1; st_uid=0; st_gid=0; st_rdev=0; st_size=9999; }
+
+    78: readdir (DH 1)
+    79: Tau
+    80: RV_none
+# 
+# Fatal error:     80: RV_none
+#    no result states
+# 
+# Error: 
+#    !!! EXCEPT CHECKLIB DOES NOT AGREE !!!
+# 
+# Error: 
+#    The spec permitted:
+# RV_bytes("subdir"), RV_bytes(".."), RV_bytes(".")
+# 
+# Error:     80: RV_none
+#    unexpected results: RV_none
+#    allowed are only: RV_bytes("subdir"), RV_bytes(".."), RV_bytes(".")
+#    continuing execution with RV_bytes("subdir"), RV_bytes(".."), RV_bytes(".")
+
+# trace not accepted

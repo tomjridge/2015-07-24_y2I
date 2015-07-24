@@ -1,0 +1,31 @@
+# processing file 'adhoc_rename_triple_slash-int.trace' ...
+        @type trace
+
+        #################################
+        # Test triple slash with a rename
+        #################################
+
+        # Test1
+     8: mkdir "////ciao" 0o775
+        Tau
+        RV_none
+     9: rename "///ciao" "mydir"
+        Tau
+        RV_none
+
+        # Test2
+    12: rename "////" "mydir"
+        Tau
+        EBUSY
+
+        # Test3
+    15: rename "///" "mydir"
+        Tau
+        EBUSY
+
+    17: dump-result "/"
+           "/"|D|32641
+           "/mydir"|D|32642
+        end dump-result
+
+

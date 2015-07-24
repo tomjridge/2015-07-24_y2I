@@ -1,0 +1,63 @@
+# processing file 'exec_adhoc_link_count_symlink-int.trace' ...
+        # processing file 'adhoc_link_count_symlink-int.trace' ...
+        @type trace
+
+        #################################################
+        # Test link count of symlinks after link
+        #################################################
+
+        # a new created file should have link count 1
+
+    10: symlink "missing" "symlink"
+    11: Tau
+    12: RV_none
+    13: lstat "symlink"
+    14: Tau
+    15: RV_stat { st_dev=1792; st_ino=13; st_kind=S_IFLNK; st_perm=0o777; st_nlink=1; st_uid=0; st_gid=0; st_rdev=0; st_size=7; }
+
+        # after linking the symlink, both nodes should have link count 2
+
+    19: link "symlink" "symlink_hl"
+    20: Tau
+    21: RV_none
+    22: lstat "symlink"
+    23: Tau
+    24: RV_stat { st_dev=1792; st_ino=13; st_kind=S_IFLNK; st_perm=0o777; st_nlink=2; st_uid=0; st_gid=0; st_rdev=0; st_size=7; }
+    25: lstat "symlink_hl"
+    26: Tau
+    27: RV_stat { st_dev=1792; st_ino=13; st_kind=S_IFLNK; st_perm=0o777; st_nlink=2; st_uid=0; st_gid=0; st_rdev=0; st_size=7; }
+
+        # keep linking the symlink should keep increasing the link count
+
+    31: link "symlink_hl" "symlink_hl1"
+    32: Tau
+    33: RV_none
+    34: lstat "symlink"
+    35: Tau
+    36: RV_stat { st_dev=1792; st_ino=13; st_kind=S_IFLNK; st_perm=0o777; st_nlink=3; st_uid=0; st_gid=0; st_rdev=0; st_size=7; }
+    37: lstat "symlink_hl"
+    38: Tau
+    39: RV_stat { st_dev=1792; st_ino=13; st_kind=S_IFLNK; st_perm=0o777; st_nlink=3; st_uid=0; st_gid=0; st_rdev=0; st_size=7; }
+    40: lstat "symlink_hl1"
+    41: Tau
+    42: RV_stat { st_dev=1792; st_ino=13; st_kind=S_IFLNK; st_perm=0o777; st_nlink=3; st_uid=0; st_gid=0; st_rdev=0; st_size=7; }
+
+    44: link "symlink_hl1" "symlink_hl2"
+    45: Tau
+    46: RV_none
+    47: lstat "symlink"
+    48: Tau
+    49: RV_stat { st_dev=1792; st_ino=13; st_kind=S_IFLNK; st_perm=0o777; st_nlink=4; st_uid=0; st_gid=0; st_rdev=0; st_size=7; }
+    50: lstat "symlink_hl"
+    51: Tau
+    52: RV_stat { st_dev=1792; st_ino=13; st_kind=S_IFLNK; st_perm=0o777; st_nlink=4; st_uid=0; st_gid=0; st_rdev=0; st_size=7; }
+    53: lstat "symlink_hl1"
+    54: Tau
+    55: RV_stat { st_dev=1792; st_ino=13; st_kind=S_IFLNK; st_perm=0o777; st_nlink=4; st_uid=0; st_gid=0; st_rdev=0; st_size=7; }
+    56: lstat "symlink_hl2"
+    57: Tau
+    58: RV_stat { st_dev=1792; st_ino=13; st_kind=S_IFLNK; st_perm=0o777; st_nlink=4; st_uid=0; st_gid=0; st_rdev=0; st_size=7; }
+
+
+
+# trace accepted

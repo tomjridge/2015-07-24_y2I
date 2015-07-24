@@ -1,0 +1,49 @@
+# processing file 'adhoc_mkdir_link_count-int.trace' ...
+        @type trace
+
+        ###########################################
+        # Test link count of files after mkdir
+        ###########################################
+
+        # root should have link count 1
+     8: stat "/"
+        Tau
+        RV_stat { st_dev=1792; st_ino=32644; st_kind=S_IFDIR; st_perm=0o777; st_nlink=2; st_uid=0; st_gid=0; st_rdev=0; st_size=4096; }
+
+        # a new dir should have link count 2
+
+    12: mkdir "/dir1" 0o777
+        Tau
+        RV_none
+    13: stat "/dir1"
+        Tau
+        RV_stat { st_dev=1792; st_ino=65281; st_kind=S_IFDIR; st_perm=0o755; st_nlink=2; st_uid=0; st_gid=0; st_rdev=0; st_size=4096; }
+
+        # adding a subdir should increase the link count of the dir
+
+    17: mkdir "/dir1/subdir1" 0o777
+        Tau
+        RV_none
+    18: stat "/dir1"
+        Tau
+        RV_stat { st_dev=1792; st_ino=65281; st_kind=S_IFDIR; st_perm=0o755; st_nlink=3; st_uid=0; st_gid=0; st_rdev=0; st_size=4096; }
+    19: stat "/dir1/subdir1"
+        Tau
+        RV_stat { st_dev=1792; st_ino=65282; st_kind=S_IFDIR; st_perm=0o755; st_nlink=2; st_uid=0; st_gid=0; st_rdev=0; st_size=4096; }
+
+        # adding a subsubdir should leave the link count unaltered of the dir
+
+    23: mkdir "/dir1/subdir1/subsbudir1" 0o777
+        Tau
+        RV_none
+    24: stat "/dir1"
+        Tau
+        RV_stat { st_dev=1792; st_ino=65281; st_kind=S_IFDIR; st_perm=0o755; st_nlink=3; st_uid=0; st_gid=0; st_rdev=0; st_size=4096; }
+    25: stat "/dir1/subdir1"
+        Tau
+        RV_stat { st_dev=1792; st_ino=65282; st_kind=S_IFDIR; st_perm=0o755; st_nlink=3; st_uid=0; st_gid=0; st_rdev=0; st_size=4096; }
+    26: stat "/dir1/subdir1/subsbudir1"
+        Tau
+        RV_stat { st_dev=1792; st_ino=65283; st_kind=S_IFDIR; st_perm=0o755; st_nlink=2; st_uid=0; st_gid=0; st_rdev=0; st_size=4096; }
+
+

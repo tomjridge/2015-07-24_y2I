@@ -1,0 +1,190 @@
+# processing file 'exec_adhoc_symlink_simple-int.trace' ...
+        # processing file 'adhoc_symlink_simple-int.trace' ...
+        @type trace
+        # adhoc_symlink_simple
+
+        # initialization
+
+     7: mkdir "/dir_1" 0o777
+     8: Tau
+     9: RV_none
+    10: mkdir "/dir_1/dir_11" 0o777
+    11: Tau
+    12: RV_none
+    13: mkdir "/dir_2" 0o777
+    14: Tau
+    15: RV_none
+
+    17: open "/dir_1/f1.txt" [O_CREAT;O_RDWR] 0o666
+    18: Tau
+    19: RV_num(3)
+    20: write! (FD 3) "content of /dir_1/f1.txt" 24
+    21: Tau
+    22: RV_num(24)
+    23: close (FD 3)
+    24: Tau
+    25: RV_none
+
+    27: open "/dir_1/f2.txt" [O_CREAT;O_RDWR] 0o666
+    28: Tau
+    29: RV_num(3)
+    30: write! (FD 3) "content of /dir_1/f2.txt" 24
+    31: Tau
+    32: RV_num(24)
+    33: close (FD 3)
+    34: Tau
+    35: RV_none
+
+    37: open "/dir_2/f1.txt" [O_CREAT;O_RDWR] 0o666
+    38: Tau
+    39: RV_num(3)
+    40: write! (FD 3) "content of /dir_2/f1.txt" 24
+    41: Tau
+    42: RV_num(24)
+    43: close (FD 3)
+    44: Tau
+    45: RV_none
+
+        ###################################################
+        # simple tests, that mimic common use-cases
+        ###################################################
+
+        # create a symlink to an existing file an read the file
+        # through the symlink
+
+    54: symlink "/dir_1/f1.txt" "/symlink_1"
+    55: Tau
+    56: RV_none
+    57: open "/symlink_1" [O_RDONLY]
+    58: Tau
+    59: RV_num(3)
+    60: pread! (FD 3) 1000 0
+    61: Tau
+    62: RV_bytes("content of /dir_1/f1.txt")
+    63: close (FD 3)
+    64: Tau
+    65: RV_none
+
+        # try two indirections
+    68: symlink "/symlink_1" "/symlink_2"
+    69: Tau
+    70: RV_none
+    71: open "/symlink_2" [O_RDONLY]
+    72: Tau
+    73: RV_num(3)
+    74: pread! (FD 3) 1000 0
+    75: Tau
+    76: RV_bytes("content of /dir_1/f1.txt")
+    77: close (FD 3)
+    78: Tau
+    79: RV_none
+    80: dump-result "/"
+           "/"|D|16
+           "/symlink_1"|L|"/dir_1/f1.txt"
+           "/symlink_2"|L|"/symlink_1"
+           "/dir_1"|D|13
+           "/dir_1/f1.txt"|F|19|24|"3f8cf820bb3ad6f52314a560e757adf6c0548d42"
+           "/dir_1/f2.txt"|F|20|24|"643494cc13ad08ccb3f11680caf2f3a8b294b994"
+           "/dir_1/dir_11"|D|17
+           "/dir_2"|D|18
+           "/dir_2/f1.txt"|F|21|24|"727703159e2b79582d71e169cf66473ba9f4ee5c"
+        end dump-result
+
+        # remove symlink 1 and read symlink 2
+    83: unlink "/symlink_1"
+    84: Tau
+    85: RV_none
+    86: open "/symlink_2" [O_RDONLY]
+    87: Tau
+    88: ENOENT
+    89: pread! (FD 3) 1000 0
+    90: Tau
+    91: EBADF
+    92: close (FD 3)
+    93: Tau
+    94: EBADF
+    95: dump-result "/"
+           "/"|D|16
+           "/symlink_2"|L|"/symlink_1"
+           "/dir_1"|D|13
+           "/dir_1/f1.txt"|F|19|24|"3f8cf820bb3ad6f52314a560e757adf6c0548d42"
+           "/dir_1/f2.txt"|F|20|24|"643494cc13ad08ccb3f11680caf2f3a8b294b994"
+           "/dir_1/dir_11"|D|17
+           "/dir_2"|D|18
+           "/dir_2/f1.txt"|F|21|24|"727703159e2b79582d71e169cf66473ba9f4ee5c"
+        end dump-result
+
+        # now try symbolic links to a directory
+    98: symlink "/dir_1" "/symlink_1"
+    99: Tau
+   100: RV_none
+
+   102: open "/symlink_1/f1.txt" [O_RDONLY]
+   103: Tau
+   104: RV_num(3)
+   105: pread! (FD 3) 1000 0
+   106: Tau
+   107: RV_bytes("content of /dir_1/f1.txt")
+   108: close (FD 3)
+   109: Tau
+   110: RV_none
+
+   112: open "/symlink_2/f1.txt" [O_RDONLY]
+   113: Tau
+   114: RV_num(3)
+   115: pread! (FD 3) 1000 0
+   116: Tau
+   117: RV_bytes("content of /dir_1/f1.txt")
+   118: close (FD 3)
+   119: Tau
+   120: RV_none
+
+        # renaming of symbolic links renames links not pointed to files
+   123: rename "/symlink_2" "/symlink_2b"
+   124: Tau
+   125: RV_none
+   126: open "/symlink_2b/f1.txt" [O_RDONLY]
+   127: Tau
+   128: RV_num(3)
+   129: pread! (FD 3) 1000 0
+   130: Tau
+   131: RV_bytes("content of /dir_1/f1.txt")
+   132: close (FD 3)
+   133: Tau
+   134: RV_none
+
+   136: open "/dir_1/f1.txt" [O_RDONLY]
+   137: Tau
+   138: RV_num(3)
+   139: pread! (FD 3) 1000 0
+   140: Tau
+   141: RV_bytes("content of /dir_1/f1.txt")
+   142: close (FD 3)
+   143: Tau
+   144: RV_none
+
+   146: open "/symlink_2/f1.txt" [O_RDONLY]
+   147: Tau
+   148: ENOENT
+   149: pread! (FD 3) 1000 0
+   150: Tau
+   151: EBADF
+   152: close (FD 3)
+   153: Tau
+   154: EBADF
+
+   156: dump-result "/"
+           "/"|D|16
+           "/symlink_1"|L|"/dir_1"
+           "/symlink_2b"|L|"/symlink_1"
+           "/dir_1"|D|13
+           "/dir_1/f1.txt"|F|19|24|"3f8cf820bb3ad6f52314a560e757adf6c0548d42"
+           "/dir_1/f2.txt"|F|20|24|"643494cc13ad08ccb3f11680caf2f3a8b294b994"
+           "/dir_1/dir_11"|D|17
+           "/dir_2"|D|18
+           "/dir_2/f1.txt"|F|21|24|"727703159e2b79582d71e169cf66473ba9f4ee5c"
+        end dump-result
+
+
+
+# trace accepted

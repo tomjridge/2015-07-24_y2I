@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>open / open___open_empty_dir___O_APPEND__O_EXCL__O_EXEC__O_NOFOLLOW___none___det_write_3___9a78211436f6d425ec38f5c4e02270801f3524f8___1___read_3___1___close_3-int.trace</title>
+<style type="text/css">
+tr.summary { margin-top: 0.3em; margin-bottom: 0.3em }
+th.row { text-align: left }
+th.wide { border-left: 1px solid black; border-right: 1px solid black }
+td.num { text-align: right }
+td.good, th.good { color: green }
+td.bad, th.bad { color: red; font-weight: bold }
+td.warn, th.warn { color: orange; font-weight: bold }
+td.fail, th.fail { color: violet; font-weight: bold }
+tr.check td.good, tr.check td.bad, tr.check td.warn, tr.check td.fail {
+  text-align: center;
+}
+td.error { border: 2px solid red }
+td.line { vertical-align: top; text-align: right; padding-right: 1em }
+td.line:target { background-color: yellow }
+td.comment { color: gray }
+td.meta { color: green }
+td.dump table { margin: 1em; color: brown }
+td.return.label, td.process.label { padding-bottom: 1em }
+span.checked { font-size: 80% }
+td.terminated, td.diverged { border: 2px solid red }
+td.terminated { font-weight: bold; font-size: 150% }
+td.envelope { border: 2px solid green }
+div.stat table { margin-left: 1em }
+strong.fail { font-size: 120%; color: violet; }
+div.footer { font-size: 70%; color: gray; padding-top: 3em; text-align: right; }
+</style>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+</head>
+<body>
+<a href="../../index.html">Up</a><br/>
+
+  
+    <h3>Traces</h3>
+    
+  <h4>linux[3.13.0-29-generic][system[GNU C Library (GNU libc) stable release version 2.21, by Roland McGrath et al.]][ext4_loop[mke2fs 1.42.9 (4-Feb-2014)]]@[2015-07-24T13:23:26Z./nix/store/fxisrpncjn4cxxwnq2lvilriqx63s9k9-fs_test]</h4>
+  <div style="margin-bottom: 0.5em; margin-left: 1em">
+    <table>
+    <tr><th style="text-align: left">Checked Trace</th><td></td><td></td><td></td></tr>
+    <tr>
+    <th class="good">linux_spec@[/nix/store/fxisrpncjn4cxxwnq2lvilriqx63s9k9-fs_test]</th>
+    <td><a href="../../../../../ext4_loop/open/results/check_exec_open___open_empty_dir___O_APPEND__O_EXCL__O_EXEC__O_NOFOLLOW___none___det_write_3___9a78211436f6d425ec38f5c4e02270801f3524f8___1___read_3___1___close_3-int.trace.sexp">sexp</a></td>
+    <td><a href="../../../../../ext4_loop/open/results/check_exec_open___open_empty_dir___O_APPEND__O_EXCL__O_EXEC__O_NOFOLLOW___none___det_write_3___9a78211436f6d425ec38f5c4e02270801f3524f8___1___read_3___1___close_3-int.trace">stdout</a></td>
+    <td><a href="../../../../../ext4_loop/open/results/check_exec_open___open_empty_dir___O_APPEND__O_EXCL__O_EXEC__O_NOFOLLOW___none___det_write_3___9a78211436f6d425ec38f5c4e02270801f3524f8___1___read_3___1___close_3-int.trace.err">stderr</a></td>
+  </tr>
+    </table>
+    
+    <table><tr><th>Traced Execution</th>
+      <td><a href="../../../../../ext4_loop/open/results/exec_open___open_empty_dir___O_APPEND__O_EXCL__O_EXEC__O_NOFOLLOW___none___det_write_3___9a78211436f6d425ec38f5c4e02270801f3524f8___1___read_3___1___close_3-int.trace">stdout</a></td>
+      <td><a href="../../../../../ext4_loop/open/results/exec_open___open_empty_dir___O_APPEND__O_EXCL__O_EXEC__O_NOFOLLOW___none___det_write_3___9a78211436f6d425ec38f5c4e02270801f3524f8___1___read_3___1___close_3-int.trace.err">stderr</a></td>
+    </tr></table>
+    
+    <table><tr><th>Script</th>
+      <td><a href="../../../../../ext4_loop/open/open___open_empty_dir___O_APPEND__O_EXCL__O_EXEC__O_NOFOLLOW___none___det_write_3___9a78211436f6d425ec38f5c4e02270801f3524f8___1___read_3___1___close_3-int.trace">script</a></td>
+    </tr></table>
+  
+  
+  </div>
+
+    <h3>Combined Trace</h3>
+    <table>
+    <tr>
+    <td class="line" id="1"><a href="#1">1</a></td>
+    <td class="comment">#  processing file 'open___open_empty_dir___O_APPEND__O_EXCL__O_EXEC__O_NOFOLLOW___none___det_write_3___9a78211436f6d425ec38f5c4e02270801f3524f8___1___read_3___1___close_3-int.trace' ...</td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="2"><a href="#2">2</a></td>
+    <td class="meta">@type trace</td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="3"><a href="#3">3</a></td>
+    <td class="comment"># ####################################</td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="4"><a href="#4">4</a></td>
+    <td class="comment">#  Test open___open_empty_dir___O_APPEND__O_EXCL__O_EXEC__O_NOFOLLOW___none___det_write_3___9a78211436f6d425ec38f5c4e02270801f3524f8___1___read_3___1___close_3</td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="5"><a href="#5">5</a></td>
+    <td class="comment"># ####################################</td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="6"><a href="#6">6</a></td>
+    <td class="call label">mkdir &quot;empty_dir&quot; 0o777</td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="7"><a href="#7">7</a></td>
+    <td class="tau label">Tau</td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="8"><a href="#8">8</a></td>
+    <td class="return label">RV_none</td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="9"><a href="#9">9</a></td>
+    <td class="call label">mkdir &quot;nonempty_dir&quot; 0o777</td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="10"><a href="#10">10</a></td>
+    <td class="tau label">Tau</td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="11"><a href="#11">11</a></td>
+    <td class="return label">RV_none</td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="12"><a href="#12">12</a></td>
+    <td class="call label">open_close &quot;nonempty_dir/f1.txt&quot; [O_CREAT;O_WRONLY] 0o666</td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="13"><a href="#13">13</a></td>
+    <td class="tau label">Tau</td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="14"><a href="#14">14</a></td>
+    <td class="return label">RV_none</td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="15"><a href="#15">15</a></td>
+    <td class="call label">open &quot;nonempty_dir/f2.txt&quot; [O_CREAT;O_WRONLY] 0o666</td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="16"><a href="#16">16</a></td>
+    <td class="tau label">Tau</td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="17"><a href="#17">17</a></td>
+    <td class="return label">RV_num(3)</td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="18"><a href="#18">18</a></td>
+    <td class="call label">write! (FD 3) &quot;Lorem ipsum dolor sit amet, co&quot; 30</td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="19"><a href="#19">19</a></td>
+    <td class="tau label">Tau</td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="20"><a href="#20">20</a></td>
+    <td class="return label">RV_num(30)</td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="21"><a href="#21">21</a></td>
+    <td class="call label">close (FD 3)</td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="22"><a href="#22">22</a></td>
+    <td class="tau label">Tau</td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="23"><a href="#23">23</a></td>
+    <td class="return label">RV_none</td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="24"><a href="#24">24</a></td>
+    <td class="call label">symlink &quot;nonempty_dir/f2.txt&quot; &quot;f3_sl.txt&quot;</td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="25"><a href="#25">25</a></td>
+    <td class="tau label">Tau</td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="26"><a href="#26">26</a></td>
+    <td class="return label">RV_none</td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="27"><a href="#27">27</a></td>
+    <td class="call label">symlink &quot;broken&quot; &quot;broken_sl&quot;</td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="28"><a href="#28">28</a></td>
+    <td class="tau label">Tau</td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="29"><a href="#29">29</a></td>
+    <td class="return label">RV_none</td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="30"><a href="#30">30</a></td>
+    <td class="call label">link &quot;nonempty_dir/f4.txt&quot; &quot;f4_link.txt&quot;</td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="31"><a href="#31">31</a></td>
+    <td class="tau label">Tau</td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="32"><a href="#32">32</a></td>
+    <td class="return label">ENOENT</td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="33"><a href="#33">33</a></td>
+    <td class="call label">link &quot;nonempty_dir&quot; &quot;dir_link&quot;</td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="34"><a href="#34">34</a></td>
+    <td class="tau label">Tau</td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="35"><a href="#35">35</a></td>
+    <td class="return label">EPERM</td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="36"><a href="#36">36</a></td>
+    <td><br/></td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="37"><a href="#37">37</a></td>
+    <td class="call label">open &quot;empty_dir&quot; [O_RDONLY;O_NOFOLLOW;O_EXCL;O_APPEND]</td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="38"><a href="#38">38</a></td>
+    <td class="tau label">Tau</td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="39"><a href="#39">39</a></td>
+    <td class="return label">RV_num(3)</td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="40"><a href="#40">40</a></td>
+    <td class="call label">write! (FD 3) &quot;@&quot; 1</td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="41"><a href="#41">41</a></td>
+    <td class="tau label">Tau</td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="42"><a href="#42">42</a></td>
+    <td class="return label">EBADF</td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="43"><a href="#43">43</a></td>
+    <td class="call label">read (FD 3) 1</td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="44"><a href="#44">44</a></td>
+    <td class="tau label">Tau</td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="45"><a href="#45">45</a></td>
+    <td class="return label">EISDIR</td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="46"><a href="#46">46</a></td>
+    <td class="call label">close (FD 3)</td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="47"><a href="#47">47</a></td>
+    <td class="tau label">Tau</td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="48"><a href="#48">48</a></td>
+    <td class="return label">RV_none</td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="49"><a href="#49">49</a></td>
+    <td><br/></td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="50"><a href="#50">50</a></td>
+    
+    <td class="dump">dump-result /
+    <table>
+    <tr>
+      <td>/</td>
+      <td>D</td>
+      <td>13</td>
+      <td></td>
+      <td></td>
+    </tr><tr>
+      <td>/broken_sl</td>
+      <td>L</td>
+      <td></td>
+      <td></td>
+      <td>broken</td>
+    </tr><tr>
+      <td>/f3_sl.txt</td>
+      <td>L</td>
+      <td></td>
+      <td></td>
+      <td>nonempty_dir/f2.txt</td>
+    </tr><tr>
+      <td>/empty_dir</td>
+      <td>D</td>
+      <td>14</td>
+      <td></td>
+      <td></td>
+    </tr><tr>
+      <td>/nonempty_dir</td>
+      <td>D</td>
+      <td>15</td>
+      <td></td>
+      <td></td>
+    </tr><tr>
+      <td>/nonempty_dir/f1.txt</td>
+      <td>F</td>
+      <td>16</td>
+      <td>0</td>
+      <td>da39a3ee5e6b4b0d3255bfef95601890afd80709</td>
+    </tr><tr>
+      <td>/nonempty_dir/f2.txt</td>
+      <td>F</td>
+      <td>17</td>
+      <td>30</td>
+      <td>e88ee12dedd1a9c6d9e9e5dea1a43e510dede7d5</td>
+    </tr>
+    </table></td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="51"><a href="#51">51</a></td>
+    <td><br/></td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="52"><a href="#52">52</a></td>
+    <td><br/></td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="53"><a href="#53">53</a></td>
+    <td><br/></td>
+    </tr>
+  
+    <tr>
+    <td class="line" id="54"><a href="#54">54</a></td>
+    <td><br/></td>
+    </tr>
+  </table>
+  
+  
+<div class="footer">
+  Generated by <em>fs_test html</em> <strong>/nix/store/fxisrpncjn4cxxwnq2lvilriqx63s9k9-fs_test</strong>
+</div>
+</body>
+</html>

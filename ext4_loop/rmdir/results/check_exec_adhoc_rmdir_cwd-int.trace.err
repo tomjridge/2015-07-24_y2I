@@ -1,0 +1,30 @@
+
+Fatal error:     76: RV_stat { st_dev=1792; st_ino=32652; st_kind=S_IFDIR; st_perm=0o755; st_nlink=0; st_uid=0; st_gid=0; st_rdev=0; st_size=0; }
+   no result states
+
+Error: 
+   !!! EXCEPT CHECKLIB DOES NOT AGREE !!!
+
+Error: 
+   The spec permitted:
+RV_stat { st_dev=2049; st_ino=1; st_kind=S_IFDIR; st_perm=0o755; st_nlink=1; st_uid=0; st_gid=0; st_rdev=0; st_size=9999; }
+
+Error:     76: RV_stat { st_dev=1792; st_ino=32652; st_kind=S_IFDIR; st_perm=0o755; st_nlink=0; st_uid=0; st_gid=0; st_rdev=0; st_size=0; }
+   unexpected results: RV_stat { st_dev=1792; st_ino=32652; st_kind=S_IFDIR; st_perm=0o755; st_nlink=0; st_uid=0; st_gid=0; st_rdev=0; st_size=0; }
+   allowed are only: RV_stat { st_dev=2049; st_ino=1; st_kind=S_IFDIR; st_perm=0o755; st_nlink=1; st_uid=0; st_gid=0; st_rdev=0; st_size=9999; }
+   continuing execution with RV_stat { st_dev=2049; st_ino=1; st_kind=S_IFDIR; st_perm=0o755; st_nlink=1; st_uid=0; st_gid=0; st_rdev=0; st_size=9999; }
+
+Fatal error:     80: RV_none
+   no result states
+
+Error: 
+   !!! EXCEPT CHECKLIB DOES NOT AGREE !!!
+
+Error: 
+   The spec permitted:
+RV_bytes("subdir"), RV_bytes(".."), RV_bytes(".")
+
+Error:     80: RV_none
+   unexpected results: RV_none
+   allowed are only: RV_bytes("subdir"), RV_bytes(".."), RV_bytes(".")
+   continuing execution with RV_bytes("subdir"), RV_bytes(".."), RV_bytes(".")

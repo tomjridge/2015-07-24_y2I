@@ -1,0 +1,15 @@
+
+Fatal error:     11: RV_stat { st_dev=1792; st_ino=32644; st_kind=S_IFDIR; st_perm=0o777; st_nlink=2; st_uid=0; st_gid=0; st_rdev=0; st_size=4096; }
+   no result states
+
+Error: 
+   !!! EXCEPT CHECKLIB DOES NOT AGREE !!!
+
+Error: 
+   The spec permitted:
+RV_stat { st_dev=2049; st_ino=0; st_kind=S_IFDIR; st_perm=0o777; st_nlink=1; st_uid=0; st_gid=0; st_rdev=0; st_size=9999; }
+
+Error:     11: RV_stat { st_dev=1792; st_ino=32644; st_kind=S_IFDIR; st_perm=0o777; st_nlink=2; st_uid=0; st_gid=0; st_rdev=0; st_size=4096; }
+   unexpected results: RV_stat { st_dev=1792; st_ino=32644; st_kind=S_IFDIR; st_perm=0o777; st_nlink=2; st_uid=0; st_gid=0; st_rdev=0; st_size=4096; }
+   allowed are only: RV_stat { st_dev=2049; st_ino=0; st_kind=S_IFDIR; st_perm=0o777; st_nlink=1; st_uid=0; st_gid=0; st_rdev=0; st_size=9999; }
+   continuing execution with RV_stat { st_dev=2049; st_ino=0; st_kind=S_IFDIR; st_perm=0o777; st_nlink=1; st_uid=0; st_gid=0; st_rdev=0; st_size=9999; }

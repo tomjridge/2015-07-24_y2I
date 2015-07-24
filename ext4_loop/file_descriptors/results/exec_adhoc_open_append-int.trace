@@ -1,0 +1,163 @@
+# processing file 'adhoc_open_append-int.trace' ...
+        @type trace
+
+        ##############################################
+        # O_APPEND
+        ##############################################
+
+        # write fresh content
+     8: open "f1.txt" [O_CREAT;O_RDWR] 0o600
+        Tau
+        RV_num(3)
+     9: write! (FD 3) "0123456789" 10
+        Tau
+        RV_num(10)
+    10: pread! (FD 3) 100 0
+        Tau
+        RV_bytes("0123456789")
+    11: close (FD 3)
+        Tau
+        RV_none
+
+        # override at beginning
+    14: open "f1.txt" [O_RDWR]
+        Tau
+        RV_num(3)
+    15: write (FD 3) "ABCDE" 5
+        Tau
+        RV_num(5)
+    16: pread! (FD 3) 100 0
+        Tau
+        RV_bytes("ABCDE56789")
+    17: close (FD 3)
+        Tau
+        RV_none
+
+        # override at end
+    20: open "f1.txt" [O_APPEND;O_RDWR]
+        Tau
+        RV_num(3)
+    21: write (FD 3) "ABCDE" 5
+        Tau
+        RV_num(5)
+    22: pread! (FD 3) 100 0
+        Tau
+        RV_bytes("ABCDE56789ABCDE")
+    23: close (FD 3)
+        Tau
+        RV_none
+
+        # O_APPEND sets file-offset before every(!) write
+    26: open "f1.txt" [O_APPEND;O_RDWR]
+        Tau
+        RV_num(3)
+    27: write (FD 3) "XXX" 3
+        Tau
+        RV_num(3)
+    28: lseek (FD 3) 0 SEEK_SET
+        Tau
+        RV_num(0)
+    29: write (FD 3) "YYY" 3
+        Tau
+        RV_num(3)
+    30: lseek (FD 3) 0 SEEK_SET
+        Tau
+        RV_num(0)
+    31: write (FD 3) "ZZZ" 3
+        Tau
+        RV_num(3)
+    32: read (FD 3) 100
+        Tau
+        RV_bytes("")
+    33: lseek (FD 3) 0 SEEK_SET
+        Tau
+        RV_num(0)
+    34: read (FD 3) 100
+        Tau
+        RV_bytes("ABCDE56789ABCDEXXXYYYZZZ")
+    35: pread! (FD 3) 100 0
+        Tau
+        RV_bytes("ABCDE56789ABCDEXXXYYYZZZ")
+    36: close (FD 3)
+        Tau
+        RV_none
+
+        # O_APPEND also affects pwrite
+    39: open "f1.txt" [O_APPEND;O_RDWR]
+        Tau
+        RV_num(3)
+    40: pwrite (FD 3) "AAA" 3 0
+        Tau
+        RV_num(3)
+    41: pwrite (FD 3) "BBB" 3 -1
+        Tau
+        EINVAL
+    42: pwrite (FD 3) "CCC" 3 5
+        Tau
+        RV_num(3)
+    43: pread! (FD 3) 100 0
+        Tau
+        RV_bytes("ABCDE56789ABCDEXXXYYYZZZAAACCC")
+    44: close (FD 3)
+        Tau
+        RV_none
+
+        # pwrite does not modify fd-offset, whereas write does
+    47: open "f1.txt" [O_APPEND;O_RDWR]
+        Tau
+        RV_num(3)
+    48: lseek (FD 3) 0 SEEK_CUR
+        Tau
+        RV_num(0)
+    49: pwrite (FD 3) "DDD" 3 0
+        Tau
+        RV_num(3)
+    50: lseek (FD 3) 0 SEEK_CUR
+        Tau
+        RV_num(0)
+    51: write (FD 3) "EEE" 3
+        Tau
+        RV_num(3)
+    52: lseek (FD 3) 0 SEEK_CUR
+        Tau
+        RV_num(36)
+    53: pread! (FD 3) 100 0
+        Tau
+        RV_bytes("ABCDE56789ABCDEXXXYYYZZZAAACCCDDDEEE")
+    54: close (FD 3)
+        Tau
+        RV_none
+
+
+        # O_APPEND does only influence write and pwrite
+    58: open "f1.txt" [O_APPEND;O_RDWR]
+        Tau
+        RV_num(3)
+    59: read (FD 3) 100
+        Tau
+        RV_bytes("ABCDE56789ABCDEXXXYYYZZZAAACCCDDDEEE")
+    60: close (FD 3)
+        Tau
+        RV_none
+
+    62: open "f1.txt" [O_APPEND;O_RDWR]
+        Tau
+        RV_num(3)
+    63: pread (FD 3) 100 0
+        Tau
+        RV_bytes("ABCDE56789ABCDEXXXYYYZZZAAACCCDDDEEE")
+    64: close (FD 3)
+        Tau
+        RV_none
+
+    66: open "f1.txt" [O_APPEND;O_RDWR]
+        Tau
+        RV_num(3)
+    67: lseek (FD 3) 0 SEEK_CUR
+        Tau
+        RV_num(0)
+    68: close (FD 3)
+        Tau
+        RV_none
+
+

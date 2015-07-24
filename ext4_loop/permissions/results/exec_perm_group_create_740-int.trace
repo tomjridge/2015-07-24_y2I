@@ -1,0 +1,95 @@
+# processing file 'perm_group_create_740-int.trace' ...
+        @type trace
+        #####################################
+        # Test perm_group_create_740
+        #####################################
+
+     6: Pid 2 -> create (User_id 1) (Group_id 1)
+     7: add_user_to_group (User_id 1) (Group_id 1)
+        Tau
+        RV_none
+     8: Pid 2 -> umask 0o000
+        Tau
+        Pid 2 <- RV_file_perm(0o022)
+
+    10: Pid 3 -> create (User_id 2) (Group_id 2)
+    11: add_user_to_group (User_id 2) (Group_id 2)
+        Tau
+        RV_none
+    12: add_user_to_group (User_id 2) (Group_id 1)
+        Tau
+        RV_none
+    13: Pid 3 -> umask 0o000
+        Tau
+        Pid 3 <- RV_file_perm(0o022)
+
+        #Initialize environment
+
+    17: Pid 2 -> mkdir "/d" 0o777
+        Tau
+        Pid 2 <- RV_none
+    18: Pid 2 -> chdir "/d"
+        Tau
+        Pid 2 <- RV_none
+    19: Pid 3 -> chdir "/d"
+        Tau
+        Pid 3 <- RV_none
+    20: Pid 2 -> open_close "f2" [O_EXCL;O_CREAT;O_RDWR] 0o666
+        Tau
+        Pid 2 <- RV_none
+    21: Pid 2 -> open_close "f4" [O_EXCL;O_CREAT;O_RDWR] 0o666
+        Tau
+        Pid 2 <- RV_none
+    22: Pid 2 -> mkdir "d2" 0o777
+        Tau
+        Pid 2 <- RV_none
+    23: Pid 2 -> mkdir "d4" 0o777
+        Tau
+        Pid 2 <- RV_none
+    24: Pid 2 -> chown "/d" (User_id 1) (Group_id 1)
+        Tau
+        Pid 2 <- RV_none
+    25: Pid 2 -> chmod "/d" 0o740
+        Tau
+        Pid 2 <- RV_none
+
+        #Test
+
+    29: Pid 3 -> mkdir "d1" 0o777
+        Tau
+        Pid 3 <- EACCES
+    30: Pid 3 -> mkdir "d2" 0o777
+        Tau
+        Pid 3 <- EACCES
+    31: Pid 3 -> open_close "f1" [O_EXCL;O_CREAT;O_RDWR] 0o666
+        Tau
+        Pid 3 <- EACCES
+    32: Pid 3 -> open_close "f2" [O_EXCL;O_CREAT;O_RDWR] 0o666
+        Tau
+        Pid 3 <- EACCES
+    33: Pid 3 -> mkdir "/d/d3" 0o777
+        Tau
+        Pid 3 <- EACCES
+    34: Pid 3 -> mkdir "/d/d4" 0o777
+        Tau
+        Pid 3 <- EACCES
+    35: Pid 3 -> open_close "/d/f3" [O_EXCL;O_CREAT;O_RDWR] 0o666
+        Tau
+        Pid 3 <- EACCES
+    36: Pid 3 -> open_close "/d/f4" [O_EXCL;O_CREAT;O_RDWR] 0o666
+        Tau
+        Pid 3 <- EACCES
+    37: Pid 3 -> open_close "/d/f-nonexist" [O_RDONLY]
+        Tau
+        Pid 3 <- EACCES
+
+    39: dump-result "/"
+           "/"|D|32642
+           "/d"|D|32645
+           "/d/f2"|F|12|0|"da39a3ee5e6b4b0d3255bfef95601890afd80709"
+           "/d/f4"|F|13|0|"da39a3ee5e6b4b0d3255bfef95601890afd80709"
+           "/d/d2"|D|32646
+           "/d/d4"|D|32647
+        end dump-result
+
+

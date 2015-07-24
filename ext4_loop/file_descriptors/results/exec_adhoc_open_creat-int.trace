@@ -1,0 +1,192 @@
+# processing file 'adhoc_open_creat-int.trace' ...
+        @type trace
+
+        ##############################################
+        # O_CREAT
+        ##############################################
+
+        # create without write flag is fine. It create
+        # a file (if it does not exist before), but
+        # we can only read from it
+    10: open "f1.txt" [O_RDONLY;O_CREAT] 0o644
+        Tau
+        RV_num(3)
+    11: write (FD 3) "ABCDE" 5
+        Tau
+        EBADF
+    12: read (FD 3) 100
+        Tau
+        RV_bytes("")
+    13: close (FD 3)
+        Tau
+        RV_none
+
+    15: open "f2.txt" [O_RDONLY;O_CREAT] 0o644
+        Tau
+        RV_num(3)
+    16: write (FD 3) "ABCDE" 5
+        Tau
+        EBADF
+    17: pread (FD 3) 100 0
+        Tau
+        RV_bytes("")
+    18: close (FD 3)
+        Tau
+        RV_none
+    19: unlink "f2.txt"
+        Tau
+        RV_none
+
+        # if O_EXCL is given the file must not exist
+    22: open "f1.txt" [O_EXCL;O_CREAT;O_RDWR] 0o644
+        Tau
+        EEXIST
+    23: close (FD 3)
+        Tau
+        EBADF
+
+    25: open "f2.txt" [O_EXCL;O_CREAT;O_RDWR] 0o644
+        Tau
+        RV_num(3)
+    26: write (FD 3) "ABCDE" 5
+        Tau
+        RV_num(5)
+    27: pread (FD 3) 100 0
+        Tau
+        RV_bytes("ABCDE")
+    28: close (FD 3)
+        Tau
+        RV_none
+    29: unlink "f2.txt"
+        Tau
+        RV_none
+
+        # if O_EXCL but not O_CREATE is set, the result is undefined
+    32: open "f1.txt" [O_EXCL;O_RDWR] 0o777
+        Tau
+        RV_num(3)
+    33: close (FD 3)
+        Tau
+        RV_none
+
+        # to create a file, we need write access to the parent dir
+
+    37: mkdir "d1" 0o555
+        Tau
+        RV_none
+
+    39: open_close "/d1/f3.txt" [O_CREAT;O_WRONLY] 0o644
+        Tau
+        RV_none
+
+    41: chmod "/d1" 0o755
+        Tau
+        RV_none
+    42: open "/d1/f3.txt" [O_CREAT;O_RDWR] 0o644
+        Tau
+        RV_num(3)
+    43: write (FD 3) "ABCDE" 5
+        Tau
+        RV_num(5)
+    44: pread (FD 3) 100 0
+        Tau
+        RV_bytes("ABCDE")
+    45: close (FD 3)
+        Tau
+        RV_none
+    46: unlink "/d1/f3.txt"
+        Tau
+        RV_none
+
+        # the file-permissions of a newly created file don't matter
+    49: open "/d1/f3.txt" [O_CREAT;O_RDWR] 0o444
+        Tau
+        RV_num(3)
+    50: write (FD 3) "ABCDE" 5
+        Tau
+        RV_num(5)
+    51: pread (FD 3) 100 0
+        Tau
+        RV_bytes("ABCDE")
+    52: close (FD 3)
+        Tau
+        RV_none
+
+    54: open "/d1/f3.txt" [O_RDWR]
+        Tau
+        RV_num(3)
+    55: close (FD 3)
+        Tau
+        RV_none
+
+    57: open "/d1/f3.txt" [O_RDONLY]
+        Tau
+        RV_num(3)
+    58: read (FD 3) 100
+        Tau
+        RV_bytes("ABCDE")
+    59: close (FD 3)
+        Tau
+        RV_none
+
+        # open does not change the permissions on existing files
+    62: open "/d1/f3.txt" [O_RDONLY;O_CREAT] 0o000
+        Tau
+        RV_num(3)
+    63: pread (FD 3) 100 0
+        Tau
+        RV_bytes("ABCDE")
+    64: close (FD 3)
+        Tau
+        RV_none
+
+    66: open "/d1/f3.txt" [O_RDONLY]
+        Tau
+        RV_num(3)
+    67: read (FD 3) 100
+        Tau
+        RV_bytes("ABCDE")
+    68: close (FD 3)
+        Tau
+        RV_none
+    69: unlink "/d1/f3.txt"
+        Tau
+        RV_none
+
+        # not even read permission is needed on newly created files
+    72: open "/d1/f3.txt" [O_RDONLY;O_CREAT] 0o000
+        Tau
+        RV_num(3)
+    73: pread (FD 3) 100 0
+        Tau
+        RV_bytes("")
+    74: close (FD 3)
+        Tau
+        RV_none
+
+    76: open "/d1/f3.txt" [O_RDONLY]
+        Tau
+        RV_num(3)
+    77: read (FD 3) 100
+        Tau
+        RV_bytes("")
+    78: close (FD 3)
+        Tau
+        RV_none
+    79: unlink "/d1/f3.txt"
+        Tau
+        RV_none
+
+
+        # O_CREAT flag only creates files not the dirs in path
+    83: open "/no-such-dir/" [O_RDONLY;O_CREAT] 0o644
+        Tau
+        EISDIR
+    84: open "/no-such-dir/file.txt" [O_RDONLY;O_CREAT] 0o644
+        Tau
+        ENOENT
+    85: close (FD 3)
+        Tau
+        EBADF
+
+

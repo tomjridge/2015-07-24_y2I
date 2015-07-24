@@ -1,0 +1,62 @@
+# processing file 'open___open_broken_sl_____O_APPEND__O_CLOEXEC__O_CREAT__O_EXCL__O_NOFOLLOW__O_SEARCH__O_TRUNC___0666___det_write_3___9a78211436f6d425ec38f5c4e02270801f3524f8___1___read_3___1___close_3-int.trace' ...
+        @type trace
+        #####################################
+        # Test open___open_broken_sl_____O_APPEND__O_CLOEXEC__O_CREAT__O_EXCL__O_NOFOLLOW__O_SEARCH__O_TRUNC___0666___det_write_3___9a78211436f6d425ec38f5c4e02270801f3524f8___1___read_3___1___close_3
+        #####################################
+     5: mkdir "empty_dir" 0o777
+        Tau
+        RV_none
+     6: mkdir "nonempty_dir" 0o777
+        Tau
+        RV_none
+     7: open_close "nonempty_dir/f1.txt" [O_CREAT;O_WRONLY] 0o666
+        Tau
+        RV_none
+     8: open "nonempty_dir/f2.txt" [O_CREAT;O_WRONLY] 0o666
+        Tau
+        RV_num(3)
+     9: write! (FD 3) "Lorem ipsum dolor sit amet, co" 30
+        Tau
+        RV_num(30)
+    10: close (FD 3)
+        Tau
+        RV_none
+    11: symlink "nonempty_dir/f2.txt" "f3_sl.txt"
+        Tau
+        RV_none
+    12: symlink "broken" "broken_sl"
+        Tau
+        RV_none
+    13: link "nonempty_dir/f4.txt" "f4_link.txt"
+        Tau
+        ENOENT
+    14: link "nonempty_dir" "dir_link"
+        Tau
+        EPERM
+
+    16: open "broken_sl/" [O_RDONLY;O_TRUNC;O_NOFOLLOW;O_EXCL;O_CREAT;O_CLOEXEC;O_APPEND] 0o666
+        Tau
+        EISDIR
+    17: write! (FD 3) "@" 1
+        Tau
+        EBADF
+    18: read (FD 3) 1
+        Tau
+        EBADF
+    19: close (FD 3)
+        Tau
+        EBADF
+
+    21: dump-result "/"
+           "/"|D|65282
+           "/broken_sl"|L|"broken"
+           "/f3_sl.txt"|L|"nonempty_dir/f2.txt"
+           "/empty_dir"|D|97922
+           "/nonempty_dir"|D|97923
+           "/nonempty_dir/f1.txt"|F|21|0|"da39a3ee5e6b4b0d3255bfef95601890afd80709"
+           "/nonempty_dir/f2.txt"|F|22|30|"e88ee12dedd1a9c6d9e9e5dea1a43e510dede7d5"
+        end dump-result
+
+
+
+

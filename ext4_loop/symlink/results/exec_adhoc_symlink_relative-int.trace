@@ -1,0 +1,138 @@
+# processing file 'adhoc_symlink_relative-int.trace' ...
+        @type trace
+        # adhoc_symlink_relative
+
+     4: mkdir "/dir" 0o777
+        Tau
+        RV_none
+     5: mkdir "/dir/subdir" 0o777
+        Tau
+        RV_none
+
+     7: open "/dir/f1.txt" [O_CREAT;O_RDWR] 0o666
+        Tau
+        RV_num(3)
+     8: write! (FD 3) "^/dir/f1.txt$" 13
+        Tau
+        RV_num(13)
+     9: close (FD 3)
+        Tau
+        RV_none
+
+    11: symlink "f1.txt" "/dir/sl1_f1.txt"
+        Tau
+        RV_none
+    12: open "/dir/sl1_f1.txt" [O_RDONLY]
+        Tau
+        RV_num(3)
+    13: pread! (FD 3) 1000 0
+        Tau
+        RV_bytes("^/dir/f1.txt$")
+    14: close (FD 3)
+        Tau
+        RV_none
+
+    16: symlink "../dir/f1.txt" "/dir/sl2_f1.txt"
+        Tau
+        RV_none
+    17: open "/dir/sl2_f1.txt" [O_RDONLY]
+        Tau
+        RV_num(3)
+    18: pread! (FD 3) 1000 0
+        Tau
+        RV_bytes("^/dir/f1.txt$")
+    19: close (FD 3)
+        Tau
+        RV_none
+
+        # should be fine because we hit root which is parent to itself
+    22: symlink "../../dir/f1.txt" "/dir/sl3_f1.txt"
+        Tau
+        RV_none
+    23: open "/dir/sl3_f1.txt" [O_RDONLY]
+        Tau
+        RV_num(3)
+    24: pread! (FD 3) 1000 0
+        Tau
+        RV_bytes("^/dir/f1.txt$")
+    25: close (FD 3)
+        Tau
+        RV_none
+
+    27: symlink "../nonexistent/../dir/f1.txt" "/dir/sl4_f1.txt"
+        Tau
+        RV_none
+    28: open "/dir/sl4_f1.txt" [O_RDONLY]
+        Tau
+        ENOENT
+    29: pread! (FD 3) 1000 0
+        Tau
+        EBADF
+    30: close (FD 3)
+        Tau
+        EBADF
+
+    32: symlink "f1.txt/../f1.txt" "/dir/sl5_f1.txt"
+        Tau
+        RV_none
+    33: open "/dir/sl5_f1.txt" [O_RDONLY]
+        Tau
+        ENOTDIR
+    34: pread! (FD 3) 1000 0
+        Tau
+        EBADF
+    35: close (FD 3)
+        Tau
+        EBADF
+
+        # follow a symlink to a dir and then go to parent dir
+    38: symlink "/dir/subdir" "/dirlink"
+        Tau
+        RV_none
+    39: chdir "/dirlink"
+        Tau
+        RV_none
+    40: chdir ".."
+        Tau
+        RV_none
+        # we should be in /dir now, not /, so we can read f1.txt
+    42: open_close "f1.txt" [O_RDONLY]
+        Tau
+        RV_none
+    43: open_close "dir/f1.txt" [O_RDONLY]
+        Tau
+        ENOENT
+    44: unlink "/dirlink"
+        Tau
+        RV_none
+
+        ###################################################
+        # testing symlink resolution
+        ###################################################
+
+    50: symlink "../dir/f1.txt" "/dir_1/../../symlink_dir_f1.txt"
+        Tau
+        ENOENT
+    51: open "symlink_dir_d1.txt" [O_RDONLY]
+        Tau
+        ENOENT
+    52: pread! (FD 3) 1000 0
+        Tau
+        EBADF
+    53: close (FD 3)
+        Tau
+        EBADF
+
+    55: dump-result "/"
+           "/"|D|16
+           "/dir"|D|17
+           "/dir/f1.txt"|F|19|13|"846ddb70f3c67ff16fb1b6b8284be6734d4f4f47"
+           "/dir/sl1_f1.txt"|L|"f1.txt"
+           "/dir/sl2_f1.txt"|L|"../dir/f1.txt"
+           "/dir/sl3_f1.txt"|L|"../../dir/f1.txt"
+           "/dir/sl4_f1.txt"|L|"../nonexistent/../dir/f1.txt"
+           "/dir/sl5_f1.txt"|L|"f1.txt/../f1.txt"
+           "/dir/subdir"|D|18
+        end dump-result
+
+

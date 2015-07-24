@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>linux[3.13.0-29-generic][system[GNU C Library (GNU libc) stable release version 2.21, by Roland McGrath et al.]][ext4_loop[mke2fs 1.42.9 (4-Feb-2014)]]@[2015-07-24T13:23:26Z./nix/store/fxisrpncjn4cxxwnq2lvilriqx63s9k9-fs_test] error summary</title>
+<style type="text/css">
+tr.summary { margin-top: 0.3em; margin-bottom: 0.3em }
+th.row { text-align: left }
+th.wide { border-left: 1px solid black; border-right: 1px solid black }
+td.num { text-align: right }
+td.good, th.good { color: green }
+td.bad, th.bad { color: red; font-weight: bold }
+td.warn, th.warn { color: orange; font-weight: bold }
+td.fail, th.fail { color: violet; font-weight: bold }
+tr.check td.good, tr.check td.bad, tr.check td.warn, tr.check td.fail {
+  text-align: center;
+}
+td.error { border: 2px solid red }
+td.line { vertical-align: top; text-align: right; padding-right: 1em }
+td.line:target { background-color: yellow }
+td.comment { color: gray }
+td.meta { color: green }
+td.dump table { margin: 1em; color: brown }
+td.return.label, td.process.label { padding-bottom: 1em }
+span.checked { font-size: 80% }
+td.terminated, td.diverged { border: 2px solid red }
+td.terminated { font-weight: bold; font-size: 150% }
+td.envelope { border: 2px solid green }
+div.stat table { margin-left: 1em }
+strong.fail { font-size: 120%; color: violet; }
+div.footer { font-size: 70%; color: gray; padding-top: 3em; text-align: right; }
+</style>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+</head>
+<body>
+<a href="../../index.html">Up</a><br/>
+
+  
+  <h3>Error Index</h3>
+  <h4>linux[3.13.0-29-generic][system[GNU C Library (GNU libc) stable release version 2.21, by Roland McGrath et al.]][ext4_loop[mke2fs 1.42.9 (4-Feb-2014)]]@[2015-07-24T13:23:26Z./nix/store/fxisrpncjn4cxxwnq2lvilriqx63s9k9-fs_test]</h4>
+  <h5>st_nlink errors</h5>
+  <ul>
+  <li><h6>directory nlink too low</h6>
+    <ul><li><a href="../../suite/rmdir/test/adhoc_rmdir_cwd-int.trace/index.html#76">rmdir/adhoc_rmdir_cwd-int.trace#76</a></li></ul>
+  </li>
+  <li><h6>directory nlink too high</h6>
+    <ul><li><a href="../../suite/mkdir/test/adhoc_mkdir_link_count-int.trace/index.html#11">mkdir/adhoc_mkdir_link_count-int.trace#11</a></li></ul>
+  </li>
+  <li><h6>file nlink too low</h6>
+    <ul></ul>
+  </li>
+  <li><h6>file nlink too high</h6>
+    <ul></ul>
+  </li>
+  </ul>
+  <h5>other errors</h5>
+  <ul><li><div><a href="../../suite/permissions/test/adhoc_create_owner-int.trace/index.html">permissions/adhoc_create_owner-int.trace</a></div>
+      <ul>
+      
+      <li><div><a href="../../suite/permissions/test/adhoc_create_owner-int.trace/index.html#13">permissions/adhoc_create_owner-int.trace#13</a></div>
+        <table>
+  <tr><td class="bad">expected st_uid 0 but got st_uid 1expected st_gid 0 but got st_gid 1</td></tr>
+</table>
+      </li>
+    
+      </ul>
+    </li><li><div><a href="../../suite/file_descriptors/test/adhoc_lseek_test_SEEK_HOLE-int.trace/index.html">file_descriptors/adhoc_lseek_test_SEEK_HOLE-int.trace</a></div>
+      <ul>
+      
+      <li><div><a href="../../suite/file_descriptors/test/adhoc_lseek_test_SEEK_HOLE-int.trace/index.html#14">file_descriptors/adhoc_lseek_test_SEEK_HOLE-int.trace#14</a></div>
+        <table>
+    <tr><td>special states found:
+     - OS_special (FIXME, &quot;lseek: SEEK_DATA and SEEK_HOLE are unsupported by this spec&quot;)</td></tr>
+    <tr><td>no normal result states</td></tr>
+  </table>
+      </li>
+    
+      </ul>
+    </li><li><div><a href="../../suite/file_descriptors/test/adhoc_lseek_test_SEEK_DATA-int.trace/index.html">file_descriptors/adhoc_lseek_test_SEEK_DATA-int.trace</a></div>
+      <ul>
+      
+      <li><div><a href="../../suite/file_descriptors/test/adhoc_lseek_test_SEEK_DATA-int.trace/index.html#14">file_descriptors/adhoc_lseek_test_SEEK_DATA-int.trace#14</a></div>
+        <table>
+    <tr><td>special states found:
+     - OS_special (FIXME, &quot;lseek: SEEK_DATA and SEEK_HOLE are unsupported by this spec&quot;)</td></tr>
+    <tr><td>no normal result states</td></tr>
+  </table>
+      </li>
+    
+      </ul>
+    </li><li><div><a href="../../suite/file_descriptors/test/adhoc_pwrite_tests-int.trace/index.html">file_descriptors/adhoc_pwrite_tests-int.trace</a></div>
+      <ul>
+      
+      <li><div><a href="../../suite/file_descriptors/test/adhoc_pwrite_tests-int.trace/index.html#528">file_descriptors/adhoc_pwrite_tests-int.trace#528</a></div>
+        <table>
+  <tr><td class="bad">
+    expected error EBADF but got value RV_num(0)
+  </td></tr>
+</table>
+      </li>
+    
+      <li><div><a href="../../suite/file_descriptors/test/adhoc_pwrite_tests-int.trace/index.html#487">file_descriptors/adhoc_pwrite_tests-int.trace#487</a></div>
+        <table>
+  <tr><td class="bad">
+    expected error EBADF but got value RV_num(0)
+  </td></tr>
+</table>
+      </li>
+    
+      <li><div><a href="../../suite/file_descriptors/test/adhoc_pwrite_tests-int.trace/index.html#452">file_descriptors/adhoc_pwrite_tests-int.trace#452</a></div>
+        <table>
+  <tr><td class="bad">
+    expected error EBADF but got value RV_num(0)
+  </td></tr>
+</table>
+      </li>
+    
+      <li><div><a href="../../suite/file_descriptors/test/adhoc_pwrite_tests-int.trace/index.html#432">file_descriptors/adhoc_pwrite_tests-int.trace#432</a></div>
+        <table>
+  <tr><td class="bad">
+    expected error EBADF but got value RV_num(0)
+  </td></tr>
+</table>
+      </li>
+    
+      </ul>
+    </li><li><div><a href="../../suite/rmdir/test/adhoc_rmdir_root-int.trace/index.html">rmdir/adhoc_rmdir_root-int.trace</a></div>
+      <ul>
+      
+      <li><div><a href="../../suite/rmdir/test/adhoc_rmdir_root-int.trace/index.html#108">rmdir/adhoc_rmdir_root-int.trace#108</a></div>
+        <table>
+  <tr><td class="bad">
+    expected error EBUSY but got error ENOTEMPTY
+  </td></tr>
+</table>
+      </li>
+    
+      <li><div><a href="../../suite/rmdir/test/adhoc_rmdir_root-int.trace/index.html#105">rmdir/adhoc_rmdir_root-int.trace#105</a></div>
+        <table>
+  <tr><td class="bad">
+    expected error EBUSY but got error ENOTEMPTY
+  </td></tr>
+</table>
+      </li>
+    
+      <li><div><a href="../../suite/rmdir/test/adhoc_rmdir_root-int.trace/index.html#102">rmdir/adhoc_rmdir_root-int.trace#102</a></div>
+        <table>
+  <tr><td class="bad">
+    expected error EBUSY but got error ENOTEMPTY
+  </td></tr>
+</table>
+      </li>
+    
+      <li><div><a href="../../suite/rmdir/test/adhoc_rmdir_root-int.trace/index.html#98">rmdir/adhoc_rmdir_root-int.trace#98</a></div>
+        <table>
+  <tr><td class="bad">
+    expected error EBUSY but got error ENOTEMPTY
+  </td></tr>
+</table>
+      </li>
+    
+      <li><div><a href="../../suite/rmdir/test/adhoc_rmdir_root-int.trace/index.html#95">rmdir/adhoc_rmdir_root-int.trace#95</a></div>
+        <table>
+  <tr><td class="bad">
+    expected error EBUSY but got error ENOTEMPTY
+  </td></tr>
+</table>
+      </li>
+    
+      <li><div><a href="../../suite/rmdir/test/adhoc_rmdir_root-int.trace/index.html#92">rmdir/adhoc_rmdir_root-int.trace#92</a></div>
+        <table>
+  <tr><td class="bad">
+    expected error EBUSY but got error ENOTEMPTY
+  </td></tr>
+</table>
+      </li>
+    
+      <li><div><a href="../../suite/rmdir/test/adhoc_rmdir_root-int.trace/index.html#88">rmdir/adhoc_rmdir_root-int.trace#88</a></div>
+        <table>
+  <tr><td class="bad">
+    expected error EBUSY but got error EINVAL
+  </td></tr>
+</table>
+      </li>
+    
+      <li><div><a href="../../suite/rmdir/test/adhoc_rmdir_root-int.trace/index.html#85">rmdir/adhoc_rmdir_root-int.trace#85</a></div>
+        <table>
+  <tr><td class="bad">
+    expected error EBUSY but got error EINVAL
+  </td></tr>
+</table>
+      </li>
+    
+      <li><div><a href="../../suite/rmdir/test/adhoc_rmdir_root-int.trace/index.html#82">rmdir/adhoc_rmdir_root-int.trace#82</a></div>
+        <table>
+  <tr><td class="bad">
+    expected error EBUSY but got error EINVAL
+  </td></tr>
+</table>
+      </li>
+    
+      <li><div><a href="../../suite/rmdir/test/adhoc_rmdir_root-int.trace/index.html#78">rmdir/adhoc_rmdir_root-int.trace#78</a></div>
+        <table>
+  <tr><td class="bad">
+    expected error EBUSY but got error EINVAL
+  </td></tr>
+</table>
+      </li>
+    
+      <li><div><a href="../../suite/rmdir/test/adhoc_rmdir_root-int.trace/index.html#75">rmdir/adhoc_rmdir_root-int.trace#75</a></div>
+        <table>
+  <tr><td class="bad">
+    expected error EBUSY but got error EINVAL
+  </td></tr>
+</table>
+      </li>
+    
+      <li><div><a href="../../suite/rmdir/test/adhoc_rmdir_root-int.trace/index.html#72">rmdir/adhoc_rmdir_root-int.trace#72</a></div>
+        <table>
+  <tr><td class="bad">
+    expected error EBUSY but got error EINVAL
+  </td></tr>
+</table>
+      </li>
+    
+      <li><div><a href="../../suite/rmdir/test/adhoc_rmdir_root-int.trace/index.html#69">rmdir/adhoc_rmdir_root-int.trace#69</a></div>
+        <table>
+  <tr><td class="bad">
+    expected error EBUSY but got error EINVAL
+  </td></tr>
+</table>
+      </li>
+    
+      <li><div><a href="../../suite/rmdir/test/adhoc_rmdir_root-int.trace/index.html#65">rmdir/adhoc_rmdir_root-int.trace#65</a></div>
+        <table>
+  <tr><td class="bad">
+    expected error EBUSY but got error ENOTEMPTY
+  </td></tr>
+</table>
+      </li>
+    
+      <li><div><a href="../../suite/rmdir/test/adhoc_rmdir_root-int.trace/index.html#62">rmdir/adhoc_rmdir_root-int.trace#62</a></div>
+        <table>
+  <tr><td class="bad">
+    expected error EBUSY but got error ENOTEMPTY
+  </td></tr>
+</table>
+      </li>
+    
+      <li><div><a href="../../suite/rmdir/test/adhoc_rmdir_root-int.trace/index.html#59">rmdir/adhoc_rmdir_root-int.trace#59</a></div>
+        <table>
+  <tr><td class="bad">
+    expected error EBUSY but got error ENOTEMPTY
+  </td></tr>
+</table>
+      </li>
+    
+      <li><div><a href="../../suite/rmdir/test/adhoc_rmdir_root-int.trace/index.html#56">rmdir/adhoc_rmdir_root-int.trace#56</a></div>
+        <table>
+  <tr><td class="bad">
+    expected error EBUSY but got error ENOTEMPTY
+  </td></tr>
+</table>
+      </li>
+    
+      <li><div><a href="../../suite/rmdir/test/adhoc_rmdir_root-int.trace/index.html#52">rmdir/adhoc_rmdir_root-int.trace#52</a></div>
+        <table>
+  <tr><td class="bad">
+    expected error EBUSY but got error ENOTEMPTY
+  </td></tr>
+</table>
+      </li>
+    
+      <li><div><a href="../../suite/rmdir/test/adhoc_rmdir_root-int.trace/index.html#49">rmdir/adhoc_rmdir_root-int.trace#49</a></div>
+        <table>
+  <tr><td class="bad">
+    expected error EBUSY but got error ENOTEMPTY
+  </td></tr>
+</table>
+      </li>
+    
+      <li><div><a href="../../suite/rmdir/test/adhoc_rmdir_root-int.trace/index.html#46">rmdir/adhoc_rmdir_root-int.trace#46</a></div>
+        <table>
+  <tr><td class="bad">
+    expected error EBUSY but got error ENOTEMPTY
+  </td></tr>
+</table>
+      </li>
+    
+      <li><div><a href="../../suite/rmdir/test/adhoc_rmdir_root-int.trace/index.html#43">rmdir/adhoc_rmdir_root-int.trace#43</a></div>
+        <table>
+  <tr><td class="bad">
+    expected error EBUSY but got error EINVAL
+  </td></tr>
+</table>
+      </li>
+    
+      <li><div><a href="../../suite/rmdir/test/adhoc_rmdir_root-int.trace/index.html#40">rmdir/adhoc_rmdir_root-int.trace#40</a></div>
+        <table>
+  <tr><td class="bad">
+    expected error EBUSY but got error EINVAL
+  </td></tr>
+</table>
+      </li>
+    
+      <li><div><a href="../../suite/rmdir/test/adhoc_rmdir_root-int.trace/index.html#37">rmdir/adhoc_rmdir_root-int.trace#37</a></div>
+        <table>
+  <tr><td class="bad">
+    expected error EBUSY but got error EINVAL
+  </td></tr>
+</table>
+      </li>
+    
+      <li><div><a href="../../suite/rmdir/test/adhoc_rmdir_root-int.trace/index.html#33">rmdir/adhoc_rmdir_root-int.trace#33</a></div>
+        <table>
+  <tr><td class="bad">
+    expected error EBUSY but got error ENOTEMPTY
+  </td></tr>
+</table>
+      </li>
+    
+      <li><div><a href="../../suite/rmdir/test/adhoc_rmdir_root-int.trace/index.html#30">rmdir/adhoc_rmdir_root-int.trace#30</a></div>
+        <table>
+  <tr><td class="bad">
+    expected error EBUSY but got error EINVAL
+  </td></tr>
+</table>
+      </li>
+    
+      <li><div><a href="../../suite/rmdir/test/adhoc_rmdir_root-int.trace/index.html#27">rmdir/adhoc_rmdir_root-int.trace#27</a></div>
+        <table>
+  <tr><td class="bad">
+    expected error EBUSY but got error ENOTEMPTY
+  </td></tr>
+</table>
+      </li>
+    
+      <li><div><a href="../../suite/rmdir/test/adhoc_rmdir_root-int.trace/index.html#24">rmdir/adhoc_rmdir_root-int.trace#24</a></div>
+        <table>
+  <tr><td class="bad">
+    expected error EBUSY but got error EINVAL
+  </td></tr>
+</table>
+      </li>
+    
+      <li><div><a href="../../suite/rmdir/test/adhoc_rmdir_root-int.trace/index.html#21">rmdir/adhoc_rmdir_root-int.trace#21</a></div>
+        <table>
+  <tr><td class="bad">
+    expected error EBUSY but got error ENOTEMPTY
+  </td></tr>
+</table>
+      </li>
+    
+      <li><div><a href="../../suite/rmdir/test/adhoc_rmdir_root-int.trace/index.html#18">rmdir/adhoc_rmdir_root-int.trace#18</a></div>
+        <table>
+  <tr><td class="bad">
+    expected error EBUSY but got error EINVAL
+  </td></tr>
+</table>
+      </li>
+    
+      </ul>
+    </li><li><div><a href="../../suite/rmdir/test/adhoc_rmdir_cwd-int.trace/index.html">rmdir/adhoc_rmdir_cwd-int.trace</a></div>
+      <ul>
+      
+      <li><div><a href="../../suite/rmdir/test/adhoc_rmdir_cwd-int.trace/index.html#80">rmdir/adhoc_rmdir_cwd-int.trace#80</a></div>
+        <table>
+      <tr><td class="bad">unexpected results: RV_none</td></tr>
+      <tr><td class="bad">allowed are only: RV_bytes(&quot;subdir&quot;), RV_bytes(&quot;..&quot;), RV_bytes(&quot;.&quot;)</td></tr>
+      <tr><td>continuing check with RV_bytes(&quot;subdir&quot;), RV_bytes(&quot;..&quot;), RV_bytes(&quot;.&quot;)</td></tr>
+    </table>
+      </li>
+    
+      </ul>
+    </li></ul>
+  
+  
+<div class="footer">
+  Generated by <em>fs_test html</em> <strong>/nix/store/fxisrpncjn4cxxwnq2lvilriqx63s9k9-fs_test</strong>
+</div>
+</body>
+</html>

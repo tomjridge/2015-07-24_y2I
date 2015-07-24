@@ -1,0 +1,4 @@
+< id -u -n
+< id -g -n
+1000 creating agent 1001
+1000 stopping agent 1001

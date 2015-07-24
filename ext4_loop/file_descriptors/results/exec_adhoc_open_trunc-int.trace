@@ -1,0 +1,138 @@
+# processing file 'adhoc_open_trunc-int.trace' ...
+        @type trace
+
+        ##############################################
+        # O_TRUNC
+        ##############################################
+
+        # O_TRUNC works as expected
+     8: open "f1.txt" [O_CREAT;O_WRONLY] 0o644
+        Tau
+        RV_num(3)
+     9: write! (FD 3) "0123456789" 10
+        Tau
+        RV_num(10)
+    10: close (FD 3)
+        Tau
+        RV_none
+
+    12: open "f1.txt" [O_RDWR]
+        Tau
+        RV_num(3)
+    13: read! (FD 3) 100
+        Tau
+        RV_bytes("0123456789")
+    14: close (FD 3)
+        Tau
+        RV_none
+
+    16: open "f1.txt" [O_TRUNC;O_RDWR]
+        Tau
+        RV_num(3)
+    17: read! (FD 3) 100
+        Tau
+        RV_bytes("")
+    18: close (FD 3)
+        Tau
+        RV_none
+
+        # behaviour of O_TRUNC without write flag is undefined on linux
+        # architecture, the O_TRUNC just truncates even in read-only mode
+    22: open "f1.txt" [O_TRUNC;O_RDWR]
+        Tau
+        RV_num(3)
+    23: write! (FD 3) "0123456789" 10
+        Tau
+        RV_num(10)
+    24: close (FD 3)
+        Tau
+        RV_none
+
+    26: open "f1.txt" [O_RDONLY]
+        Tau
+        RV_num(3)
+    27: read! (FD 3) 100
+        Tau
+        RV_bytes("0123456789")
+    28: close (FD 3)
+        Tau
+        RV_none
+
+    30: open "f1.txt" [O_RDONLY;O_TRUNC]
+        Tau
+        RV_num(3)
+    31: read! (FD 3) 100
+        Tau
+        RV_bytes("")
+    32: close (FD 3)
+        Tau
+        RV_none
+
+        # but we can't truncate file we don't have write permission to
+    35: open "f1.txt" [O_TRUNC;O_RDWR]
+        Tau
+        RV_num(3)
+    36: write (FD 3) "0123456789" 10
+        Tau
+        RV_num(10)
+    37: close (FD 3)
+        Tau
+        RV_none
+
+    39: open "f1.txt" [O_RDONLY]
+        Tau
+        RV_num(3)
+    40: read! (FD 3) 100
+        Tau
+        RV_bytes("0123456789")
+    41: close (FD 3)
+        Tau
+        RV_none
+
+    43: chmod "f1.txt" 0o444
+        Tau
+        RV_none
+    44: open "f1.txt" [O_RDONLY;O_TRUNC]
+        Tau
+        RV_num(3)
+    45: read! (FD 3) 100
+        Tau
+        RV_bytes("")
+    46: close (FD 3)
+        Tau
+        RV_none
+
+    48: open "f1.txt" [O_RDONLY]
+        Tau
+        RV_num(3)
+    49: read! (FD 3) 100
+        Tau
+        RV_bytes("")
+    50: close (FD 3)
+        Tau
+        RV_none
+
+    52: chmod "f1.txt" 0o644
+        Tau
+        RV_none
+    53: open "f1.txt" [O_RDONLY;O_TRUNC]
+        Tau
+        RV_num(3)
+    54: read! (FD 3) 100
+        Tau
+        RV_bytes("")
+    55: close (FD 3)
+        Tau
+        RV_none
+
+    57: open "f1.txt" [O_RDONLY]
+        Tau
+        RV_num(3)
+    58: read! (FD 3) 100
+        Tau
+        RV_bytes("")
+    59: close (FD 3)
+        Tau
+        RV_none
+
+

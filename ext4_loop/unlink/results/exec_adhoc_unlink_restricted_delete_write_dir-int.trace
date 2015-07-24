@@ -1,0 +1,31 @@
+# processing file 'adhoc_unlink_restricted_delete_write_dir-int.trace' ...
+        @type trace
+
+        # NOTE: this trace must be checked with the --root option of check.native
+
+        #####################################
+
+        # Test restricted delete permissions rsrc
+
+        #####################################
+
+
+    12: Pid 2 -> create (User_id 1) (Group_id 0)
+
+    14: Pid 1 -> chmod "/" 0o1777
+        Tau
+        Pid 1 <- RV_none
+
+    16: Pid 2 -> mkdir "/dir" 0o1777
+        Tau
+        Pid 2 <- RV_none
+
+    18: Pid 1 -> chown "/dir" (User_id 2) (Group_id 0)
+        Tau
+        Pid 1 <- RV_none
+
+    20: Pid 2 -> unlink "/dir"
+        Tau
+        Pid 2 <- EPERM
+
+

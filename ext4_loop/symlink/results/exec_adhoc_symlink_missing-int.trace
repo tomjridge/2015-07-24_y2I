@@ -1,0 +1,58 @@
+# processing file 'adhoc_symlink_missing-int.trace' ...
+        @type trace
+        # adhoc_symlink_missing
+
+        # linking to non-existing is OK
+     5: symlink "/no_such_dir/" "/slink_no_such1"
+        Tau
+        RV_none
+     6: symlink "/no_such_file" "/slink_no_such2"
+        Tau
+        RV_none
+     7: chdir "/slink_no_such1"
+        Tau
+        ENOENT
+     8: chdir "/slink_no_such1/"
+        Tau
+        ENOENT
+     9: chdir "/slink_no_such2"
+        Tau
+        ENOENT
+    10: chdir "/slink_no_such2/"
+        Tau
+        ENOENT
+    11: chdir "/slink_no_such1/something_else"
+        Tau
+        ENOENT
+    12: chdir "/slink_no_such1/something_else/"
+        Tau
+        ENOENT
+    13: mkdir "/slink_no_such1/" 0o777
+        Tau
+        EEXIST
+    14: mkdir "/slink_no_such1/ss" 0o777
+        Tau
+        ENOENT
+    15: mkdir "/slink_no_such1" 0o777
+        Tau
+        EEXIST
+    16: mkdir "/slink_no_such2/" 0o777
+        Tau
+        EEXIST
+    17: mkdir "/slink_no_such2/ss" 0o777
+        Tau
+        ENOENT
+    18: mkdir "/slink_no_such2" 0o777
+        Tau
+        EEXIST
+    19: unlink "/slink_no_such1"
+        Tau
+        RV_none
+    20: unlink "/slink_no_such2"
+        Tau
+        RV_none
+    21: dump-result "/"
+           "/"|D|25
+        end dump-result
+
+

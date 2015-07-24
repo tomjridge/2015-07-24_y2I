@@ -1,0 +1,84 @@
+# processing file 'exec_perm_umask_000-int.trace' ...
+        # processing file 'perm_umask_000-int.trace' ...
+        @type trace
+        #####################################
+        # Test perm_umask_000
+        #####################################
+
+        #Initialize environment
+
+     9: umask 0o000
+    10: Tau
+    11: RV_file_perm(0o022)
+    12: umask 0o000
+    13: Tau
+    14: RV_file_perm(0o000)
+
+        #Test
+
+    18: symlink "nonexistent" "sl"
+    19: Tau
+    20: RV_none
+    21: lstat "sl"
+    22: Tau
+    23: RV_stat { st_dev=1792; st_ino=12; st_kind=S_IFLNK; st_perm=0o777; st_nlink=1; st_uid=0; st_gid=0; st_rdev=0; st_size=11; }
+
+    25: open_close "f_777" [O_CREAT;O_RDWR] 0o777
+    26: Tau
+    27: RV_none
+    28: stat "f_777"
+    29: Tau
+    30: RV_stat { st_dev=1792; st_ino=13; st_kind=S_IFREG; st_perm=0o777; st_nlink=1; st_uid=0; st_gid=0; st_rdev=0; st_size=0; }
+
+    32: mkdir "d_777" 0o777
+    33: Tau
+    34: RV_none
+    35: stat "d_777"
+    36: Tau
+    37: RV_stat { st_dev=1792; st_ino=32645; st_kind=S_IFDIR; st_perm=0o777; st_nlink=2; st_uid=0; st_gid=0; st_rdev=0; st_size=4096; }
+
+    39: open_close "f_444" [O_CREAT;O_RDWR] 0o444
+    40: Tau
+    41: RV_none
+    42: stat "f_444"
+    43: Tau
+    44: RV_stat { st_dev=1792; st_ino=14; st_kind=S_IFREG; st_perm=0o444; st_nlink=1; st_uid=0; st_gid=0; st_rdev=0; st_size=0; }
+
+    46: mkdir "d_444" 0o444
+    47: Tau
+    48: RV_none
+    49: stat "d_444"
+    50: Tau
+    51: RV_stat { st_dev=1792; st_ino=32646; st_kind=S_IFDIR; st_perm=0o444; st_nlink=2; st_uid=0; st_gid=0; st_rdev=0; st_size=4096; }
+
+    53: open_close "f_322" [O_CREAT;O_RDWR] 0o322
+    54: Tau
+    55: RV_none
+    56: stat "f_322"
+    57: Tau
+    58: RV_stat { st_dev=1792; st_ino=15; st_kind=S_IFREG; st_perm=0o322; st_nlink=1; st_uid=0; st_gid=0; st_rdev=0; st_size=0; }
+
+    60: mkdir "d_322" 0o322
+    61: Tau
+    62: RV_none
+    63: stat "d_322"
+    64: Tau
+    65: RV_stat { st_dev=1792; st_ino=32647; st_kind=S_IFDIR; st_perm=0o322; st_nlink=2; st_uid=0; st_gid=0; st_rdev=0; st_size=4096; }
+
+    67: open_close "f_000" [O_CREAT;O_RDWR] 0o000
+    68: Tau
+    69: RV_none
+    70: stat "f_000"
+    71: Tau
+    72: RV_stat { st_dev=1792; st_ino=16; st_kind=S_IFREG; st_perm=0o000; st_nlink=1; st_uid=0; st_gid=0; st_rdev=0; st_size=0; }
+
+    74: mkdir "d_000" 0o000
+    75: Tau
+    76: RV_none
+    77: stat "d_000"
+    78: Tau
+    79: RV_stat { st_dev=1792; st_ino=32648; st_kind=S_IFDIR; st_perm=0o000; st_nlink=2; st_uid=0; st_gid=0; st_rdev=0; st_size=4096; }
+
+
+
+# trace accepted

@@ -1,0 +1,142 @@
+# processing file 'adhoc_symlink_follow-int.trace' ...
+        @type trace
+        # adhoc_symlink_errors
+
+        # initialization
+
+     6: mkdir "/dir_1" 0o777
+        Tau
+        RV_none
+     7: mkdir "/dir_1/dir_11" 0o777
+        Tau
+        RV_none
+     8: mkdir "/dir_2" 0o777
+        Tau
+        RV_none
+
+    10: open "/dir_1/f1.txt" [O_CREAT;O_RDWR] 0o666
+        Tau
+        RV_num(3)
+    11: write! (FD 3) "content of /dir_1/f1.txt" 24
+        Tau
+        RV_num(24)
+    12: close (FD 3)
+        Tau
+        RV_none
+
+    14: open "/dir_1/f2.txt" [O_CREAT;O_RDWR] 0o666
+        Tau
+        RV_num(3)
+    15: write! (FD 3) "content of /dir_1/f2.txt" 24
+        Tau
+        RV_num(24)
+    16: close (FD 3)
+        Tau
+        RV_none
+
+    18: open "/dir_2/f1.txt" [O_CREAT;O_RDWR] 0o666
+        Tau
+        RV_num(3)
+    19: write! (FD 3) "content of /dir_2/f1.txt" 24
+        Tau
+        RV_num(24)
+    20: close (FD 3)
+        Tau
+        RV_none
+
+        ###################################################
+        # whether a symbolic link that occurs as the last
+        # component of a resolved path is followed depends
+        # on the command, so test it for all commands
+        ###################################################
+
+    28: symlink "/dir_1" "/dir_link"
+        Tau
+        RV_none
+    29: symlink "/dir_1/f1.txt" "/file_link"
+        Tau
+        RV_none
+    30: symlink "/not_there" "/gone_link"
+        Tau
+        RV_none
+
+    32: link "/dir_1" "/dir_3"
+        Tau
+        EPERM
+    33: link "/dir_link" "/dir_4"
+        Tau
+        RV_none
+    34: link "/dir_1/f1.txt" "/f1.txt"
+        Tau
+        RV_none
+    35: link "/file_link" "/f2.txt"
+        Tau
+        RV_none
+    36: link "/gone_link" "/f3.txt"
+        Tau
+        RV_none
+
+    38: mkdir "/dir_link" 0o777
+        Tau
+        EEXIST
+    39: mkdir "/file_link" 0o777
+        Tau
+        EEXIST
+    40: mkdir "/dir_1" 0o777
+        Tau
+        EEXIST
+    41: mkdir "/dir_1/f1.txt" 0o777
+        Tau
+        EEXIST
+    42: mkdir "/gone_link" 0o777
+        Tau
+        EEXIST
+
+    44: symlink "/f_5" "/new_file_link_1"
+        Tau
+        RV_none
+    45: symlink "/f_6" "/new_file_link_2"
+        Tau
+        RV_none
+    46: open_close "/new_file_link_1" [O_CREAT;O_RDWR] 0o666
+        Tau
+        RV_none
+    47: symlink "xyz" "/new_file_link_2"
+        Tau
+        EEXIST
+
+    49: stat "/dir_link"
+        Tau
+        RV_stat { st_dev=1792; st_ino=18; st_kind=S_IFDIR; st_perm=0o755; st_nlink=3; st_uid=0; st_gid=0; st_rdev=0; st_size=4096; }
+    50: stat "/file_link"
+        Tau
+        RV_stat { st_dev=1792; st_ino=23; st_kind=S_IFREG; st_perm=0o644; st_nlink=2; st_uid=0; st_gid=0; st_rdev=0; st_size=24; }
+
+    52: truncate "/file_link" 0
+        Tau
+        RV_none
+    53: stat "/file_link"
+        Tau
+        RV_stat { st_dev=1792; st_ino=23; st_kind=S_IFREG; st_perm=0o644; st_nlink=2; st_uid=0; st_gid=0; st_rdev=0; st_size=0; }
+
+    55: dump-result "/"
+           "/"|D|17
+           "/dir_4"|L|"/dir_1"
+           "/dir_link"|L|"/dir_1"
+           "/f1.txt"|F|23|0|"da39a3ee5e6b4b0d3255bfef95601890afd80709"
+           "/f2.txt"|L|"/dir_1/f1.txt"
+           "/f3.txt"|L|"/not_there"
+           "/f_5"|F|33|0|"da39a3ee5e6b4b0d3255bfef95601890afd80709"
+           "/file_link"|L|"/dir_1/f1.txt"
+           "/gone_link"|L|"/not_there"
+           "/new_file_link_1"|L|"/f_5"
+           "/new_file_link_2"|L|"/f_6"
+           "/dir_1"|D|18
+           "/dir_1/f1.txt"|F|23|0|"da39a3ee5e6b4b0d3255bfef95601890afd80709"
+           "/dir_1/f2.txt"|F|25|24|"643494cc13ad08ccb3f11680caf2f3a8b294b994"
+           "/dir_1/dir_11"|D|20
+           "/dir_2"|D|21
+           "/dir_2/f1.txt"|F|27|24|"727703159e2b79582d71e169cf66473ba9f4ee5c"
+        end dump-result
+
+

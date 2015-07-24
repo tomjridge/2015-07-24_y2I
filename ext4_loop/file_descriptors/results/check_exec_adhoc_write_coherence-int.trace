@@ -1,0 +1,238 @@
+# processing file 'exec_adhoc_write_coherence-int.trace' ...
+        # processing file 'adhoc_write_coherence-int.trace' ...
+        @type trace
+
+        # Test interactions between writes to shared fds
+
+        # First, just check read/write
+     7: open "f1.txt" [O_CREAT;O_RDWR] 0o600
+     8: Tau
+     9: RV_num(3)
+    10: write! (FD 3) "0123456789" 10
+    11: Tau
+    12: RV_num(10)
+
+    14: pread! (FD 3) 3 2
+    15: Tau
+    16: RV_bytes("234")
+
+    18: open "f1.txt" [O_CREAT;O_RDWR] 0o600
+    19: Tau
+    20: RV_num(4)
+    21: read! (FD 4) 3
+    22: Tau
+    23: RV_bytes("012")
+    24: write! (FD 4) "!@#" 3
+    25: Tau
+    26: RV_num(3)
+
+    28: write! (FD 3) "ABCDEFGHIJ" 10
+    29: Tau
+    30: RV_num(10)
+
+    32: pread! (FD 3) 100 0
+    33: Tau
+    34: RV_bytes("012!@#6789ABCDEFGHIJ")
+    35: pread! (FD 4) 100 0
+    36: Tau
+    37: RV_bytes("012!@#6789ABCDEFGHIJ")
+
+
+        # truncate is a kind of mutation
+
+    42: truncate "f1.txt" 15
+    43: Tau
+    44: RV_none
+
+    46: pread! (FD 4) 100 0
+    47: Tau
+    48: RV_bytes("012!@#6789ABCDE")
+    49: pread! (FD 3) 100 0
+    50: Tau
+    51: RV_bytes("012!@#6789ABCDE")
+
+        # and truncation can happen during open
+
+    55: open "f1.txt" [O_TRUNC;O_APPEND;O_RDWR]
+    56: Tau
+    57: RV_num(5)
+
+    59: pread! (FD 4) 100 0
+    60: Tau
+    61: RV_bytes("")
+    62: pread! (FD 3) 100 0
+    63: Tau
+    64: RV_bytes("")
+
+        # where's the cursor?
+
+    68: write! (FD 3) "abc" 3
+    69: Tau
+    70: RV_num(3)
+    71: write! (FD 4) "def" 3
+    72: Tau
+    73: RV_num(3)
+
+    75: pread! (FD 5) 100 0
+    76: Tau
+    77: RV_bytes("\000\000\000\000\000\000def\000\000\000\000\000\000\000\000\000\000\000abc")
+
+    79: write! (FD 5) "|/-\\|" 5
+    80: Tau
+    81: RV_num(5)
+
+    83: pread! (FD 3) 100 0
+    84: Tau
+    85: RV_bytes("\000\000\000\000\000\000def\000\000\000\000\000\000\000\000\000\000\000abc|/-\\|")
+    86: read! (FD 3) 100
+    87: Tau
+    88: RV_bytes("|/-\\|")
+    89: read! (FD 4) 100
+    90: Tau
+    91: RV_bytes("\000\000\000\000\000\000\000\000\000\000\000abc|/-\\|")
+
+    93: write! (FD 4) "zyxwv" 5
+    94: Tau
+    95: RV_num(5)
+    96: read! (FD 5) 100
+    97: Tau
+    98: RV_bytes("zyxwv")
+
+   100: write! (FD 3) "01234567890123456789" 20
+   101: Tau
+   102: RV_num(20)
+   103: pread! (FD 4) 100 0
+   104: Tau
+   105: RV_bytes("\000\000\000\000\000\000def\000\000\000\000\000\000\000\000\000\000\000abc|/-\\|01234567890123456789")
+   106: write! (FD 5) "appended!" 9
+   107: Tau
+   108: RV_num(9)
+   109: read! (FD 4) 100
+   110: Tau
+   111: RV_bytes("567890123456789appended!")
+
+   113: pread! (FD 3) 100 0
+   114: Tau
+   115: RV_bytes("\000\000\000\000\000\000def\000\000\000\000\000\000\000\000\000\000\000abc|/-\\|01234567890123456789appended!")
+
+        # Let's go multiprocess!
+
+   119: Pid 2 -> create (User_id 0) (Group_id 0)
+
+   121: Pid 2 -> open "f1.txt" [O_TRUNC;O_RDWR]
+   122: Tau
+   123: Pid 2 <- RV_num(3)
+
+   125: pread! (FD 3) 100 0
+   126: Tau
+   127: RV_bytes("")
+
+   129: Pid 2 -> pread! (FD 3) 100 0
+   130: Tau
+   131: Pid 2 <- RV_bytes("")
+
+   133: Pid 2 -> write! (FD 3) "2" 1
+   134: Tau
+   135: Pid 2 <- RV_num(1)
+
+   137: read! (FD 3) 100
+   138: Tau
+   139: RV_bytes("")
+
+   141: write! (FD 5) "." 1
+   142: Tau
+   143: RV_num(1)
+   144: pread! (FD 5) 100 0
+   145: Tau
+   146: RV_bytes("2.")
+
+   148: Pid 2 -> pread! (FD 3) 100 0
+   149: Tau
+   150: Pid 2 <- RV_bytes("2.")
+   151: Pid 2 -> write! (FD 3) "3" 1
+   152: Tau
+   153: Pid 2 <- RV_num(1)
+   154: Pid 2 -> pread! (FD 3) 100 0
+   155: Tau
+   156: Pid 2 <- RV_bytes("23")
+
+   158: Pid 2 -> open "f1.txt" [O_APPEND;O_RDWR]
+   159: Tau
+   160: Pid 2 <- RV_num(4)
+
+   162: Pid 2 -> write! (FD 4) "4" 1
+   163: Tau
+   164: Pid 2 <- RV_num(1)
+   165: Pid 2 -> pread! (FD 3) 100 0
+   166: Tau
+   167: Pid 2 <- RV_bytes("234")
+
+   169: truncate "f1.txt" 1
+   170: Tau
+   171: RV_none
+
+   173: Pid 2 -> pread! (FD 3) 100 0
+   174: Tau
+   175: Pid 2 <- RV_bytes("2")
+   176: Pid 2 -> write! (FD 3) "5" 1
+   177: Tau
+   178: Pid 2 <- RV_num(1)
+   179: Pid 2 -> write! (FD 4) "6" 1
+   180: Tau
+   181: Pid 2 <- RV_num(1)
+   182: Pid 2 -> pread! (FD 3) 100 0
+   183: Tau
+   184: Pid 2 <- RV_bytes("2\00056")
+   185: Pid 2 -> write! (FD 3) "7" 1
+   186: Tau
+   187: Pid 2 <- RV_num(1)
+   188: Pid 2 -> pread! (FD 4) 100 0
+   189: Tau
+   190: Pid 2 <- RV_bytes("2\00057")
+
+   192: pread! (FD 3) 100 0
+   193: Tau
+   194: RV_bytes("2\00057")
+   195: write! (FD 5) "!" 1
+   196: Tau
+   197: RV_num(1)
+
+   199: Pid 2 -> pread! (FD 3) 100 0
+   200: Tau
+   201: Pid 2 <- RV_bytes("2\00057!")
+
+   203: unlink "f1.txt"
+   204: Tau
+   205: RV_none
+
+   207: close (FD 3)
+   208: Tau
+   209: RV_none
+
+   211: pread! (FD 4) 100 0
+   212: Tau
+   213: RV_bytes("2\00057!")
+   214: write! (FD 5) "?" 1
+   215: Tau
+   216: RV_num(1)
+
+   218: Pid 2 -> pread! (FD 3) 100 0
+   219: Tau
+   220: Pid 2 <- RV_bytes("2\00057!?")
+   221: Pid 2 -> write! (FD 4) "8" 1
+   222: Tau
+   223: Pid 2 <- RV_num(1)
+   224: Pid 2 -> close (FD 3)
+   225: Tau
+   226: Pid 2 <- RV_none
+   227: Pid 2 -> pread! (FD 3) 100 0
+   228: Tau
+   229: Pid 2 <- EBADF
+
+   231: pread! (FD 4) 100 0
+   232: Tau
+   233: RV_bytes("2\00057!?8")
+
+
+
+# trace accepted

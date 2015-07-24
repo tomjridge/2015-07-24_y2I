@@ -1,0 +1,140 @@
+# processing file 'adhoc_chown-int.trace' ...
+        @type trace
+        ###########################################
+        # Testing chown
+        ###########################################x
+
+        # Initialisation
+
+     8: umask 0o000
+        Tau
+        RV_file_perm(0o022)
+     9: mkdir "/dir" 0o777
+        Tau
+        RV_none
+    10: open_close "/file.txt" [O_CREAT;O_RDWR] 0o777
+        Tau
+        RV_none
+    11: symlink "/file.txt" "/sl"
+        Tau
+        RV_none
+
+        # test initial permissions
+
+    15: lstat "/dir"
+        Tau
+        RV_stat { st_dev=1792; st_ino=32645; st_kind=S_IFDIR; st_perm=0o777; st_nlink=2; st_uid=0; st_gid=0; st_rdev=0; st_size=4096; }
+    16: lstat "/file.txt"
+        Tau
+        RV_stat { st_dev=1792; st_ino=13; st_kind=S_IFREG; st_perm=0o777; st_nlink=1; st_uid=0; st_gid=0; st_rdev=0; st_size=0; }
+    17: lstat "/sl"
+        Tau
+        RV_stat { st_dev=1792; st_ino=14; st_kind=S_IFLNK; st_perm=0o777; st_nlink=1; st_uid=0; st_gid=0; st_rdev=0; st_size=9; }
+
+        # Test 1 - change the ownership to the one the directory already has
+
+    21: chown "/dir" (User_id 0) (Group_id 0)
+        Tau
+        RV_none
+    22: lstat "/dir"
+        Tau
+        RV_stat { st_dev=1792; st_ino=32645; st_kind=S_IFDIR; st_perm=0o777; st_nlink=2; st_uid=0; st_gid=0; st_rdev=0; st_size=4096; }
+
+        # Test 2 - change the ownership to the one the file already has
+
+    26: chown "/file.txt" (User_id 0) (Group_id 0)
+        Tau
+        RV_none
+    27: lstat "/file.txt"
+        Tau
+        RV_stat { st_dev=1792; st_ino=13; st_kind=S_IFREG; st_perm=0o777; st_nlink=1; st_uid=0; st_gid=0; st_rdev=0; st_size=0; }
+
+        # Test 3 - erroneous path
+
+    31: chown "" (User_id 0) (Group_id 0)
+        Tau
+        ENOENT
+
+        # Test 4 - not existing path
+
+    35: chown "/ciaociao" (User_id 0) (Group_id 0)
+        Tau
+        ENOENT
+    36: lstat "/ciaociao"
+        Tau
+        ENOENT
+
+        # Test 5 - change the ownership of the directory
+
+    40: chown "/dir" (User_id 1) (Group_id 0)
+        Tau
+        RV_none
+    41: lstat "/dir"
+        Tau
+        RV_stat { st_dev=1792; st_ino=32645; st_kind=S_IFDIR; st_perm=0o777; st_nlink=2; st_uid=1; st_gid=0; st_rdev=0; st_size=4096; }
+
+    43: chown "/dir" (User_id 0) (Group_id 1)
+        Tau
+        RV_none
+    44: lstat "/dir"
+        Tau
+        RV_stat { st_dev=1792; st_ino=32645; st_kind=S_IFDIR; st_perm=0o777; st_nlink=2; st_uid=0; st_gid=1; st_rdev=0; st_size=4096; }
+
+    46: chown "/dir" (User_id 1) (Group_id 1)
+        Tau
+        RV_none
+    47: lstat "/dir"
+        Tau
+        RV_stat { st_dev=1792; st_ino=32645; st_kind=S_IFDIR; st_perm=0o777; st_nlink=2; st_uid=1; st_gid=1; st_rdev=0; st_size=4096; }
+
+        # Test 6 - change the ownership of the file
+
+    51: chown "/file.txt" (User_id 1) (Group_id 0)
+        Tau
+        RV_none
+    52: lstat "/file.txt"
+        Tau
+        RV_stat { st_dev=1792; st_ino=13; st_kind=S_IFREG; st_perm=0o777; st_nlink=1; st_uid=1; st_gid=0; st_rdev=0; st_size=0; }
+
+    54: chown "/file.txt" (User_id 0) (Group_id 1)
+        Tau
+        RV_none
+    55: lstat "/file.txt"
+        Tau
+        RV_stat { st_dev=1792; st_ino=13; st_kind=S_IFREG; st_perm=0o777; st_nlink=1; st_uid=0; st_gid=1; st_rdev=0; st_size=0; }
+
+    57: chown "/file.txt" (User_id 1) (Group_id 1)
+        Tau
+        RV_none
+    58: lstat "/file.txt"
+        Tau
+        RV_stat { st_dev=1792; st_ino=13; st_kind=S_IFREG; st_perm=0o777; st_nlink=1; st_uid=1; st_gid=1; st_rdev=0; st_size=0; }
+
+        # Test 7 - using chown on a symlink
+
+    62: chown "/sl" (User_id 1) (Group_id 0)
+        Tau
+        RV_none
+    63: lstat "/sl"
+        Tau
+        RV_stat { st_dev=1792; st_ino=14; st_kind=S_IFLNK; st_perm=0o777; st_nlink=1; st_uid=0; st_gid=0; st_rdev=0; st_size=9; }
+
+    65: chown "/sl" (User_id 0) (Group_id 1)
+        Tau
+        RV_none
+    66: lstat "/sl"
+        Tau
+        RV_stat { st_dev=1792; st_ino=14; st_kind=S_IFLNK; st_perm=0o777; st_nlink=1; st_uid=0; st_gid=0; st_rdev=0; st_size=9; }
+
+    68: chown "/sl" (User_id 1) (Group_id 1)
+        Tau
+        RV_none
+    69: lstat "/sl"
+        Tau
+        RV_stat { st_dev=1792; st_ino=14; st_kind=S_IFLNK; st_perm=0o777; st_nlink=1; st_uid=0; st_gid=0; st_rdev=0; st_size=9; }
+
+    71: stat "/sl"
+        Tau
+        RV_stat { st_dev=1792; st_ino=13; st_kind=S_IFREG; st_perm=0o777; st_nlink=1; st_uid=1; st_gid=1; st_rdev=0; st_size=0; }
+
+

@@ -1,0 +1,4 @@
+< id -u -n
+< id -g -n
+8080 creating agent 8081
+8080 stopping agent 8081

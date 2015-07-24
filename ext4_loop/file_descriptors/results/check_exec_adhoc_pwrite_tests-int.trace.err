@@ -1,0 +1,60 @@
+
+Fatal error:    432: RV_num(0)
+   no result states
+
+Error: 
+   !!! EXCEPT CHECKLIB DOES NOT AGREE !!!
+
+Error: 
+   The spec permitted:
+EBADF
+
+Error:    432: RV_num(0)
+   unexpected results: RV_num(0)
+   allowed are only: EBADF
+   continuing execution with EBADF
+
+Fatal error:    452: RV_num(0)
+   no result states
+
+Error: 
+   !!! EXCEPT CHECKLIB DOES NOT AGREE !!!
+
+Error: 
+   The spec permitted:
+EBADF
+
+Error:    452: RV_num(0)
+   unexpected results: RV_num(0)
+   allowed are only: EBADF
+   continuing execution with EBADF
+
+Fatal error:    487: RV_num(0)
+   no result states
+
+Error: 
+   !!! EXCEPT CHECKLIB DOES NOT AGREE !!!
+
+Error: 
+   The spec permitted:
+EBADF
+
+Error:    487: RV_num(0)
+   unexpected results: RV_num(0)
+   allowed are only: EBADF
+   continuing execution with EBADF
+
+Fatal error:    528: RV_num(0)
+   no result states
+
+Error: 
+   !!! EXCEPT CHECKLIB DOES NOT AGREE !!!
+
+Error: 
+   The spec permitted:
+EBADF
+
+Error:    528: RV_num(0)
+   unexpected results: RV_num(0)
+   allowed are only: EBADF
+   continuing execution with EBADF

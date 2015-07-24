@@ -1,0 +1,45 @@
+# processing file 'adhoc_symlink_overwrite-int.trace' ...
+        @type trace
+        # adhoc_symlink_missing
+
+        # initialization
+
+     6: mkdir "/dir_1" 0o777
+        Tau
+        RV_none
+     7: mkdir "/dir_2" 0o777
+        Tau
+        RV_none
+
+     9: open "/dir_1/f1.txt" [O_CREAT;O_RDWR] 0o666
+        Tau
+        RV_num(3)
+    10: write! (FD 3) "content of /dir_1/f1.txt" 24
+        Tau
+        RV_num(24)
+    11: close (FD 3)
+        Tau
+        RV_none
+
+        # existing files and dirs cannot be overridden by symlink
+    14: symlink "/dir_1" "/dir_2"
+        Tau
+        EEXIST
+    15: symlink "/dir_1" "/dir_1/f1.txt"
+        Tau
+        EEXIST
+    16: symlink "/dir_1" "/dir_1/symlink.txt"
+        Tau
+        RV_none
+    17: symlink "/dir_2" "/dir_1/symlink.txt"
+        Tau
+        EEXIST
+    18: dump-result "/"
+           "/"|D|14
+           "/dir_1"|D|19
+           "/dir_1/f1.txt"|F|24|24|"3f8cf820bb3ad6f52314a560e757adf6c0548d42"
+           "/dir_1/symlink.txt"|L|"/dir_1"
+           "/dir_2"|D|22
+        end dump-result
+
+

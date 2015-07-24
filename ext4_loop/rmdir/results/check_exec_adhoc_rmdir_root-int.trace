@@ -1,0 +1,552 @@
+# processing file 'exec_adhoc_rmdir_root-int.trace' ...
+        # processing file 'adhoc_rmdir_root-int.trace' ...
+        @type trace
+
+        # Try to remove the root directory by various names
+
+     6: rmdir "/"
+     7: Tau
+     8: EBUSY
+     9: rmdir "//"
+    10: Tau
+    11: EBUSY
+    12: rmdir "///"
+    13: Tau
+    14: EBUSY
+
+    16: rmdir "/."
+    17: Tau
+    18: EINVAL
+# 
+# Fatal error:     18: EINVAL
+#    no result states
+# 
+# Error: 
+#    !!! EXCEPT CHECKLIB DOES NOT AGREE !!!
+# 
+# Error: 
+#    The spec permitted:
+# EBUSY
+# 
+# Error:     18: EINVAL
+#    unexpected results: EINVAL
+#    allowed are only: EBUSY
+#    continuing execution with EBUSY
+    19: rmdir "/.."
+    20: Tau
+    21: ENOTEMPTY
+# 
+# Fatal error:     21: ENOTEMPTY
+#    no result states
+# 
+# Error: 
+#    !!! EXCEPT CHECKLIB DOES NOT AGREE !!!
+# 
+# Error: 
+#    The spec permitted:
+# EBUSY
+# 
+# Error:     21: ENOTEMPTY
+#    unexpected results: ENOTEMPTY
+#    allowed are only: EBUSY
+#    continuing execution with EBUSY
+    22: rmdir "//."
+    23: Tau
+    24: EINVAL
+# 
+# Fatal error:     24: EINVAL
+#    no result states
+# 
+# Error: 
+#    !!! EXCEPT CHECKLIB DOES NOT AGREE !!!
+# 
+# Error: 
+#    The spec permitted:
+# EBUSY
+# 
+# Error:     24: EINVAL
+#    unexpected results: EINVAL
+#    allowed are only: EBUSY
+#    continuing execution with EBUSY
+    25: rmdir "//.."
+    26: Tau
+    27: ENOTEMPTY
+# 
+# Fatal error:     27: ENOTEMPTY
+#    no result states
+# 
+# Error: 
+#    !!! EXCEPT CHECKLIB DOES NOT AGREE !!!
+# 
+# Error: 
+#    The spec permitted:
+# EBUSY
+# 
+# Error:     27: ENOTEMPTY
+#    unexpected results: ENOTEMPTY
+#    allowed are only: EBUSY
+#    continuing execution with EBUSY
+    28: rmdir "///."
+    29: Tau
+    30: EINVAL
+# 
+# Fatal error:     30: EINVAL
+#    no result states
+# 
+# Error: 
+#    !!! EXCEPT CHECKLIB DOES NOT AGREE !!!
+# 
+# Error: 
+#    The spec permitted:
+# EBUSY
+# 
+# Error:     30: EINVAL
+#    unexpected results: EINVAL
+#    allowed are only: EBUSY
+#    continuing execution with EBUSY
+    31: rmdir "///.."
+    32: Tau
+    33: ENOTEMPTY
+# 
+# Fatal error:     33: ENOTEMPTY
+#    no result states
+# 
+# Error: 
+#    !!! EXCEPT CHECKLIB DOES NOT AGREE !!!
+# 
+# Error: 
+#    The spec permitted:
+# EBUSY
+# 
+# Error:     33: ENOTEMPTY
+#    unexpected results: ENOTEMPTY
+#    allowed are only: EBUSY
+#    continuing execution with EBUSY
+
+    35: rmdir "/./"
+    36: Tau
+    37: EINVAL
+# 
+# Fatal error:     37: EINVAL
+#    no result states
+# 
+# Error: 
+#    !!! EXCEPT CHECKLIB DOES NOT AGREE !!!
+# 
+# Error: 
+#    The spec permitted:
+# EBUSY
+# 
+# Error:     37: EINVAL
+#    unexpected results: EINVAL
+#    allowed are only: EBUSY
+#    continuing execution with EBUSY
+    38: rmdir "/.//"
+    39: Tau
+    40: EINVAL
+# 
+# Fatal error:     40: EINVAL
+#    no result states
+# 
+# Error: 
+#    !!! EXCEPT CHECKLIB DOES NOT AGREE !!!
+# 
+# Error: 
+#    The spec permitted:
+# EBUSY
+# 
+# Error:     40: EINVAL
+#    unexpected results: EINVAL
+#    allowed are only: EBUSY
+#    continuing execution with EBUSY
+    41: rmdir "/.///"
+    42: Tau
+    43: EINVAL
+# 
+# Fatal error:     43: EINVAL
+#    no result states
+# 
+# Error: 
+#    !!! EXCEPT CHECKLIB DOES NOT AGREE !!!
+# 
+# Error: 
+#    The spec permitted:
+# EBUSY
+# 
+# Error:     43: EINVAL
+#    unexpected results: EINVAL
+#    allowed are only: EBUSY
+#    continuing execution with EBUSY
+    44: rmdir "/../"
+    45: Tau
+    46: ENOTEMPTY
+# 
+# Fatal error:     46: ENOTEMPTY
+#    no result states
+# 
+# Error: 
+#    !!! EXCEPT CHECKLIB DOES NOT AGREE !!!
+# 
+# Error: 
+#    The spec permitted:
+# EBUSY
+# 
+# Error:     46: ENOTEMPTY
+#    unexpected results: ENOTEMPTY
+#    allowed are only: EBUSY
+#    continuing execution with EBUSY
+    47: rmdir "/..//"
+    48: Tau
+    49: ENOTEMPTY
+# 
+# Fatal error:     49: ENOTEMPTY
+#    no result states
+# 
+# Error: 
+#    !!! EXCEPT CHECKLIB DOES NOT AGREE !!!
+# 
+# Error: 
+#    The spec permitted:
+# EBUSY
+# 
+# Error:     49: ENOTEMPTY
+#    unexpected results: ENOTEMPTY
+#    allowed are only: EBUSY
+#    continuing execution with EBUSY
+    50: rmdir "/..///"
+    51: Tau
+    52: ENOTEMPTY
+# 
+# Fatal error:     52: ENOTEMPTY
+#    no result states
+# 
+# Error: 
+#    !!! EXCEPT CHECKLIB DOES NOT AGREE !!!
+# 
+# Error: 
+#    The spec permitted:
+# EBUSY
+# 
+# Error:     52: ENOTEMPTY
+#    unexpected results: ENOTEMPTY
+#    allowed are only: EBUSY
+#    continuing execution with EBUSY
+
+    54: rmdir ".."
+    55: Tau
+    56: ENOTEMPTY
+# 
+# Fatal error:     56: ENOTEMPTY
+#    no result states
+# 
+# Error: 
+#    !!! EXCEPT CHECKLIB DOES NOT AGREE !!!
+# 
+# Error: 
+#    The spec permitted:
+# EBUSY
+# 
+# Error:     56: ENOTEMPTY
+#    unexpected results: ENOTEMPTY
+#    allowed are only: EBUSY
+#    continuing execution with EBUSY
+    57: rmdir "../"
+    58: Tau
+    59: ENOTEMPTY
+# 
+# Fatal error:     59: ENOTEMPTY
+#    no result states
+# 
+# Error: 
+#    !!! EXCEPT CHECKLIB DOES NOT AGREE !!!
+# 
+# Error: 
+#    The spec permitted:
+# EBUSY
+# 
+# Error:     59: ENOTEMPTY
+#    unexpected results: ENOTEMPTY
+#    allowed are only: EBUSY
+#    continuing execution with EBUSY
+    60: rmdir "..//"
+    61: Tau
+    62: ENOTEMPTY
+# 
+# Fatal error:     62: ENOTEMPTY
+#    no result states
+# 
+# Error: 
+#    !!! EXCEPT CHECKLIB DOES NOT AGREE !!!
+# 
+# Error: 
+#    The spec permitted:
+# EBUSY
+# 
+# Error:     62: ENOTEMPTY
+#    unexpected results: ENOTEMPTY
+#    allowed are only: EBUSY
+#    continuing execution with EBUSY
+    63: rmdir "..///"
+    64: Tau
+    65: ENOTEMPTY
+# 
+# Fatal error:     65: ENOTEMPTY
+#    no result states
+# 
+# Error: 
+#    !!! EXCEPT CHECKLIB DOES NOT AGREE !!!
+# 
+# Error: 
+#    The spec permitted:
+# EBUSY
+# 
+# Error:     65: ENOTEMPTY
+#    unexpected results: ENOTEMPTY
+#    allowed are only: EBUSY
+#    continuing execution with EBUSY
+
+    67: rmdir "."
+    68: Tau
+    69: EINVAL
+# 
+# Fatal error:     69: EINVAL
+#    no result states
+# 
+# Error: 
+#    !!! EXCEPT CHECKLIB DOES NOT AGREE !!!
+# 
+# Error: 
+#    The spec permitted:
+# EBUSY
+# 
+# Error:     69: EINVAL
+#    unexpected results: EINVAL
+#    allowed are only: EBUSY
+#    continuing execution with EBUSY
+    70: rmdir "./"
+    71: Tau
+    72: EINVAL
+# 
+# Fatal error:     72: EINVAL
+#    no result states
+# 
+# Error: 
+#    !!! EXCEPT CHECKLIB DOES NOT AGREE !!!
+# 
+# Error: 
+#    The spec permitted:
+# EBUSY
+# 
+# Error:     72: EINVAL
+#    unexpected results: EINVAL
+#    allowed are only: EBUSY
+#    continuing execution with EBUSY
+    73: rmdir ".//"
+    74: Tau
+    75: EINVAL
+# 
+# Fatal error:     75: EINVAL
+#    no result states
+# 
+# Error: 
+#    !!! EXCEPT CHECKLIB DOES NOT AGREE !!!
+# 
+# Error: 
+#    The spec permitted:
+# EBUSY
+# 
+# Error:     75: EINVAL
+#    unexpected results: EINVAL
+#    allowed are only: EBUSY
+#    continuing execution with EBUSY
+    76: rmdir ".///"
+    77: Tau
+    78: EINVAL
+# 
+# Fatal error:     78: EINVAL
+#    no result states
+# 
+# Error: 
+#    !!! EXCEPT CHECKLIB DOES NOT AGREE !!!
+# 
+# Error: 
+#    The spec permitted:
+# EBUSY
+# 
+# Error:     78: EINVAL
+#    unexpected results: EINVAL
+#    allowed are only: EBUSY
+#    continuing execution with EBUSY
+
+    80: rmdir "../."
+    81: Tau
+    82: EINVAL
+# 
+# Fatal error:     82: EINVAL
+#    no result states
+# 
+# Error: 
+#    !!! EXCEPT CHECKLIB DOES NOT AGREE !!!
+# 
+# Error: 
+#    The spec permitted:
+# EBUSY
+# 
+# Error:     82: EINVAL
+#    unexpected results: EINVAL
+#    allowed are only: EBUSY
+#    continuing execution with EBUSY
+    83: rmdir "..//."
+    84: Tau
+    85: EINVAL
+# 
+# Fatal error:     85: EINVAL
+#    no result states
+# 
+# Error: 
+#    !!! EXCEPT CHECKLIB DOES NOT AGREE !!!
+# 
+# Error: 
+#    The spec permitted:
+# EBUSY
+# 
+# Error:     85: EINVAL
+#    unexpected results: EINVAL
+#    allowed are only: EBUSY
+#    continuing execution with EBUSY
+    86: rmdir "..///."
+    87: Tau
+    88: EINVAL
+# 
+# Fatal error:     88: EINVAL
+#    no result states
+# 
+# Error: 
+#    !!! EXCEPT CHECKLIB DOES NOT AGREE !!!
+# 
+# Error: 
+#    The spec permitted:
+# EBUSY
+# 
+# Error:     88: EINVAL
+#    unexpected results: EINVAL
+#    allowed are only: EBUSY
+#    continuing execution with EBUSY
+
+    90: rmdir "../.."
+    91: Tau
+    92: ENOTEMPTY
+# 
+# Fatal error:     92: ENOTEMPTY
+#    no result states
+# 
+# Error: 
+#    !!! EXCEPT CHECKLIB DOES NOT AGREE !!!
+# 
+# Error: 
+#    The spec permitted:
+# EBUSY
+# 
+# Error:     92: ENOTEMPTY
+#    unexpected results: ENOTEMPTY
+#    allowed are only: EBUSY
+#    continuing execution with EBUSY
+    93: rmdir "..//.."
+    94: Tau
+    95: ENOTEMPTY
+# 
+# Fatal error:     95: ENOTEMPTY
+#    no result states
+# 
+# Error: 
+#    !!! EXCEPT CHECKLIB DOES NOT AGREE !!!
+# 
+# Error: 
+#    The spec permitted:
+# EBUSY
+# 
+# Error:     95: ENOTEMPTY
+#    unexpected results: ENOTEMPTY
+#    allowed are only: EBUSY
+#    continuing execution with EBUSY
+    96: rmdir "..///.."
+    97: Tau
+    98: ENOTEMPTY
+# 
+# Fatal error:     98: ENOTEMPTY
+#    no result states
+# 
+# Error: 
+#    !!! EXCEPT CHECKLIB DOES NOT AGREE !!!
+# 
+# Error: 
+#    The spec permitted:
+# EBUSY
+# 
+# Error:     98: ENOTEMPTY
+#    unexpected results: ENOTEMPTY
+#    allowed are only: EBUSY
+#    continuing execution with EBUSY
+
+   100: rmdir "../../"
+   101: Tau
+   102: ENOTEMPTY
+# 
+# Fatal error:    102: ENOTEMPTY
+#    no result states
+# 
+# Error: 
+#    !!! EXCEPT CHECKLIB DOES NOT AGREE !!!
+# 
+# Error: 
+#    The spec permitted:
+# EBUSY
+# 
+# Error:    102: ENOTEMPTY
+#    unexpected results: ENOTEMPTY
+#    allowed are only: EBUSY
+#    continuing execution with EBUSY
+   103: rmdir "../..//"
+   104: Tau
+   105: ENOTEMPTY
+# 
+# Fatal error:    105: ENOTEMPTY
+#    no result states
+# 
+# Error: 
+#    !!! EXCEPT CHECKLIB DOES NOT AGREE !!!
+# 
+# Error: 
+#    The spec permitted:
+# EBUSY
+# 
+# Error:    105: ENOTEMPTY
+#    unexpected results: ENOTEMPTY
+#    allowed are only: EBUSY
+#    continuing execution with EBUSY
+   106: rmdir "../..///"
+   107: Tau
+   108: ENOTEMPTY
+# 
+# Fatal error:    108: ENOTEMPTY
+#    no result states
+# 
+# Error: 
+#    !!! EXCEPT CHECKLIB DOES NOT AGREE !!!
+# 
+# Error: 
+#    The spec permitted:
+# EBUSY
+# 
+# Error:    108: ENOTEMPTY
+#    unexpected results: ENOTEMPTY
+#    allowed are only: EBUSY
+#    continuing execution with EBUSY
+
+   110: rmdir ""
+   111: Tau
+   112: ENOENT
+
+
+
+# trace not accepted

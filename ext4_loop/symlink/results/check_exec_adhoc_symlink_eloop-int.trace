@@ -1,0 +1,368 @@
+# processing file 'exec_adhoc_symlink_eloop-int.trace' ...
+        # processing file 'adhoc_symlink_eloop-int.trace' ...
+        @type trace
+        # adhoc_symlink_eloop
+
+        # Note: ELOOP counters may differ depending on the entry point. This
+        # script only tests the counter used for the stat syscall.
+
+     8: symlink "/0" "/1"
+     9: Tau
+    10: RV_none
+    11: stat "/1"
+    12: Tau
+    13: ENOENT
+
+    15: symlink "/1" "/2"
+    16: Tau
+    17: RV_none
+    18: stat "/2"
+    19: Tau
+    20: ENOENT
+
+    22: symlink "/2" "/3"
+    23: Tau
+    24: RV_none
+    25: stat "/3"
+    26: Tau
+    27: ENOENT
+
+    29: symlink "/3" "/4"
+    30: Tau
+    31: RV_none
+    32: stat "/4"
+    33: Tau
+    34: ENOENT
+
+    36: symlink "/4" "/5"
+    37: Tau
+    38: RV_none
+    39: stat "/5"
+    40: Tau
+    41: ENOENT
+
+    43: symlink "/5" "/6"
+    44: Tau
+    45: RV_none
+    46: stat "/6"
+    47: Tau
+    48: ENOENT
+
+    50: symlink "/6" "/7"
+    51: Tau
+    52: RV_none
+    53: stat "/7"
+    54: Tau
+    55: ENOENT
+
+    57: symlink "/7" "/8"
+    58: Tau
+    59: RV_none
+    60: stat "/8"
+    61: Tau
+    62: ENOENT
+
+    64: symlink "/8" "/9"
+    65: Tau
+    66: RV_none
+    67: stat "/9"
+    68: Tau
+    69: ENOENT
+
+    71: symlink "/9" "/10"
+    72: Tau
+    73: RV_none
+    74: stat "/10"
+    75: Tau
+    76: ENOENT
+
+    78: symlink "/10" "/11"
+    79: Tau
+    80: RV_none
+    81: stat "/11"
+    82: Tau
+    83: ENOENT
+
+    85: symlink "/11" "/12"
+    86: Tau
+    87: RV_none
+    88: stat "/12"
+    89: Tau
+    90: ENOENT
+
+    92: symlink "/12" "/13"
+    93: Tau
+    94: RV_none
+    95: stat "/13"
+    96: Tau
+    97: ENOENT
+
+    99: symlink "/13" "/14"
+   100: Tau
+   101: RV_none
+   102: stat "/14"
+   103: Tau
+   104: ENOENT
+
+   106: symlink "/14" "/15"
+   107: Tau
+   108: RV_none
+   109: stat "/15"
+   110: Tau
+   111: ENOENT
+
+   113: symlink "/15" "/16"
+   114: Tau
+   115: RV_none
+   116: stat "/16"
+   117: Tau
+   118: ENOENT
+
+   120: symlink "/16" "/17"
+   121: Tau
+   122: RV_none
+   123: stat "/17"
+   124: Tau
+   125: ENOENT
+
+   127: symlink "/17" "/18"
+   128: Tau
+   129: RV_none
+   130: stat "/18"
+   131: Tau
+   132: ENOENT
+
+   134: symlink "/18" "/19"
+   135: Tau
+   136: RV_none
+   137: stat "/19"
+   138: Tau
+   139: ENOENT
+
+   141: symlink "/19" "/20"
+   142: Tau
+   143: RV_none
+   144: stat "/20"
+   145: Tau
+   146: ENOENT
+
+   148: symlink "/20" "/21"
+   149: Tau
+   150: RV_none
+   151: stat "/21"
+   152: Tau
+   153: ENOENT
+
+   155: symlink "/21" "/22"
+   156: Tau
+   157: RV_none
+   158: stat "/22"
+   159: Tau
+   160: ENOENT
+
+   162: symlink "/22" "/23"
+   163: Tau
+   164: RV_none
+   165: stat "/23"
+   166: Tau
+   167: ENOENT
+
+   169: symlink "/23" "/24"
+   170: Tau
+   171: RV_none
+   172: stat "/24"
+   173: Tau
+   174: ENOENT
+
+   176: symlink "/24" "/25"
+   177: Tau
+   178: RV_none
+   179: stat "/25"
+   180: Tau
+   181: ENOENT
+
+   183: symlink "/25" "/26"
+   184: Tau
+   185: RV_none
+   186: stat "/26"
+   187: Tau
+   188: ENOENT
+
+   190: symlink "/26" "/27"
+   191: Tau
+   192: RV_none
+   193: stat "/27"
+   194: Tau
+   195: ENOENT
+
+   197: symlink "/27" "/28"
+   198: Tau
+   199: RV_none
+   200: stat "/28"
+   201: Tau
+   202: ENOENT
+
+   204: symlink "/28" "/29"
+   205: Tau
+   206: RV_none
+   207: stat "/29"
+   208: Tau
+   209: ENOENT
+
+   211: symlink "/29" "/30"
+   212: Tau
+   213: RV_none
+   214: stat "/30"
+   215: Tau
+   216: ENOENT
+
+   218: symlink "/30" "/31"
+   219: Tau
+   220: RV_none
+   221: stat "/31"
+   222: Tau
+   223: ENOENT
+
+   225: symlink "/31" "/32"
+   226: Tau
+   227: RV_none
+   228: stat "/32"
+   229: Tau
+   230: ENOENT
+
+   232: symlink "/32" "/33"
+   233: Tau
+   234: RV_none
+   235: stat "/33"
+   236: Tau
+   237: ENOENT
+
+   239: symlink "/33" "/34"
+   240: Tau
+   241: RV_none
+   242: stat "/34"
+   243: Tau
+   244: ENOENT
+
+   246: symlink "/34" "/35"
+   247: Tau
+   248: RV_none
+   249: stat "/35"
+   250: Tau
+   251: ENOENT
+
+   253: symlink "/35" "/36"
+   254: Tau
+   255: RV_none
+   256: stat "/36"
+   257: Tau
+   258: ENOENT
+
+   260: symlink "/36" "/37"
+   261: Tau
+   262: RV_none
+   263: stat "/37"
+   264: Tau
+   265: ENOENT
+
+   267: symlink "/37" "/38"
+   268: Tau
+   269: RV_none
+   270: stat "/38"
+   271: Tau
+   272: ENOENT
+
+   274: symlink "/38" "/39"
+   275: Tau
+   276: RV_none
+   277: stat "/39"
+   278: Tau
+   279: ENOENT
+
+   281: symlink "/39" "/40"
+   282: Tau
+   283: RV_none
+   284: stat "/40"
+   285: Tau
+   286: ENOENT
+
+   288: symlink "/40" "/41"
+   289: Tau
+   290: RV_none
+   291: stat "/41"
+   292: Tau
+   293: ELOOP
+
+   295: symlink "/41" "/42"
+   296: Tau
+   297: RV_none
+   298: stat "/42"
+   299: Tau
+   300: ELOOP
+
+   302: symlink "/42" "/43"
+   303: Tau
+   304: RV_none
+   305: stat "/43"
+   306: Tau
+   307: ELOOP
+
+   309: symlink "/43" "/44"
+   310: Tau
+   311: RV_none
+   312: stat "/44"
+   313: Tau
+   314: ELOOP
+
+   316: symlink "/44" "/45"
+   317: Tau
+   318: RV_none
+   319: stat "/45"
+   320: Tau
+   321: ELOOP
+
+   323: symlink "/45" "/46"
+   324: Tau
+   325: RV_none
+   326: stat "/46"
+   327: Tau
+   328: ELOOP
+
+   330: symlink "/46" "/47"
+   331: Tau
+   332: RV_none
+   333: stat "/47"
+   334: Tau
+   335: ELOOP
+
+   337: symlink "/47" "/48"
+   338: Tau
+   339: RV_none
+   340: stat "/48"
+   341: Tau
+   342: ELOOP
+
+   344: symlink "/48" "/49"
+   345: Tau
+   346: RV_none
+   347: stat "/49"
+   348: Tau
+   349: ELOOP
+
+   351: symlink "/49" "/50"
+   352: Tau
+   353: RV_none
+   354: stat "/50"
+   355: Tau
+   356: ELOOP
+
+   358: symlink "/50" "/51"
+   359: Tau
+   360: RV_none
+   361: stat "/51"
+   362: Tau
+   363: ELOOP
+
+
+
+# trace accepted

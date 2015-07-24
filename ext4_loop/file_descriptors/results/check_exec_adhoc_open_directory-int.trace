@@ -1,0 +1,95 @@
+# processing file 'exec_adhoc_open_directory-int.trace' ...
+        # processing file 'adhoc_open_directory-int.trace' ...
+        @type trace
+
+        ##############################################
+        # O_DIRECTORY
+        ##############################################
+
+     8: mkdir "d1" 0o755
+     9: Tau
+    10: RV_none
+
+        # open directory for searching
+    13: open "d1" [O_RDONLY]
+    14: Tau
+    15: RV_num(3)
+    16: read (FD 3) 100
+    17: Tau
+    18: EISDIR
+    19: close (FD 3)
+    20: Tau
+    21: RV_none
+
+        # using O_DIRECTORY with dirs is fine
+        # but we can't do anything afterwards :-)
+    25: open "d1" [O_RDONLY;O_DIRECTORY]
+    26: Tau
+    27: RV_num(3)
+    28: read (FD 3) 100
+    29: Tau
+    30: EISDIR
+    31: close (FD 3)
+    32: Tau
+    33: RV_none
+
+        # using O_DIRECTORY with files fails
+    36: open_close "f1.txt" [O_RDONLY;O_CREAT] 0o600
+    37: Tau
+    38: RV_none
+    39: open "f1.txt" [O_RDONLY;O_DIRECTORY]
+    40: Tau
+    41: RV_num(3)
+    42: read (FD 3) 100
+    43: Tau
+    44: RV_bytes("")
+    45: close (FD 3)
+    46: Tau
+    47: RV_none
+
+        # using O_DIRECTORY on non-existing files
+    50: open "no-such-file.txt" [O_RDONLY;O_DIRECTORY]
+    51: Tau
+    52: ENOENT
+    53: read (FD 3) 100
+    54: Tau
+    55: EBADF
+    56: close (FD 3)
+    57: Tau
+    58: EBADF
+
+        # using O_DIRECTORY on non-existing dir
+    61: open "/no-such-dir/" [O_RDONLY;O_DIRECTORY]
+    62: Tau
+    63: ENOENT
+    64: read (FD 3) 100
+    65: Tau
+    66: EBADF
+    67: close (FD 3)
+    68: Tau
+    69: EBADF
+
+        # we can't create directories
+    72: open "/no-such-dir/" [O_RDONLY;O_DIRECTORY;O_CREAT] 0o700
+    73: Tau
+    74: EISDIR
+    75: read (FD 3) 100
+    76: Tau
+    77: EBADF
+    78: close (FD 3)
+    79: Tau
+    80: EBADF
+
+    82: open "/no-such-dir/" [O_RDONLY;O_CREAT] 0o700
+    83: Tau
+    84: EISDIR
+    85: read (FD 3) 100
+    86: Tau
+    87: EBADF
+    88: close (FD 3)
+    89: Tau
+    90: EBADF
+
+
+
+# trace accepted

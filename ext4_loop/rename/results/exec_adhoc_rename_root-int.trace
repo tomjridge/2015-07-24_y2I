@@ -1,0 +1,28 @@
+# processing file 'adhoc_rename_root-int.trace' ...
+        @type trace
+
+        #####################################
+        # Test rename root
+        #####################################
+     6: mkdir "/test_dir_0001" 0o3361
+        Tau
+        RV_none
+     7: chdir "/test_dir_0001"
+        Tau
+        RV_none
+     8: mkdir "empty_dir1" 0o3361
+        Tau
+        RV_none
+     9: mkdir "empty_dir2" 0o777
+        Tau
+        RV_none
+    10: mkdir "nonempty_dir1" 0o777
+        Tau
+        RV_none
+
+    12: rename "/" "mydir"
+        Tau
+        EBUSY
+
+
+

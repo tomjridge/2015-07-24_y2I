@@ -1,0 +1,104 @@
+# processing file 'exec_link___link_nonempty_dir1__d2__sl_dotdot_no_such_target___nonexist_2__-int.trace' ...
+        # processing file 'link___link_nonempty_dir1__d2__sl_dotdot_no_such_target___nonexist_2__-int.trace' ...
+        @type trace
+        #####################################
+        # Test link___link_nonempty_dir1__d2__sl_dotdot_no_such_target___nonexist_2__
+        #####################################
+     6: mkdir "empty_dir1" 0o777
+     7: Tau
+     8: RV_none
+     9: mkdir "empty_dir2" 0o777
+    10: Tau
+    11: RV_none
+    12: mkdir "nonempty_dir1" 0o777
+    13: Tau
+    14: RV_none
+    15: mkdir "nonempty_dir1/d2" 0o777
+    16: Tau
+    17: RV_none
+    18: open "nonempty_dir1/d2/f3.txt" [O_CREAT;O_WRONLY] 0o666
+    19: Tau
+    20: RV_num(3)
+    21: write! (FD 3) "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor inc" 83
+    22: Tau
+    23: RV_num(83)
+    24: close (FD 3)
+    25: Tau
+    26: RV_none
+    27: mkdir "nonempty_dir1/d2/d3" 0o777
+    28: Tau
+    29: RV_none
+    30: symlink "../f1.txt" "nonempty_dir1/d2/sl_dotdot_f1.txt"
+    31: Tau
+    32: RV_none
+    33: symlink "no_such_target" "nonempty_dir1/d2/sl_no_such_target"
+    34: Tau
+    35: RV_none
+    36: symlink "../no_such_target" "nonempty_dir1/d2/sl_dotdot_no_such_target"
+    37: Tau
+    38: RV_none
+    39: symlink "../d2" "nonempty_dir1/d2/sl_dotdot_d2"
+    40: Tau
+    41: RV_none
+    42: open_close "nonempty_dir1/f1.txt" [O_CREAT;O_WRONLY] 0o666
+    43: Tau
+    44: RV_none
+    45: symlink "f1.txt" "nonempty_dir1/sl_f1.txt"
+    46: Tau
+    47: RV_none
+    48: mkdir "nonempty_dir2" 0o777
+    49: Tau
+    50: RV_none
+    51: open_close "nonempty_dir2/f1.txt" [O_CREAT;O_WRONLY] 0o666
+    52: Tau
+    53: RV_none
+    54: open "nonempty_dir2/f2.txt" [O_CREAT;O_WRONLY] 0o666
+    55: Tau
+    56: RV_num(3)
+    57: write! (FD 3) "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exer" 167
+    58: Tau
+    59: RV_num(167)
+    60: close (FD 3)
+    61: Tau
+    62: RV_none
+    63: mkdir "nonempty_dir2/d2" 0o777
+    64: Tau
+    65: RV_none
+    66: mkdir "nonempty_dir2/d2/d3" 0o777
+    67: Tau
+    68: RV_none
+    69: symlink "../../nonempty_dir1/d2/f3.txt" "nonempty_dir2/d2/sl_f3.txt"
+    70: Tau
+    71: RV_none
+
+    73: link "nonempty_dir1/d2/sl_dotdot_no_such_target" "nonexist_2/"
+    74: Tau
+    75: ENOENT
+
+    77: dump-result "/"
+           "/"|D|32644
+           "/empty_dir1"|D|32649
+           "/empty_dir2"|D|32650
+           "/nonempty_dir1"|D|32651
+           "/nonempty_dir1/f1.txt"|F|31|0|"da39a3ee5e6b4b0d3255bfef95601890afd80709"
+           "/nonempty_dir1/sl_f1.txt"|L|"f1.txt"
+           "/nonempty_dir1/d2"|D|32652
+           "/nonempty_dir1/d2/f3.txt"|F|25|83|"4b535f836f6006423fc132a59e78dfcc4fe6292f"
+           "/nonempty_dir1/d2/sl_dotdot_d2"|L|"../d2"
+           "/nonempty_dir1/d2/sl_dotdot_f1.txt"|L|"../f1.txt"
+           "/nonempty_dir1/d2/sl_dotdot_no_such_target"|L|"../no_such_target"
+           "/nonempty_dir1/d2/sl_no_such_target"|L|"no_such_target"
+           "/nonempty_dir1/d2/d3"|D|32653
+           "/nonempty_dir2"|D|32656
+           "/nonempty_dir2/f1.txt"|F|33|0|"da39a3ee5e6b4b0d3255bfef95601890afd80709"
+           "/nonempty_dir2/f2.txt"|F|12|167|"d09f4e47c22373e56c2369633ac3dcb71d598601"
+           "/nonempty_dir2/d2"|D|32657
+           "/nonempty_dir2/d2/sl_f3.txt"|L|"../../nonempty_dir1/d2/f3.txt"
+           "/nonempty_dir2/d2/d3"|D|32658
+        end dump-result
+
+
+
+
+
+# trace accepted

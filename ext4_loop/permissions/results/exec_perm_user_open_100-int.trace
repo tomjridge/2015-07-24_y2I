@@ -1,0 +1,53 @@
+# processing file 'perm_user_open_100-int.trace' ...
+        @type trace
+        #####################################
+        # Test perm_user_open_100
+        #####################################
+
+     6: Pid 2 -> create (User_id 1) (Group_id 1)
+     7: add_user_to_group (User_id 1) (Group_id 1)
+        Tau
+        RV_none
+     8: Pid 2 -> umask 0o000
+        Tau
+        Pid 2 <- RV_file_perm(0o022)
+
+    10: Pid 2 -> mkdir "/d" 0o755
+        Tau
+        Pid 2 <- RV_none
+    11: Pid 2 -> open_close "/d/f" [O_CREAT;O_RDWR] 0o100
+        Tau
+        Pid 2 <- RV_none
+    12: Pid 2 -> chown "/d/f" (User_id 1) (Group_id 1)
+        Tau
+        Pid 2 <- RV_none
+
+    14: Pid 2 -> open_close "/d/f" [O_RDONLY]
+        Tau
+        Pid 2 <- EACCES
+    15: Pid 2 -> open_close "/d/f" [O_WRONLY]
+        Tau
+        Pid 2 <- EACCES
+    16: Pid 2 -> open_close "/d/f" [O_RDWR]
+        Tau
+        Pid 2 <- EACCES
+    17: Pid 2 -> open_close "/d/f" [O_RDONLY;O_TRUNC]
+        Tau
+        Pid 2 <- EACCES
+    18: Pid 2 -> open_close "/d/f" [O_TRUNC;O_WRONLY]
+        Tau
+        Pid 2 <- EACCES
+    19: Pid 2 -> open_close "/d/f" [O_RDONLY;O_APPEND]
+        Tau
+        Pid 2 <- EACCES
+    20: Pid 2 -> open_close "/d/f" [O_APPEND;O_WRONLY]
+        Tau
+        Pid 2 <- EACCES
+
+    22: dump-result "/"
+           "/"|D|32644
+           "/d"|D|32648
+           "/d/f"|F|14|0|"da39a3ee5e6b4b0d3255bfef95601890afd80709"
+        end dump-result
+
+

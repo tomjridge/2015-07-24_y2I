@@ -1,0 +1,21 @@
+# processing file 'exec_adhoc_open_creat_no_mode-int.trace' ...
+        # processing file 'adhoc_open_creat_no_mode-int.trace' ...
+        @type trace
+
+        # creating a file without providing a mode is
+        # unspecified in Posix. For Linux, the
+        # default mode is 0o101
+     7: open "f2.txt" [O_CREAT;O_WRONLY]
+     8: Tau
+     9: RV_num(3)
+    10: close (FD 3)
+    11: Tau
+    12: RV_none
+
+    14: stat "f2.txt"
+    15: Tau
+    16: RV_stat { st_dev=1792; st_ino=17; st_kind=S_IFREG; st_perm=0o101; st_nlink=1; st_uid=0; st_gid=0; st_rdev=0; st_size=0; }
+
+
+
+# trace accepted

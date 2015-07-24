@@ -1,0 +1,319 @@
+# processing file 'adhoc_open_tests-int.trace' ...
+        @type trace
+        # Tests for open and close
+
+        ##############################################
+        # basic cases that should work
+        ##############################################
+
+        # create a file with some content
+     9: open "f1.txt" [O_CREAT;O_WRONLY] 0o644
+        Tau
+        RV_num(3)
+    10: write (FD 3) "0123456789" 10
+        Tau
+        RV_num(10)
+    11: close (FD 3)
+        Tau
+        RV_none
+
+        # read that file again
+    14: open "f1.txt" [O_RDONLY]
+        Tau
+        RV_num(3)
+    15: read (FD 3) 100
+        Tau
+        RV_bytes("0123456789")
+    16: close (FD 3)
+        Tau
+        RV_none
+
+        # read-write
+    19: open "f1.txt" [O_RDWR]
+        Tau
+        RV_num(3)
+    20: write (FD 3) "ABCDE" 5
+        Tau
+        RV_num(5)
+    21: lseek (FD 3) 0 SEEK_SET
+        Tau
+        RV_num(0)
+    22: read (FD 3) 100
+        Tau
+        RV_bytes("ABCDE56789")
+    23: close (FD 3)
+        Tau
+        RV_none
+
+        # write only on existing file
+    26: open "f1.txt" [O_WRONLY]
+        Tau
+        RV_num(3)
+    27: write (FD 3) "012" 3
+        Tau
+        RV_num(3)
+    28: close (FD 3)
+        Tau
+        RV_none
+
+        # read that file again
+    31: open "f1.txt" [O_RDWR]
+        Tau
+        RV_num(3)
+    32: read (FD 3) 100
+        Tau
+        RV_bytes("012DE56789")
+    33: close (FD 3)
+        Tau
+        RV_none
+
+        # open for execute 
+    36: open "f1.txt" [O_RDONLY]
+        Tau
+        RV_num(3)
+    37: read (FD 3) 100
+        Tau
+        RV_bytes("012DE56789")
+    38: close (FD 3)
+        Tau
+        RV_none
+
+
+        ##############################################
+        # opening problems with 
+        # non-existing files and dirs
+        ##############################################
+
+    46: open "non-such-file.txt" [O_RDONLY]
+        Tau
+        ENOENT
+    47: read (FD 3) 100
+        Tau
+        EBADF
+    48: close (FD 3)
+        Tau
+        EBADF
+
+    50: open "/no_such_dir/non-such-file.txt" [O_RDONLY]
+        Tau
+        ENOENT
+    51: read (FD 3) 100
+        Tau
+        EBADF
+    52: close (FD 3)
+        Tau
+        EBADF
+
+    54: open "non-such-dir/" [O_RDONLY]
+        Tau
+        ENOENT
+    55: read (FD 3) 100
+        Tau
+        EBADF
+    56: close (FD 3)
+        Tau
+        EBADF
+
+    58: open "/no_such_dir/non-such-dir2/" [O_RDONLY]
+        Tau
+        ENOENT
+    59: read (FD 3) 100
+        Tau
+        EBADF
+    60: close (FD 3)
+        Tau
+        EBADF
+
+        # opening an existing file with a slash at the end
+    63: open "f1.txt/" [O_RDONLY]
+        Tau
+        ENOTDIR
+    64: read (FD 3) 100
+        Tau
+        EBADF
+    65: close (FD 3)
+        Tau
+        EBADF
+
+        ##############################################
+        # testing file permissions
+        ##############################################
+
+        # read-only needs read permission
+    72: chmod "f1.txt" 0o400
+        Tau
+        RV_none
+    73: open_close "f1.txt" [O_RDONLY]
+        Tau
+        RV_none
+
+    75: chmod "f1.txt" 0o000
+        Tau
+        RV_none
+    76: open_close "f1.txt" [O_RDONLY]
+        Tau
+        RV_none
+
+
+        # write-only needs write permission
+    80: chmod "f1.txt" 0o200
+        Tau
+        RV_none
+    81: open_close "f1.txt" [O_WRONLY]
+        Tau
+        RV_none
+
+    83: chmod "f1.txt" 0o000
+        Tau
+        RV_none
+    84: open_close "f1.txt" [O_WRONLY]
+        Tau
+        RV_none
+
+    86: chmod "f1.txt" 0o400
+        Tau
+        RV_none
+    87: open_close "f1.txt" [O_WRONLY]
+        Tau
+        RV_none
+
+        # read-write needs read and write permission
+    90: chmod "f1.txt" 0o600
+        Tau
+        RV_none
+    91: open_close "f1.txt" [O_RDWR]
+        Tau
+        RV_none
+
+    93: chmod "f1.txt" 0o400
+        Tau
+        RV_none
+    94: open_close "f1.txt" [O_RDWR]
+        Tau
+        RV_none
+
+    96: chmod "f1.txt" 0o200
+        Tau
+        RV_none
+    97: open_close "f1.txt" [O_RDWR]
+        Tau
+        RV_none
+
+    99: chmod "f1.txt" 0o000
+        Tau
+        RV_none
+   100: open_close "f1.txt" [O_RDWR]
+        Tau
+        RV_none
+
+
+        # truncate requires write permission
+   104: chmod "f1.txt" 0o600
+        Tau
+        RV_none
+   105: open_close "f1.txt" [O_RDONLY;O_TRUNC]
+        Tau
+        RV_none
+
+   107: chmod "f1.txt" 0o400
+        Tau
+        RV_none
+   108: open_close "f1.txt" [O_RDONLY;O_TRUNC]
+        Tau
+        RV_none
+
+
+        # append makes only sense with write, but 
+        # does not require it
+   113: chmod "f1.txt" 0o400
+        Tau
+        RV_none
+   114: open "f1.txt" [O_RDONLY;O_APPEND]
+        Tau
+        RV_num(3)
+   115: write (FD 3) "0123456789" 10
+        Tau
+        EBADF
+   116: close (FD 3)
+        Tau
+        RV_none
+
+
+        ##############################################
+        # testing dir permissions
+        ##############################################
+
+   123: mkdir "d1" 0o755
+        Tau
+        RV_none
+
+        # creating a file needs search and write permission
+        # to the parent directory
+   127: chmod "d1" 0o000
+        Tau
+        RV_none
+   128: open_close "d1/f2.txt" [O_CREAT;O_WRONLY] 0o644
+        Tau
+        RV_none
+
+   130: chmod "d1" 0o200
+        Tau
+        RV_none
+   131: open_close "d1/f2.txt" [O_CREAT;O_WRONLY] 0o644
+        Tau
+        RV_none
+
+   133: chmod "d1" 0o100
+        Tau
+        RV_none
+   134: open_close "d1/f2.txt" [O_CREAT;O_WRONLY] 0o644
+        Tau
+        RV_none
+
+   136: chmod "d1" 0o300
+        Tau
+        RV_none
+   137: open_close "d1/f2.txt" [O_CREAT;O_WRONLY] 0o644
+        Tau
+        RV_none
+
+
+        # to read a file, we needs search permission for the
+        # parent directory (as well as to the file itself)
+
+   143: chmod "d1" 0o000
+        Tau
+        RV_none
+   144: open_close "d1/f2.txt" [O_RDONLY]
+        Tau
+        RV_none
+
+   146: chmod "d1" 0o100
+        Tau
+        RV_none
+   147: open_close "d1/f2.txt" [O_RDONLY]
+        Tau
+        RV_none
+
+
+        # search permission to the parent is enough to modify a file
+   151: chmod "d1" 0o000
+        Tau
+        RV_none
+   152: open_close "d1/f2.txt" [O_WRONLY]
+        Tau
+        RV_none
+
+   154: chmod "d1" 0o100
+        Tau
+        RV_none
+   155: open_close "d1/f2.txt" [O_WRONLY]
+        Tau
+        RV_none
+
+        # clean-up for dump etc.
+   158: chmod "d1" 0o700
+        Tau
+        RV_none
+
+

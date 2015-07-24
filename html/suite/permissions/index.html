@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>permissions test suite</title>
+<style type="text/css">
+tr.summary { margin-top: 0.3em; margin-bottom: 0.3em }
+th.row { text-align: left }
+th.wide { border-left: 1px solid black; border-right: 1px solid black }
+td.num { text-align: right }
+td.good, th.good { color: green }
+td.bad, th.bad { color: red; font-weight: bold }
+td.warn, th.warn { color: orange; font-weight: bold }
+td.fail, th.fail { color: violet; font-weight: bold }
+tr.check td.good, tr.check td.bad, tr.check td.warn, tr.check td.fail {
+  text-align: center;
+}
+td.error { border: 2px solid red }
+td.line { vertical-align: top; text-align: right; padding-right: 1em }
+td.line:target { background-color: yellow }
+td.comment { color: gray }
+td.meta { color: green }
+td.dump table { margin: 1em; color: brown }
+td.return.label, td.process.label { padding-bottom: 1em }
+span.checked { font-size: 80% }
+td.terminated, td.diverged { border: 2px solid red }
+td.terminated { font-weight: bold; font-size: 150% }
+td.envelope { border: 2px solid green }
+div.stat table { margin-left: 1em }
+strong.fail { font-size: 120%; color: violet; }
+div.footer { font-size: 70%; color: gray; padding-top: 3em; text-align: right; }
+</style>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+</head>
+<body>
+<a href="../../index.html">Up</a><br/>
+
+  <table>
+    
+    <tr><th></th><th colspan="1" class="wide">linux[3.13.0-29-generic]</th></tr>
+    <tr><th></th><th colspan="1" class="wide">system[GNU C Library (GNU libc) stable release version 2.21, by Roland McGrath et al.]</th></tr>
+    <tr><th></th><th colspan="1" class="wide">/nix/store/fxisrpncjn4cxxwnq2lvilriqx63s9k9-fs_test</th></tr>
+    <tr><th></th><th colspan="1" class="wide">ext4_loop[mke2fs 1.42.9 (4-Feb-2014)]</th></tr>
+  
+    
+    <tr class="check"><th class="row"><a href="test/adhoc_create_owner-int.trace/index.html">adhoc_create_owner-int.trace</a></th><td class="bad">✗</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/adhoc_chmod-int.trace/index.html">adhoc_chmod-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/adhoc_chown-int.trace/index.html">adhoc_chown-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/adhoc_create-int.trace/index.html">adhoc_create-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/adhoc_open-int.trace/index.html">adhoc_open-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/adhoc_remove-int.trace/index.html">adhoc_remove-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/adhoc_resolution-int.trace/index.html">adhoc_resolution-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_create_000-int.trace/index.html">perm_group_create_000-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_create_010-int.trace/index.html">perm_group_create_010-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_create_020-int.trace/index.html">perm_group_create_020-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_create_030-int.trace/index.html">perm_group_create_030-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_create_040-int.trace/index.html">perm_group_create_040-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_create_050-int.trace/index.html">perm_group_create_050-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_create_060-int.trace/index.html">perm_group_create_060-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_create_070-int.trace/index.html">perm_group_create_070-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_create_100-int.trace/index.html">perm_group_create_100-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_create_110-int.trace/index.html">perm_group_create_110-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_create_120-int.trace/index.html">perm_group_create_120-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_create_130-int.trace/index.html">perm_group_create_130-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_create_140-int.trace/index.html">perm_group_create_140-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_create_150-int.trace/index.html">perm_group_create_150-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_create_160-int.trace/index.html">perm_group_create_160-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_create_170-int.trace/index.html">perm_group_create_170-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_create_200-int.trace/index.html">perm_group_create_200-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_create_210-int.trace/index.html">perm_group_create_210-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_create_220-int.trace/index.html">perm_group_create_220-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_create_230-int.trace/index.html">perm_group_create_230-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_create_240-int.trace/index.html">perm_group_create_240-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_create_250-int.trace/index.html">perm_group_create_250-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_create_260-int.trace/index.html">perm_group_create_260-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_create_270-int.trace/index.html">perm_group_create_270-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_create_300-int.trace/index.html">perm_group_create_300-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_create_310-int.trace/index.html">perm_group_create_310-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_create_320-int.trace/index.html">perm_group_create_320-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_create_330-int.trace/index.html">perm_group_create_330-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_create_340-int.trace/index.html">perm_group_create_340-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_create_350-int.trace/index.html">perm_group_create_350-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_create_360-int.trace/index.html">perm_group_create_360-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_create_370-int.trace/index.html">perm_group_create_370-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_create_400-int.trace/index.html">perm_group_create_400-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_create_410-int.trace/index.html">perm_group_create_410-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_create_420-int.trace/index.html">perm_group_create_420-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_create_430-int.trace/index.html">perm_group_create_430-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_create_440-int.trace/index.html">perm_group_create_440-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_create_450-int.trace/index.html">perm_group_create_450-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_create_460-int.trace/index.html">perm_group_create_460-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_create_470-int.trace/index.html">perm_group_create_470-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_create_500-int.trace/index.html">perm_group_create_500-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_create_510-int.trace/index.html">perm_group_create_510-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_create_520-int.trace/index.html">perm_group_create_520-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_create_530-int.trace/index.html">perm_group_create_530-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_create_540-int.trace/index.html">perm_group_create_540-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_create_550-int.trace/index.html">perm_group_create_550-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_create_560-int.trace/index.html">perm_group_create_560-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_create_570-int.trace/index.html">perm_group_create_570-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_create_600-int.trace/index.html">perm_group_create_600-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_create_610-int.trace/index.html">perm_group_create_610-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_create_620-int.trace/index.html">perm_group_create_620-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_create_630-int.trace/index.html">perm_group_create_630-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_create_640-int.trace/index.html">perm_group_create_640-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_create_650-int.trace/index.html">perm_group_create_650-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_create_660-int.trace/index.html">perm_group_create_660-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_create_670-int.trace/index.html">perm_group_create_670-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_create_700-int.trace/index.html">perm_group_create_700-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_create_710-int.trace/index.html">perm_group_create_710-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_create_720-int.trace/index.html">perm_group_create_720-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_create_730-int.trace/index.html">perm_group_create_730-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_create_740-int.trace/index.html">perm_group_create_740-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_create_750-int.trace/index.html">perm_group_create_750-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_create_760-int.trace/index.html">perm_group_create_760-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_create_770-int.trace/index.html">perm_group_create_770-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_open_000-int.trace/index.html">perm_group_open_000-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_open_010-int.trace/index.html">perm_group_open_010-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_open_020-int.trace/index.html">perm_group_open_020-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_open_030-int.trace/index.html">perm_group_open_030-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_open_040-int.trace/index.html">perm_group_open_040-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_open_050-int.trace/index.html">perm_group_open_050-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_open_060-int.trace/index.html">perm_group_open_060-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_open_070-int.trace/index.html">perm_group_open_070-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_open_100-int.trace/index.html">perm_group_open_100-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_open_110-int.trace/index.html">perm_group_open_110-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_open_120-int.trace/index.html">perm_group_open_120-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_open_130-int.trace/index.html">perm_group_open_130-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_open_140-int.trace/index.html">perm_group_open_140-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_open_150-int.trace/index.html">perm_group_open_150-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_open_160-int.trace/index.html">perm_group_open_160-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_open_170-int.trace/index.html">perm_group_open_170-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_open_200-int.trace/index.html">perm_group_open_200-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_open_210-int.trace/index.html">perm_group_open_210-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_open_220-int.trace/index.html">perm_group_open_220-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_open_230-int.trace/index.html">perm_group_open_230-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_open_240-int.trace/index.html">perm_group_open_240-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_open_250-int.trace/index.html">perm_group_open_250-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_open_260-int.trace/index.html">perm_group_open_260-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_open_270-int.trace/index.html">perm_group_open_270-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_open_300-int.trace/index.html">perm_group_open_300-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_open_310-int.trace/index.html">perm_group_open_310-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_open_320-int.trace/index.html">perm_group_open_320-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_open_330-int.trace/index.html">perm_group_open_330-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_open_340-int.trace/index.html">perm_group_open_340-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_open_350-int.trace/index.html">perm_group_open_350-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_open_360-int.trace/index.html">perm_group_open_360-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_open_370-int.trace/index.html">perm_group_open_370-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_open_400-int.trace/index.html">perm_group_open_400-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_open_410-int.trace/index.html">perm_group_open_410-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_open_420-int.trace/index.html">perm_group_open_420-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_open_430-int.trace/index.html">perm_group_open_430-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_open_440-int.trace/index.html">perm_group_open_440-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_open_450-int.trace/index.html">perm_group_open_450-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_open_460-int.trace/index.html">perm_group_open_460-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_open_470-int.trace/index.html">perm_group_open_470-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_open_500-int.trace/index.html">perm_group_open_500-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_open_510-int.trace/index.html">perm_group_open_510-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_open_520-int.trace/index.html">perm_group_open_520-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_open_530-int.trace/index.html">perm_group_open_530-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_open_540-int.trace/index.html">perm_group_open_540-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_open_550-int.trace/index.html">perm_group_open_550-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_open_560-int.trace/index.html">perm_group_open_560-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_open_570-int.trace/index.html">perm_group_open_570-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_open_600-int.trace/index.html">perm_group_open_600-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_open_610-int.trace/index.html">perm_group_open_610-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_open_620-int.trace/index.html">perm_group_open_620-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_open_630-int.trace/index.html">perm_group_open_630-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_open_640-int.trace/index.html">perm_group_open_640-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_open_650-int.trace/index.html">perm_group_open_650-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_open_660-int.trace/index.html">perm_group_open_660-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_open_670-int.trace/index.html">perm_group_open_670-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_open_700-int.trace/index.html">perm_group_open_700-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_open_710-int.trace/index.html">perm_group_open_710-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_open_720-int.trace/index.html">perm_group_open_720-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_open_730-int.trace/index.html">perm_group_open_730-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_open_740-int.trace/index.html">perm_group_open_740-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_open_750-int.trace/index.html">perm_group_open_750-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_open_760-int.trace/index.html">perm_group_open_760-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_group_open_770-int.trace/index.html">perm_group_open_770-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_other_create_000-int.trace/index.html">perm_other_create_000-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_other_create_001-int.trace/index.html">perm_other_create_001-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_other_create_002-int.trace/index.html">perm_other_create_002-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_other_create_003-int.trace/index.html">perm_other_create_003-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_other_create_004-int.trace/index.html">perm_other_create_004-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_other_create_005-int.trace/index.html">perm_other_create_005-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_other_create_006-int.trace/index.html">perm_other_create_006-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_other_create_007-int.trace/index.html">perm_other_create_007-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_other_open_000-int.trace/index.html">perm_other_open_000-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_other_open_001-int.trace/index.html">perm_other_open_001-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_other_open_002-int.trace/index.html">perm_other_open_002-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_other_open_003-int.trace/index.html">perm_other_open_003-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_other_open_004-int.trace/index.html">perm_other_open_004-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_other_open_005-int.trace/index.html">perm_other_open_005-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_other_open_006-int.trace/index.html">perm_other_open_006-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_other_open_007-int.trace/index.html">perm_other_open_007-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_umask_000-int.trace/index.html">perm_umask_000-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_umask_011-int.trace/index.html">perm_umask_011-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_umask_022-int.trace/index.html">perm_umask_022-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_umask_444-int.trace/index.html">perm_umask_444-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_umask_770-int.trace/index.html">perm_umask_770-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_umask_777-int.trace/index.html">perm_umask_777-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_user_open_000-int.trace/index.html">perm_user_open_000-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_user_open_100-int.trace/index.html">perm_user_open_100-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_user_open_200-int.trace/index.html">perm_user_open_200-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_user_open_300-int.trace/index.html">perm_user_open_300-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_user_open_400-int.trace/index.html">perm_user_open_400-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_user_open_500-int.trace/index.html">perm_user_open_500-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_user_open_600-int.trace/index.html">perm_user_open_600-int.trace</a></th><td class="good">✓</td></tr>
+  
+    <tr class="check"><th class="row"><a href="test/perm_user_open_700-int.trace/index.html">perm_user_open_700-int.trace</a></th><td class="good">✓</td></tr>
+  
+  </table>
+  
+  
+<div class="footer">
+  Generated by <em>fs_test html</em> <strong>/nix/store/fxisrpncjn4cxxwnq2lvilriqx63s9k9-fs_test</strong>
+</div>
+</body>
+</html>

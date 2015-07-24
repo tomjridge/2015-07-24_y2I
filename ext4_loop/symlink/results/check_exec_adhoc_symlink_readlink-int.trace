@@ -1,0 +1,137 @@
+# processing file 'exec_adhoc_symlink_readlink-int.trace' ...
+        # processing file 'adhoc_symlink_readlink-int.trace' ...
+        @type trace
+        # adhoc_symlink_cycles
+
+        # initialization
+
+     7: mkdir "/dir_1" 0o777
+     8: Tau
+     9: RV_none
+    10: mkdir "/dir_1/dir_11" 0o777
+    11: Tau
+    12: RV_none
+    13: mkdir "/dir_2" 0o777
+    14: Tau
+    15: RV_none
+
+    17: open "/dir_1/f1.txt" [O_CREAT;O_RDWR] 0o666
+    18: Tau
+    19: RV_num(3)
+    20: write! (FD 3) "content of /dir_1/f1.txt" 24
+    21: Tau
+    22: RV_num(24)
+    23: close (FD 3)
+    24: Tau
+    25: RV_none
+
+    27: open "/dir_1/f2.txt" [O_CREAT;O_RDWR] 0o666
+    28: Tau
+    29: RV_num(3)
+    30: write! (FD 3) "content of /dir_1/f2.txt" 24
+    31: Tau
+    32: RV_num(24)
+    33: close (FD 3)
+    34: Tau
+    35: RV_none
+
+    37: open "/dir_2/f1.txt" [O_CREAT;O_RDWR] 0o666
+    38: Tau
+    39: RV_num(3)
+    40: write! (FD 3) "content of /dir_2/f1.txt" 24
+    41: Tau
+    42: RV_num(24)
+    43: close (FD 3)
+    44: Tau
+    45: RV_none
+
+    47: symlink "dir_1" "/symlink_1"
+    48: Tau
+    49: RV_none
+    50: symlink "dir_1/f1.txt" "/symlink_2"
+    51: Tau
+    52: RV_none
+    53: symlink "symlink_1" "/symlink_3"
+    54: Tau
+    55: RV_none
+    56: symlink "symlink_2" "/symlink_4"
+    57: Tau
+    58: RV_none
+    59: symlink "symlink_4" "/symlink_5"
+    60: Tau
+    61: RV_none
+
+        # read the content of symbolic links
+    64: readlink "/symlink_1"
+    65: Tau
+    66: RV_bytes("dir_1")
+    67: readlink "/symlink_1/"
+    68: Tau
+    69: EINVAL
+    70: readlink "/symlink_1//"
+    71: Tau
+    72: EINVAL
+    73: readlink "/symlink_2"
+    74: Tau
+    75: RV_bytes("dir_1/f1.txt")
+    76: readlink "/symlink_2/"
+    77: Tau
+    78: ENOTDIR
+    79: readlink "/symlink_2//"
+    80: Tau
+    81: ENOTDIR
+    82: readlink "/symlink_3"
+    83: Tau
+    84: RV_bytes("symlink_1")
+    85: readlink "/symlink_3/"
+    86: Tau
+    87: EINVAL
+    88: readlink "/symlink_3//"
+    89: Tau
+    90: EINVAL
+    91: readlink "/symlink_4"
+    92: Tau
+    93: RV_bytes("symlink_2")
+    94: readlink "/symlink_4/"
+    95: Tau
+    96: ENOTDIR
+    97: readlink "/symlink_4//"
+    98: Tau
+    99: ENOTDIR
+   100: readlink "/symlink_5"
+   101: Tau
+   102: RV_bytes("symlink_4")
+   103: readlink "/symlink_5/"
+   104: Tau
+   105: ENOTDIR
+   106: readlink "/symlink_5//"
+   107: Tau
+   108: ENOTDIR
+   109: readlink "/symlink_5///"
+   110: Tau
+   111: ENOTDIR
+   112: readlink "/symlink_5////"
+   113: Tau
+   114: ENOTDIR
+   115: readlink "/no_such_link"
+   116: Tau
+   117: ENOENT
+
+   119: dump-result "/"
+           "/"|D|13
+           "/symlink_1"|L|"dir_1"
+           "/symlink_2"|L|"dir_1/f1.txt"
+           "/symlink_3"|L|"symlink_1"
+           "/symlink_4"|L|"symlink_2"
+           "/symlink_5"|L|"symlink_4"
+           "/dir_1"|D|16
+           "/dir_1/f1.txt"|F|20|24|"3f8cf820bb3ad6f52314a560e757adf6c0548d42"
+           "/dir_1/f2.txt"|F|21|24|"643494cc13ad08ccb3f11680caf2f3a8b294b994"
+           "/dir_1/dir_11"|D|18
+           "/dir_2"|D|19
+           "/dir_2/f1.txt"|F|22|24|"727703159e2b79582d71e169cf66473ba9f4ee5c"
+        end dump-result
+
+
+
+# trace accepted

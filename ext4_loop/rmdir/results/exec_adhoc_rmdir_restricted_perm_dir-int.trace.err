@@ -1,0 +1,20 @@
+< id -u -n
+< id -g -n
+< uname -s
++ mkdir "-p" "/tmp/fs_test"
+$ Acquired lock /tmp/fs_test/pw.lock
+? useradd "-s" "/bin/false" "fs_user_0"
+useradd: user 'fs_user_0' already exists
+? useradd "-s" "/bin/false" "fs_user_1"
+$ Released lock /tmp/fs_test/pw.lock
+27949 creating agent 28694
+27949 creating agent 28695
+$ Acquired lock /tmp/fs_test/pw.lock
+? useradd "-s" "/bin/false" "fs_user_2"
+useradd: user 'fs_user_2' already exists
+? useradd "-s" "/bin/false" "fs_user_3"
+$ Released lock /tmp/fs_test/pw.lock
+27949 stopping agent 28695
+27949 stopping agent 28694
++ userdel "fs_user_1"
++ userdel "fs_user_3"
